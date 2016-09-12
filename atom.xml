@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>菜菜园子</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2016-09-12T13:10:07.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>cailei</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Blog搭建</title>
+    <link href="http://yoursite.com/2016/09/12/%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2016/09/12/用Hexo搭建博客/</id>
+    <published>2016-09-12T11:47:14.000Z</published>
+    <updated>2016-09-12T13:10:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="hexo-next-github搭建Blog"><a href="#hexo-next-github搭建Blog" class="headerlink" title="hexo, next, github搭建Blog"></a>hexo, next, github搭建Blog</h1><ul>
+<li>下载并安装<a href="https://nodejs.org/en/" target="_blank" rel="external">node.js</a></li>
+<li>安装hexo</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g hexo</div></pre></td></tr></table></figure>
+<ul>
+<li>生成博客路径</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir HexoBlog</div><div class="line">cd HexoBlog</div><div class="line">hexo init</div></pre></td></tr></table></figure>
+<ul>
+<li>安装插件</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>插件</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>npm install hexo-deployer-git –save</td>
+<td>向github发布blog</td>
+</tr>
+<tr>
+<td>npm install hexo-generator-feed –save</td>
+<td>添加rss</td>
+</tr>
+</tbody>
+</table>
+<h1 id="各种配置"><a href="#各种配置" class="headerlink" title="各种配置"></a>各种配置</h1><ul>
+<li>_config.yml</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">title: 菜菜园子 </div><div class="line">author: cailei</div><div class="line">language: zh-Hans</div><div class="line"></div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:caileiGTD/caileiGTD.github.io.git</div><div class="line">  branch: master</div><div class="line"></div><div class="line">rss: /atom.xml</div></pre></td></tr></table></figure>
+<ul>
+<li><p>添加头像themes/next/source/images/avatar.jpg</p>
+</li>
+<li><p>themes/next/_config.yml</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">avatar: /images/avatar.jpg</div><div class="line"></div><div class="line">menu:</div><div class="line">  home: /</div><div class="line">  categories: /categories</div><div class="line">  archives: /archives</div><div class="line">  </div><div class="line">scheme: Mist</div></pre></td></tr></table></figure>
+<ul>
+<li>默认post模板添加categories, scaffolds/post.md</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: &#123;&#123; title &#125;&#125;</div><div class="line">date: &#123;&#123; date &#125;&#125;</div><div class="line">categories:</div><div class="line">tags:</div><div class="line">---</div></pre></td></tr></table></figure>
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><p>hexo n “文章名”<br>hexo p (publish)<br>hexo g (generate)<br>hexo s (server)<br>hexo d (deploy)</p>
+<h1 id="删除HelloWorld"><a href="#删除HelloWorld" class="headerlink" title="删除HelloWorld"></a>删除HelloWorld</h1><p>hexo安装好后有个HelloWorld的post，现在将其删除</p>
+<ul>
+<li>delete source/_post/HelloWorld.md</li>
+<li>hexo clean</li>
+<li>hexo generate</li>
+</ul>
+<h1 id="坑爹"><a href="#坑爹" class="headerlink" title="坑爹"></a>坑爹</h1><p>开始时点categories显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Cannot GET XXX</div></pre></td></tr></table></figure>
+<p>然后查到了 <a href="http://darren90.github.io/2015/08/01/Hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/" target="_blank" rel="external">这篇文章</a> 其中对 <code>source/categories/index.md</code> 文件中的内容写的如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">layout: categories</div><div class="line">title: categories</div><div class="line">---</div></pre></td></tr></table></figure>
+<p>照着修改后，解决了 <code>Cannot GET XXX</code> 的问题，但是categories点进去还是一片空白，于是又查到了 <a href="https://segmentfault.com/q/1010000002561642" target="_blank" rel="external">另一篇文章</a></p>
+<p>实际上 <code>source/categories/index.md</code> 的内容应该如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">title: categories</div><div class="line">type: &quot;categories&quot;</div><div class="line">---</div></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><table>
+<thead>
+<tr>
+<th>url</th>
+<th>解决的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://xiaodev.cn/2015/08/12/github-hexo搭建博客/" target="_blank" rel="external">http://xiaodev.cn/2015/08/12/github-hexo搭建博客/</a></td>
+<td>mac osx下搭建</td>
+</tr>
+<tr>
+<td><a href="https://segmentfault.com/a/1190000002632530" target="_blank" rel="external">https://segmentfault.com/a/1190000002632530</a></td>
+<td>rss</td>
+</tr>
+<tr>
+<td><a href="https://segmentfault.com/q/1010000002561642" target="_blank" rel="external">https://segmentfault.com/q/1010000002561642</a></td>
+<td>categories, tags</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;hexo-next-github搭建Blog&quot;&gt;&lt;a href=&quot;#hexo-next-github搭建Blog&quot; class=&quot;headerlink&quot; title=&quot;hexo, next, github搭建Blog&quot;&gt;&lt;/a&gt;hexo, next, github
+    
+    </summary>
+    
+      <category term="杂项" scheme="http://yoursite.com/categories/%E6%9D%82%E9%A1%B9/"/>
+    
+    
+  </entry>
+  
+</feed>
