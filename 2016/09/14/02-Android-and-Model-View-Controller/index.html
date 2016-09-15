@@ -86,12 +86,48 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="菜菜园子">
-<meta property="og:url" content="http://yoursite.com/categories/杂项/index.html">
+<meta name="description" content="这里有个很蛋疼的问题，R.id.xxxxx，取回来都是一个整型的resId，怎么直接取到相应的String呢？
+
+TextView.setText()Toast.makeText().show()
+
+
+
+drawable-mdpidrawable-hdpidrawable-xhdpidrawable-xxhdpi都在 src/main/res/ 下
+
+
+
+android:drawableRigh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="02, Android and Model-View-Controller">
+<meta property="og:url" content="http://yoursite.com/2016/09/14/02-Android-and-Model-View-Controller/index.html">
 <meta property="og:site_name" content="菜菜园子">
+<meta property="og:description" content="这里有个很蛋疼的问题，R.id.xxxxx，取回来都是一个整型的resId，怎么直接取到相应的String呢？
+
+TextView.setText()Toast.makeText().show()
+
+
+
+drawable-mdpidrawable-hdpidrawable-xhdpidrawable-xxhdpi都在 src/main/res/ 下
+
+
+
+android:drawableRigh">
+<meta property="og:image" content="http://yoursite.com/images/AndroidProgramming/0201.png">
+<meta property="og:updated_time" content="2016-09-15T12:35:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="菜菜园子">
+<meta name="twitter:title" content="02, Android and Model-View-Controller">
+<meta name="twitter:description" content="这里有个很蛋疼的问题，R.id.xxxxx，取回来都是一个整型的resId，怎么直接取到相应的String呢？
+
+TextView.setText()Toast.makeText().show()
+
+
+
+drawable-mdpidrawable-hdpidrawable-xhdpidrawable-xxhdpi都在 src/main/res/ 下
+
+
+
+android:drawableRigh">
+<meta name="twitter:image" content="http://yoursite.com/images/AndroidProgramming/0201.png">
 
 
 
@@ -112,9 +148,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/杂项/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/14/02-Android-and-Model-View-Controller/"/>
 
-  <title> 分类: 杂项 | 菜菜园子 </title>
+  <title> 02, Android and Model-View-Controller | 菜菜园子 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -135,7 +171,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -213,47 +249,148 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        杂项
-        <small>分类</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                02, Android and Model-View-Controller
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-14T16:45:03+08:00" content="2016-09-14">
+              2016-09-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p><img src="/images/AndroidProgramming/0201.png" alt=""></p>
+<font color="Red">这里有个很蛋疼的问题，R.id.xxxxx，取回来都是一个整型的resId，怎么直接取到相应的String呢？</font>
 
-      <h1 class="post-title">
+<font color="Green"><br>TextView.setText()<br><br>Toast.makeText().show()<br></font>
+
+
+
+<font color="Blue"><br>drawable-mdpi<br><br>drawable-hdpi<br><br>drawable-xhdpi<br><br>drawable-xxhdpi<br><br>都在 <code>src/main/res/</code> 下<br></font>
+
+
+
+<font color="Green"><br>android:drawableRight=”@drawable/xxxxx”<br><br>android:drawablePadding<br><br>ImageButton<br><br>android:src<br></font>
+
+<font color="Red"><br>Button的继承树，和ImageButton，居然相去甚远，为啥不统一起来？<br><br>Button -&gt; TextView -&gt; View<br><br>ImageButton -&gt; ImageView -&gt; View<br></font>
+
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/09/12/用Hexo搭建博客/" itemprop="url">
-              
-                <span itemprop="name">Blog搭建</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-12T19:47:14+08:00"
-              content="2016-09-12" >
-          09-12
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/14/Hexo技巧/" rel="next" title="Hexo技巧">
+                <i class="fa fa-chevron-left"></i> Hexo技巧
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </section>
 
-  
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -261,6 +398,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -280,8 +421,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -331,6 +481,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -427,6 +588,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

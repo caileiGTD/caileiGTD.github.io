@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-14T07:16:02.000Z</updated>
+  <updated>2016-09-15T12:35:48.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,39 +16,98 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>02, Android and Model-View-Controller</title>
+    <link href="http://yoursite.com/2016/09/14/02-Android-and-Model-View-Controller/"/>
+    <id>http://yoursite.com/2016/09/14/02-Android-and-Model-View-Controller/</id>
+    <published>2016-09-14T08:45:03.000Z</published>
+    <updated>2016-09-15T12:35:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/AndroidProgramming/0201.png" alt=""></p>
+<font color="Red">这里有个很蛋疼的问题，R.id.xxxxx，取回来都是一个整型的resId，怎么直接取到相应的String呢？</font>
+
+<font color="Green"><br>TextView.setText()<br><br>Toast.makeText().show()<br></font>
+
+
+
+<font color="Blue"><br>drawable-mdpi<br><br>drawable-hdpi<br><br>drawable-xhdpi<br><br>drawable-xxhdpi<br><br>都在 <code>src/main/res/</code> 下<br></font>
+
+
+
+<font color="Green"><br>android:drawableRight=”@drawable/xxxxx”<br><br>android:drawablePadding<br><br>ImageButton<br><br>android:src<br></font>
+
+<font color="Red"><br>Button的继承树，和ImageButton，居然相去甚远，为啥不统一起来？<br><br>Button -&gt; TextView -&gt; View<br><br>ImageButton -&gt; ImageView -&gt; View<br></font>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/images/AndroidProgramming/0201.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;font color=&quot;Red&quot;&gt;这里有个很蛋疼的问题，R.id.xxxxx，取回来都是一个整型的resId，怎么直接取到相应的String呢？&lt;/fon
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo技巧</title>
+    <link href="http://yoursite.com/2016/09/14/Hexo%E6%8A%80%E5%B7%A7/"/>
+    <id>http://yoursite.com/2016/09/14/Hexo技巧/</id>
+    <published>2016-09-14T07:58:41.000Z</published>
+    <updated>2016-09-14T08:01:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>技巧不断补充… …</p>
+<h1 id="首页仅仅显示摘要"><a href="#首页仅仅显示摘要" class="headerlink" title="首页仅仅显示摘要"></a>首页仅仅显示摘要</h1><p>在文章中加入<code>&lt;!-- more --&gt;</code>，上面的部分为摘要</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;技巧不断补充… …&lt;/p&gt;
+&lt;h1 id=&quot;首页仅仅显示摘要&quot;&gt;&lt;a href=&quot;#首页仅仅显示摘要&quot; class=&quot;headerlink&quot; title=&quot;首页仅仅显示摘要&quot;&gt;&lt;/a&gt;首页仅仅显示摘要&lt;/h1&gt;&lt;p&gt;在文章中加入&lt;code&gt;&amp;lt;!-- more --&amp;g
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>01, Your First Android Application</title>
     <link href="http://yoursite.com/2016/09/14/01-Your-First-Android-Application/"/>
     <id>http://yoursite.com/2016/09/14/01-Your-First-Android-Application/</id>
     <published>2016-09-14T06:59:27.000Z</published>
-    <updated>2016-09-14T07:16:02.000Z</updated>
+    <updated>2016-09-14T07:57:32.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="/images/AndroidProgramming/0101.png" alt=""></p>
+    <content type="html"><![CDATA[<p>需求截图:</p>
+<a id="more"></a>
+<p><img src="/images/AndroidProgramming/0101.png" alt=""></p>
 <font color="Green">RelativeLayout<br><br>TextView</font>
 
 <p><img src="/images/AndroidProgramming/0102.png" alt=""></p>
 <font color="Green">LinearLayout<br><br>TextView<br><br>Button</font>
 
-<p>一些属性，在<code>&lt; &gt;</code>里的:</p>
-<font color="Green">layout_width(可为<code>wrap_content</code>或<code>match_parent</code>)<br><br>layout_height<br><br>padding<br><br>gravity (<code>默认是左上角</code>)<br><br>orientation<br><br>text</font>
-
-<font color="Orange">command + o : filter并跳转到class</font>
+<p>一些在<code>&lt; &gt;</code>里的属性:</p>
+<font color="Green">layout_width (可为<code>wrap_content</code>或<code>match_parent</code>)<br><br>layout_height<br><br>padding<br><br>gravity (<code>默认是左上角</code>)<br><br>orientation<br><br>text</font>
 
 <p>stirngs.xml用于字符串常量，代码中用<code>@string/xxxxx</code>来引用</p>
 <p>@+id/xxxxx用于给widget添加id</p>
+<font color="Orange">command + o : filter并跳转到class</font>
+
 <ul>
 <li><font color="Red">如何自动插入xmlns:android=”<a href="http://schemas.android.com/apk/res/android" target="_blank" rel="external">http://schemas.android.com/apk/res/android</a>“</font></li>
 <li><font color="Red">如何像xcode一样filter出不同的文件名，如*.xml文件</font></li>
 <li><font color="Red">什么string放到strings.xml，什么不用放，规则，命名规范</font>
+
 </li>
 </ul>
-]]></content>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Activity</div><div class="line">protected void onCreate(Bundle savedInstanceState) &#123;&#125;</div><div class="line">findViewById();</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Toast.makeText();</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;/images/AndroidProgramming/0101.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;font color=&quot;Green&quot;&gt;RelativeLayout&lt;br&gt;&lt;br&gt;TextView&lt;/font&gt;
-
-&lt;p&gt;&lt;img src=&quot;/image
+      &lt;p&gt;需求截图:&lt;/p&gt;
     
     </summary>
     
@@ -62,13 +121,14 @@
     <link href="http://yoursite.com/2016/09/13/Android-Programming-%E8%AE%A1%E5%88%92-%E6%80%BB%E7%BA%B2/"/>
     <id>http://yoursite.com/2016/09/13/Android-Programming-计划-总纲/</id>
     <published>2016-09-13T08:49:09.000Z</published>
-    <updated>2016-09-13T14:49:42.000Z</updated>
+    <updated>2016-09-14T07:56:48.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h1><p>9月15日 - 10月31日</p>
 <ol>
 <li>每天一章 《Android Programming - The Big Nerd Ranch Guide, 2nd Edition》，包括手敲代码</li>
 <li>在[1]完成后，花1周通览一遍《疯狂Android讲义，第三版》</li>
 </ol>
+<a id="more"></a>
 <h1 id="规矩"><a href="#规矩" class="headerlink" title="规矩"></a>规矩</h1><table>
 <thead>
 <tr>
@@ -155,7 +215,7 @@
 <tbody>
 <tr>
 <td>1. Your First Android Application</td>
-<td></td>
+<td><a href="https://caileigtd.github.io/2016/09/14/01-Your-First-Android-Application/" target="_blank" rel="external">链接</a></td>
 </tr>
 <tr>
 <td>2. Android and Model-View-Controller</td>
@@ -297,7 +357,9 @@
     
       &lt;h1 id=&quot;计划&quot;&gt;&lt;a href=&quot;#计划&quot; class=&quot;headerlink&quot; title=&quot;计划&quot;&gt;&lt;/a&gt;计划&lt;/h1&gt;&lt;p&gt;9月15日 - 10月31日&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;每天一章 《Android Programming - The Big Nerd R
+&lt;li&gt;每天一章 《Android Programming - The Big Nerd Ranch Guide, 2nd Edition》，包括手敲代码&lt;/li&gt;
+&lt;li&gt;在[1]完成后，花1周通览一遍《疯狂Android讲义，第三版》&lt;/li&gt;
+&lt;/ol&gt;
     
     </summary>
     
@@ -311,7 +373,7 @@
     <link href="http://yoursite.com/2016/09/13/%E5%88%9D%E5%B0%9DAndroid%E4%B9%8B%E5%BC%80%E7%AF%87/"/>
     <id>http://yoursite.com/2016/09/13/初尝Android之开篇/</id>
     <published>2016-09-13T06:29:50.000Z</published>
-    <updated>2016-09-13T08:47:04.000Z</updated>
+    <updated>2016-09-14T07:56:42.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="个人背景"><a href="#个人背景" class="headerlink" title="个人背景"></a>个人背景</h1><ul>
 <li>有近10年的工作经验，近4年的ios经验</li>
@@ -319,6 +381,7 @@
 <li>ios算不上大牛，但在工作中基本也没有搞不定的feature，解不出的bug</li>
 <li>现在每天能有个把个小时自由支配的时间（x, x &gt;= 1 &amp;&amp; x &lt;= 3）</li>
 </ul>
+<a id="more"></a>
 <h1 id="学习原因"><a href="#学习原因" class="headerlink" title="学习原因"></a>学习原因</h1><ul>
 <li>曾经带领的ios team现在做项目基本让人省心，ios框架、人员都稳定成熟</li>
 <li>android团队，人员大部分新人，水平参差不齐，但全部为初、中级；目前android组内没有统一框架、规范，疑难杂症基本很难解决；暂时属于自由发挥，走哪儿算哪儿的状态</li>
@@ -382,7 +445,10 @@
     
       &lt;h1 id=&quot;个人背景&quot;&gt;&lt;a href=&quot;#个人背景&quot; class=&quot;headerlink&quot; title=&quot;个人背景&quot;&gt;&lt;/a&gt;个人背景&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;有近10年的工作经验，近4年的ios经验&lt;/li&gt;
-&lt;li&gt;曾经纯纯的coder，现在管理整个Mobile Te
+&lt;li&gt;曾经纯纯的coder，现在管理整个Mobile Team包括ios, android, test&lt;/li&gt;
+&lt;li&gt;ios算不上大牛，但在工作中基本也没有搞不定的feature，解不出的bug&lt;/li&gt;
+&lt;li&gt;现在每天能有个把个小时自由支配的时间（x, x &amp;gt;= 1 &amp;amp;&amp;amp; x &amp;lt;= 3）&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -396,12 +462,13 @@
     <link href="http://yoursite.com/2016/09/12/%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2016/09/12/用Hexo搭建博客/</id>
     <published>2016-09-12T11:47:14.000Z</published>
-    <updated>2016-09-12T13:10:20.000Z</updated>
+    <updated>2016-09-14T07:56:04.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="hexo-next-github搭建Blog"><a href="#hexo-next-github搭建Blog" class="headerlink" title="hexo, next, github搭建Blog"></a>hexo, next, github搭建Blog</h1><ul>
 <li>下载并安装<a href="https://nodejs.org/en/" target="_blank" rel="external">node.js</a></li>
 <li>安装hexo</li>
 </ul>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g hexo</div></pre></td></tr></table></figure>
 <ul>
 <li>生成博客路径</li>
@@ -483,7 +550,10 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;hexo-next-github搭建Blog&quot;&gt;&lt;a href=&quot;#hexo-next-github搭建Blog&quot; class=&quot;headerlink&quot; title=&quot;hexo, next, github搭建Blog&quot;&gt;&lt;/a&gt;hexo, next, github
+      &lt;h1 id=&quot;hexo-next-github搭建Blog&quot;&gt;&lt;a href=&quot;#hexo-next-github搭建Blog&quot; class=&quot;headerlink&quot; title=&quot;hexo, next, github搭建Blog&quot;&gt;&lt;/a&gt;hexo, next, github搭建Blog&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;下载并安装&lt;a href=&quot;https://nodejs.org/en/&quot;&gt;node.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;安装hexo&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
