@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-15T12:35:48.000Z</updated>
+  <updated>2016-09-16T13:56:42.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>3. The Activity Lifecycle</title>
+    <link href="http://yoursite.com/2016/09/16/3-The-Activity-Lifecycle/"/>
+    <id>http://yoursite.com/2016/09/16/3-The-Activity-Lifecycle/</id>
+    <published>2016-09-16T13:18:43.000Z</published>
+    <updated>2016-09-16T13:56:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<font color="Green"><br>onCreate()<br><br>onStart()<br><br>onResume()<br><em>*</em><br>onPause()<br><br>onStop()<br><br>onDestroy()<br></font>
+
+<font color="Blue"><br>res -&gt; new Resource Directory -&gt; layout -&gt; orientation -&gt; Landscape<br></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onSaveInstanceState(Bundle outState)</div></pre></td></tr></table></figure>
+<font color="Blue"><br>在Bundle中存储和恢复的数据类型只能是primitive type或实现了Serializable或Parcelable接口的对象<br></font>
+
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;font color=&quot;Green&quot;&gt;&lt;br&gt;onCreate()&lt;br&gt;&lt;br&gt;onStart()&lt;br&gt;&lt;br&gt;onResume()&lt;br&gt;&lt;em&gt;*&lt;/em&gt;&lt;br&gt;onPause()&lt;br&gt;&lt;br&gt;onStop()&lt;br&gt;&lt;br&gt;onDestroy()&lt;br&gt;&lt;/fon
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>02, Android and Model-View-Controller</title>
