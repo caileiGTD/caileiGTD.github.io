@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-18T02:14:03.000Z</updated>
+  <updated>2016-09-18T03:59:43.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>04. Debugging Android Apps</title>
+    <link href="http://yoursite.com/2016/09/18/04-Debugging-Android-Apps/"/>
+    <id>http://yoursite.com/2016/09/18/04-Debugging-Android-Apps/</id>
+    <published>2016-09-18T02:20:39.000Z</published>
+    <updated>2016-09-18T03:59:43.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Run -&gt; View Breakpoints</p>
+<p>Android Lint : Analyze -&gt; Inspect Code</p>
+<font color="Red"><br>怎么用好Lint？现在报的好多错误看不懂啊 ~<br></font>
+
+<p>Tools -&gt; Android -&gt; Sync Project with Gradle</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Run -&amp;gt; View Breakpoints&lt;/p&gt;
+&lt;p&gt;Android Lint : Analyze -&amp;gt; Inspect Code&lt;/p&gt;
+&lt;font color=&quot;Red&quot;&gt;&lt;br&gt;怎么用好Lint？现在报的好多错误看不懂啊 ~&lt;br&gt;&lt;/font&gt;
+
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>03. The Activity Lifecycle</title>
