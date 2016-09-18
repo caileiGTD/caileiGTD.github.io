@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-18T11:31:56.000Z</updated>
+  <updated>2016-09-18T11:44:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,90 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>06. Android SDK Versions and Compatibility</title>
+    <link href="http://yoursite.com/2016/09/18/06-Android-SDK-Versions-and-Compatibility/"/>
+    <id>http://yoursite.com/2016/09/18/06-Android-SDK-Versions-and-Compatibility/</id>
+    <published>2016-09-18T11:37:39.000Z</published>
+    <updated>2016-09-18T11:44:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>代号</th>
+<th>API Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.1</td>
+<td>Jelly Bean</td>
+<td>16</td>
+</tr>
+<tr>
+<td>4.2</td>
+<td>Jelly Bean</td>
+<td>17</td>
+</tr>
+<tr>
+<td>4.3</td>
+<td>Jelly Bean</td>
+<td>18</td>
+</tr>
+<tr>
+<td>4.4</td>
+<td>KitKat</td>
+<td>19</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>Lollipop</td>
+<td>21</td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>Lollipop</td>
+<td>22</td>
+</tr>
+<tr>
+<td>6.0</td>
+<td>Marshmallow</td>
+<td>23</td>
+</tr>
+<tr>
+<td>7.0</td>
+<td>Nougat</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+<font color="Green"><br>if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) {<br><br>}<br></font>]]></content>
+    
+    <summary type="html">
+    
+      &lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;版本&lt;/th&gt;
+&lt;th&gt;代号&lt;/th&gt;
+&lt;th&gt;API Level&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;4.1&lt;/td&gt;
+&lt;td&gt;Jelly Bean&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;/t
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>05. Your Second Activity</title>
