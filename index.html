@@ -237,6 +237,146 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/18/05-Your-Second-Activity/" itemprop="url">
+                  05. Your Second Activity
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-18T14:55:17+08:00" content="2016-09-18">
+              2016-09-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>tools:text这个属性在preview中显示，运行时不会显示出来</p>
+<font color="Green"><br><br>public Intent(Context packageContext, Class&lt;?&gt; cls)<br><br>public Intent putExtra(…)<br><br>public void startActivityForResult(Intent intent, int requestCode)<br><br>getIntent().getBooleanExtra(…);<br></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = new Intent();</div><div class="line">   intent.putExtra(Extra_Cheated, true);</div><div class="line">   setResult(Activity.RESULT_OK, intent);</div></pre></td></tr></table></figure>
+<font color="Green"><br>protected void onActivityResult(int requestCode, int resultCode, Intent data)<br></font>
+
+<p>非常有趣的一点，在旋转后，CheatActivity被重新生成，然后其onCreate()函数中 <code>getIntent().getBooleanExtra(Extra_Answer, false);</code> 依然可以获得从QuizActivity传过来的参数。</p>
+<font color="Blue"><br>在Activity中调用Activity.finish()方法同样可以将Activity从ActivityManager管理的栈中弹出。<br></font>
+
+<p>注意key值多用 private static String，以及由此产生的生成Intent，取得Result Intent相应函数所处的Activity</p>
+<p>#传入时：</p>
+<p>在QuizActivity中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">private static int REQUEST_CHEAT_ACTIVITY = 0;</div><div class="line"></div><div class="line">Intent intent = CheatActivity.newIntent(QuizActivity.this, quizArray[mCurQuestionIndex].getmTrueFalseAnswer());</div><div class="line">startActivityForResult(intent, REQUEST_CHEAT_ACTIVITY);</div></pre></td></tr></table></figure>
+<p>在CheatActivity中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private static final String Extra_Answer = &quot;cheat_activity_extra_answer&quot;;</div><div class="line"></div><div class="line">public static Intent newIntent(Context context, boolean answer) &#123;</div><div class="line">    Intent intent = new Intent(context, CheatActivity.class);</div><div class="line">    intent.putExtra(Extra_Answer, answer);</div><div class="line">    return intent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>#传出时：（返回值）<br>在QuizActivity中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">private static int REQUEST_CHEAT_ACTIVITY = 0;</div><div class="line"></div><div class="line">@Override</div><div class="line">protected void onActivityResult(int requestCode, int resultCode, Intent data) &#123;</div><div class="line">    super.onActivityResult(requestCode, resultCode, data);</div><div class="line">    if (resultCode != Activity.RESULT_OK) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    if (requestCode == REQUEST_CHEAT_ACTIVITY) &#123;</div><div class="line">        if (data == null) &#123;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        mCheated = CheatActivity.hasCheated(data);</div><div class="line">        cheatArray[mCurQuestionIndex] = mCheated;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里再次把获取boolean类型的intent extra的任务放到了 <code>CheatActivity.hasCheated(data)</code> 中，传入intent，返回boolean</p>
+<p>在CheatActivity中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">private static final String Extra_Cheated = &quot;cheat_activity_extra_cheated&quot;;</div><div class="line"></div><div class="line">public static boolean hasCheated(Intent intent) &#123;</div><div class="line">    return intent.getBooleanExtra(Extra_Cheated, false);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private static final String Extra_Cheated = &quot;cheat_activity_extra_cheated&quot;;</div><div class="line"></div><div class="line">&#123;</div><div class="line">        Intent intent = new Intent();</div><div class="line">        intent.putExtra(Extra_Cheated, true);</div><div class="line">        setResult(Activity.RESULT_OK, intent);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><font color="Red"><br>用Intent传来传去，需要用到putExtra，是key-value的</font></p>
+<p>Activity在旋转时重新生成，需要Bundle的putXXXXX，也是key-value的</p>
+<p>生成了好多key，取名字是个问题</p>
+<ul>
+<li>有没有更好的方法</li>
+<li>key的命名应该遵循某种统一的规则<br></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/18/04-Debugging-Android-Apps/" itemprop="url">
                   04. Debugging Android Apps
                 </a>
@@ -1205,7 +1345,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
