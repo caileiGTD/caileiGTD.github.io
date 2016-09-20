@@ -237,6 +237,145 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/20/08-Creating-User-Interfaces-with-Layouts-and-Widgets/" itemprop="url">
+                  08. Creating User Interfaces with Layouts and Widgets
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-20T13:06:48+08:00" content="2016-09-20">
+              2016-09-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/images/AndroidProgramming/0801.png" alt=""></p>
+<font color="Green"><br>CheckBox<br></font>
+
+<h1 id="样式-style-amp-主题-theme"><a href="#样式-style-amp-主题-theme" class="headerlink" title="样式(style) &amp; 主题(theme)"></a>样式(style) &amp; 主题(theme)</h1><p>AndroidManifest.xml里设置Theme：</p>
+<pre><code>android:theme=&quot;@style/AppTheme&quot;
+</code></pre><p>values/styles.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light.DarkActionBar&quot;&gt;</div><div class="line">       &lt;!-- Customize your theme here. --&gt;</div><div class="line">       &lt;item name=&quot;colorPrimary&quot;&gt;@color/colorPrimary&lt;/item&gt;</div><div class="line">       &lt;item name=&quot;colorPrimaryDark&quot;&gt;@color/colorPrimaryDark&lt;/item&gt;</div><div class="line">       &lt;item name=&quot;colorAccent&quot;&gt;@color/colorAccent&lt;/item&gt;</div><div class="line">   &lt;/style&gt;</div></pre></td></tr></table></figure>
+<font color="Green"><br>CheckBox.setOnCheckedChangeListener(…)<br><br>- <strong>dp</strong> : 像素无关<br>- <strong>sp</strong> : 用于字体<br><br>以 <code>layout_</code> 开头的属性，都是和父组件相关的属性，它们会告诉父布局如何在内部安排自己的子元素。其余的都是和自身相关的属性。<br><br>- <strong>padding</strong> : 内边距<br>- <strong>margin</strong> : 外边距（所以为layout_xxxxxMargin）<br></font>
+
+<p>Create Landscape Variation 创建了 <code>/main/res/layout-land</code> 路径及在其中的布局xml文件</p>
+<font color="Green"><br>android:layout_weight<br></font>
+
+<h1 id="layout-width与layout-weight配合"><a href="#layout-width与layout-weight配合" class="headerlink" title="layout_width与layout_weight配合"></a>layout_width与layout_weight配合</h1><ul>
+<li>第一步先满足width</li>
+</ul>
+<p><img src="/images/AndroidProgramming/0802a.png" alt=""></p>
+<ul>
+<li>然后按照weight的比例分配extra space</li>
+</ul>
+<p>1:1</p>
+<p><img src="/images/AndroidProgramming/0802b.png" alt=""></p>
+<p>2:1</p>
+<p><img src="/images/AndroidProgramming/0802c.png" alt=""></p>
+<ul>
+<li>如果需要总空间等分，则应让两个控件都 <code>layout_width=0</code></li>
+</ul>
+<p><img src="/images/AndroidProgramming/0802d.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/19/07-UI-Fragments-and-the-Fragment-Manager/" itemprop="url">
                   07. UI Fragments and the Fragment Manager
                 </a>
@@ -1401,126 +1540,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/13/初尝Android之开篇/" itemprop="url">
-                  初尝Android之开篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-13T14:29:50+08:00" content="2016-09-13">
-              2016-09-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="个人背景"><a href="#个人背景" class="headerlink" title="个人背景"></a>个人背景</h1><ul>
-<li>有近10年的工作经验，近4年的ios经验</li>
-<li>曾经纯纯的coder，现在管理整个Mobile Team包括ios, android, test</li>
-<li>ios算不上大牛，但在工作中基本也没有搞不定的feature，解不出的bug</li>
-<li>现在每天能有个把个小时自由支配的时间（x, x &gt;= 1 &amp;&amp; x &lt;= 3）</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/13/初尝Android之开篇/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1566,7 +1585,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

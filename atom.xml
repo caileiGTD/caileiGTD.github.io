@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-19T06:45:24.000Z</updated>
+  <updated>2016-09-20T06:00:23.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>08. Creating User Interfaces with Layouts and Widgets</title>
+    <link href="http://yoursite.com/2016/09/20/08-Creating-User-Interfaces-with-Layouts-and-Widgets/"/>
+    <id>http://yoursite.com/2016/09/20/08-Creating-User-Interfaces-with-Layouts-and-Widgets/</id>
+    <published>2016-09-20T05:06:48.000Z</published>
+    <updated>2016-09-20T06:00:23.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/AndroidProgramming/0801.png" alt=""></p>
+<font color="Green"><br>CheckBox<br></font>
+
+<h1 id="样式-style-amp-主题-theme"><a href="#样式-style-amp-主题-theme" class="headerlink" title="样式(style) &amp; 主题(theme)"></a>样式(style) &amp; 主题(theme)</h1><p>AndroidManifest.xml里设置Theme：</p>
+<pre><code>android:theme=&quot;@style/AppTheme&quot;
+</code></pre><p>values/styles.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light.DarkActionBar&quot;&gt;</div><div class="line">       &lt;!-- Customize your theme here. --&gt;</div><div class="line">       &lt;item name=&quot;colorPrimary&quot;&gt;@color/colorPrimary&lt;/item&gt;</div><div class="line">       &lt;item name=&quot;colorPrimaryDark&quot;&gt;@color/colorPrimaryDark&lt;/item&gt;</div><div class="line">       &lt;item name=&quot;colorAccent&quot;&gt;@color/colorAccent&lt;/item&gt;</div><div class="line">   &lt;/style&gt;</div></pre></td></tr></table></figure>
+<font color="Green"><br>CheckBox.setOnCheckedChangeListener(…)<br><br>- <strong>dp</strong> : 像素无关<br>- <strong>sp</strong> : 用于字体<br><br>以 <code>layout_</code> 开头的属性，都是和父组件相关的属性，它们会告诉父布局如何在内部安排自己的子元素。其余的都是和自身相关的属性。<br><br>- <strong>padding</strong> : 内边距<br>- <strong>margin</strong> : 外边距（所以为layout_xxxxxMargin）<br></font>
+
+<p>Create Landscape Variation 创建了 <code>/main/res/layout-land</code> 路径及在其中的布局xml文件</p>
+<font color="Green"><br>android:layout_weight<br></font>
+
+<h1 id="layout-width与layout-weight配合"><a href="#layout-width与layout-weight配合" class="headerlink" title="layout_width与layout_weight配合"></a>layout_width与layout_weight配合</h1><ul>
+<li>第一步先满足width</li>
+</ul>
+<p><img src="/images/AndroidProgramming/0802a.png" alt=""></p>
+<ul>
+<li>然后按照weight的比例分配extra space</li>
+</ul>
+<p>1:1</p>
+<p><img src="/images/AndroidProgramming/0802b.png" alt=""></p>
+<p>2:1</p>
+<p><img src="/images/AndroidProgramming/0802c.png" alt=""></p>
+<ul>
+<li>如果需要总空间等分，则应让两个控件都 <code>layout_width=0</code></li>
+</ul>
+<p><img src="/images/AndroidProgramming/0802d.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/images/AndroidProgramming/0801.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;font color=&quot;Green&quot;&gt;&lt;br&gt;CheckBox&lt;br&gt;&lt;/font&gt;
+
+&lt;h1 id=&quot;样式-style-amp-主题-theme&quot;&gt;&lt;a
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>07. UI Fragments and the Fragment Manager</title>
