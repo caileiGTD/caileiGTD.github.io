@@ -237,6 +237,143 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/22/10-Using-Fragment-Arguments/" itemprop="url">
+                  10. Using Fragment Arguments
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-22T14:37:50+08:00" content="2016-09-22">
+              2016-09-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>由 CrimeListFragment 加载 CrimeActivity，并接受return值</p>
+<h1 id="在CrimeListFragment里"><a href="#在CrimeListFragment里" class="headerlink" title="在CrimeListFragment里"></a>在CrimeListFragment里</h1><h2 id="处理return相关"><a href="#处理return相关" class="headerlink" title="处理return相关"></a>处理return相关</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private static final int REQUEST_CRIME_ACTIVITY_CODE = 0;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">   public void onActivityResult(int requestCode, int resultCode, Intent data) &#123;</div><div class="line">       super.onActivityResult(requestCode, resultCode, data);</div><div class="line">       if (resultCode == Activity.RESULT_CANCELED) &#123;</div><div class="line">           return;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       if (requestCode == REQUEST_CRIME_ACTIVITY_CODE) &#123;</div><div class="line">           String s = CrimeActivity.returnString(data);</div><div class="line">           Log.e(&quot;CrimeListFragment&quot;, s);</div><div class="line">       &#125;</div><div class="line">       mAdapter.notifyDataSetChanged();</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">startActivityForResult(intent, REQUEST_CRIME_ACTIVITY_CODE);</div></pre></td></tr></table></figure>
+<h2 id="intent参数"><a href="#intent参数" class="headerlink" title="intent参数"></a>intent参数</h2><p>从CrimeActivity来构建Intent</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Intent intent = CrimeActivity.newIntent(getActivity(), data.getmId());</div></pre></td></tr></table></figure>
+<h1 id="在CrimeActivity里"><a href="#在CrimeActivity里" class="headerlink" title="在CrimeActivity里"></a>在CrimeActivity里</h1><h2 id="帮助处理返回"><a href="#帮助处理返回" class="headerlink" title="帮助处理返回"></a>帮助处理返回</h2><p>在CrimeListFragment.onActivityResult或许result用到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public static String returnString(Intent intent) &#123;</div><div class="line">       return intent.getStringExtra(RETURN_STRING);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h2 id="帮助构建Intent参数"><a href="#帮助构建Intent参数" class="headerlink" title="帮助构建Intent参数"></a>帮助构建Intent参数</h2><p>在CrimeListFragment需要 <code>startActivityForResult(intent, REQUEST_CRIME_ACTIVITY_CODE);</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public static Intent newIntent(Context packageContext, UUID cid) &#123;</div><div class="line">    Intent intent = new Intent(packageContext, CrimeActivity.class);</div><div class="line">    intent.putExtra(EXTRA_CRIME_ID, cid);</div><div class="line">    return intent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="CrimeFragment托管于CrimeActivity"><a href="#CrimeFragment托管于CrimeActivity" class="headerlink" title="CrimeFragment托管于CrimeActivity"></a>CrimeFragment托管于CrimeActivity</h1><h2 id="在CrimeActivity里-1"><a href="#在CrimeActivity里-1" class="headerlink" title="在CrimeActivity里"></a>在CrimeActivity里</h2><font color="Green"><br>要附加argument bundle给fragment，需要调用Fragment.setArguments(Bundle)方法。必须在fragment创建后、添加给activity前完成。<br><br>惯用newInstance(…)静态构造。如此之常用以至于接下来的CrimeFragment里有代码片段，在输入newInstance后直接补Bundle的构建和arguments的设置<br></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">   protected Fragment createFragment() &#123;</div><div class="line">       UUID crimeId = (UUID) getIntent()</div><div class="line">               .getSerializableExtra(EXTRA_CRIME_ID);</div><div class="line">       return CrimeFragment.newInstance(crimeId);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h2 id="在CrimeFragment里"><a href="#在CrimeFragment里" class="headerlink" title="在CrimeFragment里"></a>在CrimeFragment里</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public static CrimeFragment newInstance(UUID crimeId) &#123;</div><div class="line">    Bundle args = new Bundle();</div><div class="line">    args.putSerializable(ARG_CRIME_ID, crimeId);</div><div class="line"></div><div class="line">    CrimeFragment fragment = new CrimeFragment();</div><div class="line">    fragment.setArguments(args);</div><div class="line">    return fragment;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>传入fragment的args在 <code>onCreate()</code> 中获取， <code>UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">    super.onCreate(savedInstanceState);</div><div class="line">    UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);</div><div class="line">    mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="在CrimeFragment里返回"><a href="#在CrimeFragment里返回" class="headerlink" title="在CrimeFragment里返回"></a>在CrimeFragment里返回</h2><p>fragment无setResult，所以只能用getActivity()来设置返回值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getActivity().setResult(Activity.RESULT_OK ,CrimeActivity.newReturnIntent(mCrime.getmTitle()));</div></pre></td></tr></table></figure>
+<font color="Orange"><br>setResult(…)不能放在onPause()里，否则不起作用。<br><br>估计是生命期里onPause()以后getActivity()获取不到了吧？？？不确认<br></font>
+
+<h1 id="开始吐槽"><a href="#开始吐槽" class="headerlink" title="开始吐槽"></a>开始吐槽</h1><p>这，来来回回的，相当的绕，ActivityA托管FragmentA，然后又要从FragmentA跳转到ActivityB，然后ActivityB又托管着FragmentB，所以ActivityB需要把从FragmentA传过来的参数，在FragmentB初始化时传入，当FragmentB完活儿后，还要有返回值给FragmentA，并且由于Fragment没有setResult()，所以只能调用ActivityB来设置返回值</p>
+<p>然后由于这里return里intent的key理论上应该在Activity而不是Fragment中，所以还在ActivityB里多加了个 <code>public static Intent newReturnIntent(String s)</code></p>
+<p>原因、结果代码都如下：</p>
+<p>CrimeActivity里：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">private static final String RETURN_STRING = &quot;return string&quot;;</div><div class="line"></div><div class="line">public static String returnString(Intent intent) &#123;</div><div class="line">    return intent.getStringExtra(RETURN_STRING);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public static Intent newReturnIntent(String s) &#123;</div><div class="line">    Intent intent = new Intent();</div><div class="line">    intent.putExtra(RETURN_STRING, s);</div><div class="line">    return intent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/21/09-Displaying-Lists-with-RecyclerView/" itemprop="url">
                   09. Displaying Lists with RecyclerView
                 </a>
@@ -1478,121 +1615,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/14/01-Your-First-Android-Application/" itemprop="url">
-                  01, Your First Android Application
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-14T14:59:27+08:00" content="2016-09-14">
-              2016-09-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>需求截图:</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/14/01-Your-First-Android-Application/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1638,7 +1660,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

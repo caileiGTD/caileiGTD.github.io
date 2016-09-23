@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-22T05:44:29.000Z</updated>
+  <updated>2016-09-23T02:00:52.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>10. Using Fragment Arguments</title>
+    <link href="http://yoursite.com/2016/09/22/10-Using-Fragment-Arguments/"/>
+    <id>http://yoursite.com/2016/09/22/10-Using-Fragment-Arguments/</id>
+    <published>2016-09-22T06:37:50.000Z</published>
+    <updated>2016-09-23T02:00:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>由 CrimeListFragment 加载 CrimeActivity，并接受return值</p>
+<h1 id="在CrimeListFragment里"><a href="#在CrimeListFragment里" class="headerlink" title="在CrimeListFragment里"></a>在CrimeListFragment里</h1><h2 id="处理return相关"><a href="#处理return相关" class="headerlink" title="处理return相关"></a>处理return相关</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private static final int REQUEST_CRIME_ACTIVITY_CODE = 0;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">   public void onActivityResult(int requestCode, int resultCode, Intent data) &#123;</div><div class="line">       super.onActivityResult(requestCode, resultCode, data);</div><div class="line">       if (resultCode == Activity.RESULT_CANCELED) &#123;</div><div class="line">           return;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       if (requestCode == REQUEST_CRIME_ACTIVITY_CODE) &#123;</div><div class="line">           String s = CrimeActivity.returnString(data);</div><div class="line">           Log.e(&quot;CrimeListFragment&quot;, s);</div><div class="line">       &#125;</div><div class="line">       mAdapter.notifyDataSetChanged();</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">startActivityForResult(intent, REQUEST_CRIME_ACTIVITY_CODE);</div></pre></td></tr></table></figure>
+<h2 id="intent参数"><a href="#intent参数" class="headerlink" title="intent参数"></a>intent参数</h2><p>从CrimeActivity来构建Intent</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Intent intent = CrimeActivity.newIntent(getActivity(), data.getmId());</div></pre></td></tr></table></figure>
+<h1 id="在CrimeActivity里"><a href="#在CrimeActivity里" class="headerlink" title="在CrimeActivity里"></a>在CrimeActivity里</h1><h2 id="帮助处理返回"><a href="#帮助处理返回" class="headerlink" title="帮助处理返回"></a>帮助处理返回</h2><p>在CrimeListFragment.onActivityResult或许result用到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public static String returnString(Intent intent) &#123;</div><div class="line">       return intent.getStringExtra(RETURN_STRING);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h2 id="帮助构建Intent参数"><a href="#帮助构建Intent参数" class="headerlink" title="帮助构建Intent参数"></a>帮助构建Intent参数</h2><p>在CrimeListFragment需要 <code>startActivityForResult(intent, REQUEST_CRIME_ACTIVITY_CODE);</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public static Intent newIntent(Context packageContext, UUID cid) &#123;</div><div class="line">    Intent intent = new Intent(packageContext, CrimeActivity.class);</div><div class="line">    intent.putExtra(EXTRA_CRIME_ID, cid);</div><div class="line">    return intent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="CrimeFragment托管于CrimeActivity"><a href="#CrimeFragment托管于CrimeActivity" class="headerlink" title="CrimeFragment托管于CrimeActivity"></a>CrimeFragment托管于CrimeActivity</h1><h2 id="在CrimeActivity里-1"><a href="#在CrimeActivity里-1" class="headerlink" title="在CrimeActivity里"></a>在CrimeActivity里</h2><font color="Green"><br>要附加argument bundle给fragment，需要调用Fragment.setArguments(Bundle)方法。必须在fragment创建后、添加给activity前完成。<br><br>惯用newInstance(…)静态构造。如此之常用以至于接下来的CrimeFragment里有代码片段，在输入newInstance后直接补Bundle的构建和arguments的设置<br></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">   protected Fragment createFragment() &#123;</div><div class="line">       UUID crimeId = (UUID) getIntent()</div><div class="line">               .getSerializableExtra(EXTRA_CRIME_ID);</div><div class="line">       return CrimeFragment.newInstance(crimeId);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h2 id="在CrimeFragment里"><a href="#在CrimeFragment里" class="headerlink" title="在CrimeFragment里"></a>在CrimeFragment里</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public static CrimeFragment newInstance(UUID crimeId) &#123;</div><div class="line">    Bundle args = new Bundle();</div><div class="line">    args.putSerializable(ARG_CRIME_ID, crimeId);</div><div class="line"></div><div class="line">    CrimeFragment fragment = new CrimeFragment();</div><div class="line">    fragment.setArguments(args);</div><div class="line">    return fragment;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>传入fragment的args在 <code>onCreate()</code> 中获取， <code>UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">    super.onCreate(savedInstanceState);</div><div class="line">    UUID crimeId = (UUID) getArguments().getSerializable(ARG_CRIME_ID);</div><div class="line">    mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="在CrimeFragment里返回"><a href="#在CrimeFragment里返回" class="headerlink" title="在CrimeFragment里返回"></a>在CrimeFragment里返回</h2><p>fragment无setResult，所以只能用getActivity()来设置返回值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getActivity().setResult(Activity.RESULT_OK ,CrimeActivity.newReturnIntent(mCrime.getmTitle()));</div></pre></td></tr></table></figure>
+<font color="Orange"><br>setResult(…)不能放在onPause()里，否则不起作用。<br><br>估计是生命期里onPause()以后getActivity()获取不到了吧？？？不确认<br></font>
+
+<h1 id="开始吐槽"><a href="#开始吐槽" class="headerlink" title="开始吐槽"></a>开始吐槽</h1><p>这，来来回回的，相当的绕，ActivityA托管FragmentA，然后又要从FragmentA跳转到ActivityB，然后ActivityB又托管着FragmentB，所以ActivityB需要把从FragmentA传过来的参数，在FragmentB初始化时传入，当FragmentB完活儿后，还要有返回值给FragmentA，并且由于Fragment没有setResult()，所以只能调用ActivityB来设置返回值</p>
+<p>然后由于这里return里intent的key理论上应该在Activity而不是Fragment中，所以还在ActivityB里多加了个 <code>public static Intent newReturnIntent(String s)</code></p>
+<p>原因、结果代码都如下：</p>
+<p>CrimeActivity里：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">private static final String RETURN_STRING = &quot;return string&quot;;</div><div class="line"></div><div class="line">public static String returnString(Intent intent) &#123;</div><div class="line">    return intent.getStringExtra(RETURN_STRING);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public static Intent newReturnIntent(String s) &#123;</div><div class="line">    Intent intent = new Intent();</div><div class="line">    intent.putExtra(RETURN_STRING, s);</div><div class="line">    return intent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;由 CrimeListFragment 加载 CrimeActivity，并接受return值&lt;/p&gt;
+&lt;h1 id=&quot;在CrimeListFragment里&quot;&gt;&lt;a href=&quot;#在CrimeListFragment里&quot; class=&quot;headerlink&quot; title=
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>09. Displaying Lists with RecyclerView</title>
