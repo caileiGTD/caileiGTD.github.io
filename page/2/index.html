@@ -237,6 +237,132 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/14/02-Android-and-Model-View-Controller/" itemprop="url">
+                  02, Android and Model-View-Controller
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-14T16:45:03+08:00" content="2016-09-14">
+              2016-09-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/images/AndroidProgramming/0201.png" alt=""></p>
+<font color="Red">这里有个很蛋疼的问题，R.id.xxxxx，取回来都是一个整型的resId，怎么直接取到相应的String呢？</font>
+
+<font color="Green"><br>TextView.setText()<br><br>Toast.makeText().show()<br></font>
+
+
+
+<font color="Blue"><br>drawable-mdpi<br><br>drawable-hdpi<br><br>drawable-xhdpi<br><br>drawable-xxhdpi<br><br>都在 <code>src/main/res/</code> 下<br></font>
+
+
+
+<font color="Green"><br>android:drawableRight=”@drawable/xxxxx”<br><br>android:drawablePadding<br><br>ImageButton<br><br>android:src<br></font>
+
+<font color="Red"><br>Button的继承树，和ImageButton，居然相去甚远，为啥不统一起来？<br><br>Button -&gt; TextView -&gt; View<br><br>ImageButton -&gt; ImageView -&gt; View<br></font>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/14/Hexo技巧/" itemprop="url">
                   Hexo技巧
                 </a>
@@ -847,7 +973,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

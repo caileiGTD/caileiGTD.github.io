@@ -237,6 +237,131 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/24/12-Dialogs/" itemprop="url">
+                  12. Dialogs
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-24T19:48:26+08:00" content="2016-09-24">
+              2016-09-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>DialogFragment</p>
+<p>AlertDialog</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@NonNull</div><div class="line">@Override</div><div class="line">public Dialog onCreateDialog(Bundle savedInstanceState) &#123;</div><div class="line">    return new AlertDialog.Builder(getActivity())</div><div class="line">            .setTitle(&quot;Title&quot;)</div><div class="line">            .setPositiveButton(&quot;Ok&quot;, null)</div><div class="line">            .create();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">	FragmentManager fm = getFragmentManager();</div><div class="line">    DataPickerFragment dialog = new DataPickerFragment();</div><div class="line">    dialog.show(fm, TAG_DIALOG_DATE_PICKER);</div><div class="line">`</div></pre></td></tr></table></figure>
+<p>Calendar组件用法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Calendar c = Calendar.getInstance();</div><div class="line">      c.setTime(date);</div><div class="line">      int year = c.get(Calendar.YEAR);</div><div class="line">      int month = c.get(Calendar.MONTH);</div><div class="line">      int day = c.get(Calendar.DAY_OF_MONTH);</div></pre></td></tr></table></figure>
+<p>同Activity下 fragmentA 获取从 fragmentB 的返回值，需要设置fragmentA为target</p>
+<p> <code>setTargetFragment(...)</code></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">FragmentManager fm = getFragmentManager();</div><div class="line">   DataPickerFragment dialog = DataPickerFragment.newInstance(mCrime.getmDate());</div><div class="line">   dialog.setTargetFragment(CrimeFragment.this, REQUEST_CODE_DATE);</div><div class="line">   dialog.show(fm, TAG_DIALOG_DATE_PICKER);</div></pre></td></tr></table></figure>
+ <font color="Blue"><br> 父activity接收到Activity.onActivityResult(…)方法调用后，其FragmentManager会调用对应fragment的Fragment.onActivityResult(…)方法<br> </font>
+
+<p> <code>.setPositiveButton(&quot;Ok&quot;, new DialogInterface.OnClickListener(){ ... }</code></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">return new AlertDialog.Builder(getActivity())</div><div class="line">         .setView(v)</div><div class="line">         .setTitle(&quot;Title&quot;)</div><div class="line">         .setPositiveButton(&quot;Ok&quot;, new DialogInterface.OnClickListener() &#123;</div><div class="line">             @Override</div><div class="line">             public void onClick(DialogInterface dialog, int which) &#123;</div><div class="line">                 int year = mDatePicker.getYear();</div><div class="line">                 int month = mDatePicker.getMonth();</div><div class="line">                 int day = mDatePicker.getDayOfMonth();</div><div class="line">                 Date date = new GregorianCalendar(year, month, day).getTime();</div><div class="line"></div><div class="line">                 getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, newOutIntent(date));</div><div class="line">             &#125;</div><div class="line">         &#125;)</div><div class="line">         .create();</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/23/11-Using-ViewPager/" itemprop="url">
                   11. Using ViewPager
                 </a>
@@ -1528,132 +1653,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/14/02-Android-and-Model-View-Controller/" itemprop="url">
-                  02, Android and Model-View-Controller
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-14T16:45:03+08:00" content="2016-09-14">
-              2016-09-14
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="/images/AndroidProgramming/0201.png" alt=""></p>
-<font color="Red">这里有个很蛋疼的问题，R.id.xxxxx，取回来都是一个整型的resId，怎么直接取到相应的String呢？</font>
-
-<font color="Green"><br>TextView.setText()<br><br>Toast.makeText().show()<br></font>
-
-
-
-<font color="Blue"><br>drawable-mdpi<br><br>drawable-hdpi<br><br>drawable-xhdpi<br><br>drawable-xxhdpi<br><br>都在 <code>src/main/res/</code> 下<br></font>
-
-
-
-<font color="Green"><br>android:drawableRight=”@drawable/xxxxx”<br><br>android:drawablePadding<br><br>ImageButton<br><br>android:src<br></font>
-
-<font color="Red"><br>Button的继承树，和ImageButton，居然相去甚远，为啥不统一起来？<br><br>Button -&gt; TextView -&gt; View<br><br>ImageButton -&gt; ImageView -&gt; View<br></font>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1699,7 +1698,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
