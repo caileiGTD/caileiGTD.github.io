@@ -237,6 +237,122 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/25/13-The-Toolbar/" itemprop="url">
+                  13. The Toolbar
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-25T22:17:27+08:00" content="2016-09-25">
+              2016-09-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>说实话，感觉这章用处不大，所以看过书了之后，脑子里再过一遍。就没有再去码砖。</p>
+<font color="Green"><br>AppCompatActivity<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;plurals name=&quot;subtitle_plural&quot;&gt;</div><div class="line">	&lt;item quantity=&quot;one&quot;&gt;%1$s crime&lt;/item&gt;</div><div class="line">	&lt;item quantity=&quot;other&quot;&gt;%1$s crimes&lt;/item&gt;</div><div class="line">&lt;/plurals&gt;</div></pre></td></tr></table></figure><br><br>getResources().getQuantityString(R.plurals.subtitle_plural, crimeSize, crimeSize);<br></font>
+
+<p>说实话，确实不太理解，android转个屏幕还要考虑那么多需要save的东西，不过想想ios上旋转屏幕的处理部分，也是相当相当麻烦的啊</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/24/12-Dialogs/" itemprop="url">
                   12. Dialogs
                 </a>
@@ -1534,125 +1650,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/16/03-The-Activity-Lifecycle/" itemprop="url">
-                  03. The Activity Lifecycle
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-16T21:18:43+08:00" content="2016-09-16">
-              2016-09-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <font color="Green"><br>onCreate()<br><br>onStart()<br><br>onResume()<br><em>*</em><br>onPause()<br><br>onStop()<br><br>onDestroy()<br></font>
-
-<font color="Blue"><br>res -&gt; new Resource Directory -&gt; layout -&gt; orientation -&gt; Landscape<br></font>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onSaveInstanceState(Bundle outState)</div></pre></td></tr></table></figure>
-<font color="Blue"><br>在Bundle中存储和恢复的数据类型只能是primitive type或实现了Serializable或Parcelable接口的对象<br></font>
-
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1698,7 +1695,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

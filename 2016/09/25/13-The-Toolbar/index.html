@@ -86,28 +86,19 @@
 
 
 
-<meta name="description" content="onCreate()onStart()onResume()*onPause()onStop()onDestroy()
-
-res -&amp;gt; new Resource Directory -&amp;gt; layout -&amp;gt; orientation -&amp;gt; Landscape
-
-12@Overrideprotected void onSaveInstanceState(Bundle outSta">
+<meta name="description" content="说实话，感觉这章用处不大，所以看过书了之后，脑子里再过一遍。就没有再去码砖。
+AppCompatActivity1234&amp;lt;plurals name=&amp;quot;subtitle_plural&amp;quot;&amp;gt;	&amp;lt;item quantity=&amp;quot;one&amp;quot;&amp;gt;%1$s crime&amp;lt;/item&amp;gt;	&amp;lt;item quantity=&amp;quot;other&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="03. The Activity Lifecycle">
-<meta property="og:url" content="http://yoursite.com/2016/09/16/03-The-Activity-Lifecycle/index.html">
+<meta property="og:title" content="13. The Toolbar">
+<meta property="og:url" content="http://yoursite.com/2016/09/25/13-The-Toolbar/index.html">
 <meta property="og:site_name" content="菜菜园子">
-<meta property="og:description" content="onCreate()onStart()onResume()*onPause()onStop()onDestroy()
-
-res -&amp;gt; new Resource Directory -&amp;gt; layout -&amp;gt; orientation -&amp;gt; Landscape
-
-12@Overrideprotected void onSaveInstanceState(Bundle outSta">
-<meta property="og:updated_time" content="2016-09-18T02:14:03.000Z">
+<meta property="og:description" content="说实话，感觉这章用处不大，所以看过书了之后，脑子里再过一遍。就没有再去码砖。
+AppCompatActivity1234&amp;lt;plurals name=&amp;quot;subtitle_plural&amp;quot;&amp;gt;	&amp;lt;item quantity=&amp;quot;one&amp;quot;&amp;gt;%1$s crime&amp;lt;/item&amp;gt;	&amp;lt;item quantity=&amp;quot;other&amp;">
+<meta property="og:updated_time" content="2016-09-25T14:36:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="03. The Activity Lifecycle">
-<meta name="twitter:description" content="onCreate()onStart()onResume()*onPause()onStop()onDestroy()
-
-res -&amp;gt; new Resource Directory -&amp;gt; layout -&amp;gt; orientation -&amp;gt; Landscape
-
-12@Overrideprotected void onSaveInstanceState(Bundle outSta">
+<meta name="twitter:title" content="13. The Toolbar">
+<meta name="twitter:description" content="说实话，感觉这章用处不大，所以看过书了之后，脑子里再过一遍。就没有再去码砖。
+AppCompatActivity1234&amp;lt;plurals name=&amp;quot;subtitle_plural&amp;quot;&amp;gt;	&amp;lt;item quantity=&amp;quot;one&amp;quot;&amp;gt;%1$s crime&amp;lt;/item&amp;gt;	&amp;lt;item quantity=&amp;quot;other&amp;">
 
 
 
@@ -128,9 +119,9 @@ res -&amp;gt; new Resource Directory -&amp;gt; layout -&amp;gt; orientation -&am
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/16/03-The-Activity-Lifecycle/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/25/13-The-Toolbar/"/>
 
-  <title> 03. The Activity Lifecycle | 菜菜园子 </title>
+  <title> 13. The Toolbar | 菜菜园子 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -250,7 +241,7 @@ res -&amp;gt; new Resource Directory -&amp;gt; layout -&amp;gt; orientation -&am
             
             
               
-                03. The Activity Lifecycle
+                13. The Toolbar
               
             
           </h1>
@@ -262,8 +253,8 @@ res -&amp;gt; new Resource Directory -&amp;gt; layout -&amp;gt; orientation -&am
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-16T21:18:43+08:00" content="2016-09-16">
-              2016-09-16
+            <time itemprop="dateCreated" datetime="2016-09-25T22:17:27+08:00" content="2016-09-25">
+              2016-09-25
             </time>
           </span>
 
@@ -309,13 +300,10 @@ res -&amp;gt; new Resource Directory -&amp;gt; layout -&amp;gt; orientation -&am
       
 
       
-        <font color="Green"><br>onCreate()<br><br>onStart()<br><br>onResume()<br><em>*</em><br>onPause()<br><br>onStop()<br><br>onDestroy()<br></font>
+        <p>说实话，感觉这章用处不大，所以看过书了之后，脑子里再过一遍。就没有再去码砖。</p>
+<font color="Green"><br>AppCompatActivity<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;plurals name=&quot;subtitle_plural&quot;&gt;</div><div class="line">	&lt;item quantity=&quot;one&quot;&gt;%1$s crime&lt;/item&gt;</div><div class="line">	&lt;item quantity=&quot;other&quot;&gt;%1$s crimes&lt;/item&gt;</div><div class="line">&lt;/plurals&gt;</div></pre></td></tr></table></figure><br><br>getResources().getQuantityString(R.plurals.subtitle_plural, crimeSize, crimeSize);<br></font>
 
-<font color="Blue"><br>res -&gt; new Resource Directory -&gt; layout -&gt; orientation -&gt; Landscape<br></font>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onSaveInstanceState(Bundle outState)</div></pre></td></tr></table></figure>
-<font color="Blue"><br>在Bundle中存储和恢复的数据类型只能是primitive type或实现了Serializable或Parcelable接口的对象<br></font>
-
+<p>说实话，确实不太理解，android转个屏幕还要考虑那么多需要save的东西，不过想想ios上旋转屏幕的处理部分，也是相当相当麻烦的啊</p>
 
       
     </div>
@@ -341,17 +329,13 @@ res -&amp;gt; new Resource Directory -&amp;gt; layout -&amp;gt; orientation -&am
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/14/02-Android-and-Model-View-Controller/" rel="next" title="02, Android and Model-View-Controller">
-                <i class="fa fa-chevron-left"></i> 02, Android and Model-View-Controller
+              <a href="/2016/09/24/12-Dialogs/" rel="next" title="12. Dialogs">
+                <i class="fa fa-chevron-left"></i> 12. Dialogs
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/18/04-Debugging-Android-Apps/" rel="prev" title="04. Debugging Android Apps">
-                04. Debugging Android Apps <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
