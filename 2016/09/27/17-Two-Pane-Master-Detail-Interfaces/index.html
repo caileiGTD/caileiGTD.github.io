@@ -86,28 +86,25 @@
 
 
 
-<meta name="description" content="Run -&amp;gt; View Breakpoints
-Android Lint : Analyze -&amp;gt; Inspect Code
-怎么用好Lint？现在报的好多错误看不懂啊 ~
-
-Tools -&amp;gt; Android -&amp;gt; Sync Project with Gradle">
+<meta name="description" content="今天的最后一张，这张应该蛮有意思，但是应该只是展示了用fragment的好处。也就一并看了。
+别名，这样相同的R.layout.XXXXX对于不同的环境就能inflate出不同layout.xml了。
+refs.xml，用以前的 activity_fragment
+123&amp;lt;resources&amp;gt;    &amp;lt;item name=&amp;quot;activity_masterdetail&amp;q">
 <meta property="og:type" content="article">
-<meta property="og:title" content="04. Debugging Android Apps">
-<meta property="og:url" content="http://yoursite.com/2016/09/18/04-Debugging-Android-Apps/index.html">
+<meta property="og:title" content="17. Two-Pane Master-Detail Interfaces">
+<meta property="og:url" content="http://yoursite.com/2016/09/27/17-Two-Pane-Master-Detail-Interfaces/index.html">
 <meta property="og:site_name" content="菜菜园子">
-<meta property="og:description" content="Run -&amp;gt; View Breakpoints
-Android Lint : Analyze -&amp;gt; Inspect Code
-怎么用好Lint？现在报的好多错误看不懂啊 ~
-
-Tools -&amp;gt; Android -&amp;gt; Sync Project with Gradle">
-<meta property="og:updated_time" content="2016-09-18T03:59:43.000Z">
+<meta property="og:description" content="今天的最后一张，这张应该蛮有意思，但是应该只是展示了用fragment的好处。也就一并看了。
+别名，这样相同的R.layout.XXXXX对于不同的环境就能inflate出不同layout.xml了。
+refs.xml，用以前的 activity_fragment
+123&amp;lt;resources&amp;gt;    &amp;lt;item name=&amp;quot;activity_masterdetail&amp;q">
+<meta property="og:updated_time" content="2016-09-27T09:44:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="04. Debugging Android Apps">
-<meta name="twitter:description" content="Run -&amp;gt; View Breakpoints
-Android Lint : Analyze -&amp;gt; Inspect Code
-怎么用好Lint？现在报的好多错误看不懂啊 ~
-
-Tools -&amp;gt; Android -&amp;gt; Sync Project with Gradle">
+<meta name="twitter:title" content="17. Two-Pane Master-Detail Interfaces">
+<meta name="twitter:description" content="今天的最后一张，这张应该蛮有意思，但是应该只是展示了用fragment的好处。也就一并看了。
+别名，这样相同的R.layout.XXXXX对于不同的环境就能inflate出不同layout.xml了。
+refs.xml，用以前的 activity_fragment
+123&amp;lt;resources&amp;gt;    &amp;lt;item name=&amp;quot;activity_masterdetail&amp;q">
 
 
 
@@ -128,9 +125,9 @@ Tools -&amp;gt; Android -&amp;gt; Sync Project with Gradle">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/18/04-Debugging-Android-Apps/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/27/17-Two-Pane-Master-Detail-Interfaces/"/>
 
-  <title> 04. Debugging Android Apps | 菜菜园子 </title>
+  <title> 17. Two-Pane Master-Detail Interfaces | 菜菜园子 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -250,7 +247,7 @@ Tools -&amp;gt; Android -&amp;gt; Sync Project with Gradle">
             
             
               
-                04. Debugging Android Apps
+                17. Two-Pane Master-Detail Interfaces
               
             
           </h1>
@@ -262,8 +259,8 @@ Tools -&amp;gt; Android -&amp;gt; Sync Project with Gradle">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-18T10:20:39+08:00" content="2016-09-18">
-              2016-09-18
+            <time itemprop="dateCreated" datetime="2016-09-27T16:11:33+08:00" content="2016-09-27">
+              2016-09-27
             </time>
           </span>
 
@@ -309,11 +306,16 @@ Tools -&amp;gt; Android -&amp;gt; Sync Project with Gradle">
       
 
       
-        <p>Run -&gt; View Breakpoints</p>
-<p>Android Lint : Analyze -&gt; Inspect Code</p>
-<font color="Red"><br>怎么用好Lint？现在报的好多错误看不懂啊 ~<br></font>
-
-<p>Tools -&gt; Android -&gt; Sync Project with Gradle</p>
+        <p>今天的最后一张，这张应该蛮有意思，但是应该只是展示了用fragment的好处。也就一并看了。</p>
+<p>别名，这样相同的R.layout.XXXXX对于不同的环境就能inflate出不同layout.xml了。</p>
+<p>refs.xml，用以前的 <code>activity_fragment</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;resources&gt;</div><div class="line">    &lt;item name=&quot;activity_masterdetail&quot; type=&quot;layout&quot;&gt;@layout/activity_fragment&lt;/item&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure>
+<p>refs.xml(sw600dp)，用pad的 <code>activity_twopane</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;resources&gt;</div><div class="line">    &lt;item name=&quot;activity_masterdetail&quot; type=&quot;layout&quot;&gt;@layout/activity_twopane&lt;/item&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure>
+<p>在Fragment里声明Callbacks接口，Activity实现Callbacks接口，然后由Fragment产生的事件通过Callbacks让Activity负责调度处理。</p>
+<p>在CrimeListFragment中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void onAttach(Activity activity) &#123;</div><div class="line">    super.onAttach(activity);</div><div class="line">    mCallbacks = (Callbacks) activity;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Override</div><div class="line">public void onDetach() &#123;</div><div class="line">    super.onDetach();</div><div class="line">    mCallbacks = null;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>CrimeListFragment点了哪个row -&gt; Callbacks -&gt; Activity -&gt; 显示相应的CrimeFragment<br>CrimeFragment修改crime信息 -&gt; Callbacks -&gt; Activity -&gt; 更新CrimeListFragment中对应的row</p>
 
       
     </div>
@@ -339,17 +341,13 @@ Tools -&amp;gt; Android -&amp;gt; Sync Project with Gradle">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/16/03-The-Activity-Lifecycle/" rel="next" title="03. The Activity Lifecycle">
-                <i class="fa fa-chevron-left"></i> 03. The Activity Lifecycle
+              <a href="/2016/09/27/16-Taking-Pictures-with-Intents/" rel="next" title="16. Taking Pictures with Intents">
+                <i class="fa fa-chevron-left"></i> 16. Taking Pictures with Intents
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/18/05-Your-Second-Activity/" rel="prev" title="05. Your Second Activity">
-                05. Your Second Activity <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

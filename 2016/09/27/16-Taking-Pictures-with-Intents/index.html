@@ -86,28 +86,37 @@
 
 
 
-<meta name="description" content="Run -&amp;gt; View Breakpoints
-Android Lint : Analyze -&amp;gt; Inspect Code
-怎么用好Lint？现在报的好多错误看不懂啊 ~
+<meta name="description" content="还是这样，这些具体的技巧，等到用的时候再详细了解也不迟，所以今天一天就多过几章。好读，不求甚解了。
+layout文件的include引入
+    &amp;lt;include layout=&amp;quot;@layout/view_camera_and_title&amp;quot; /&amp;gt;
 
-Tools -&amp;gt; Android -&amp;gt; Sync Project with Gradle">
+
+照相机的隐式Intent：
+1Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+权限：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="04. Debugging Android Apps">
-<meta property="og:url" content="http://yoursite.com/2016/09/18/04-Debugging-Android-Apps/index.html">
+<meta property="og:title" content="16. Taking Pictures with Intents">
+<meta property="og:url" content="http://yoursite.com/2016/09/27/16-Taking-Pictures-with-Intents/index.html">
 <meta property="og:site_name" content="菜菜园子">
-<meta property="og:description" content="Run -&amp;gt; View Breakpoints
-Android Lint : Analyze -&amp;gt; Inspect Code
-怎么用好Lint？现在报的好多错误看不懂啊 ~
+<meta property="og:description" content="还是这样，这些具体的技巧，等到用的时候再详细了解也不迟，所以今天一天就多过几章。好读，不求甚解了。
+layout文件的include引入
+    &amp;lt;include layout=&amp;quot;@layout/view_camera_and_title&amp;quot; /&amp;gt;
 
-Tools -&amp;gt; Android -&amp;gt; Sync Project with Gradle">
-<meta property="og:updated_time" content="2016-09-18T03:59:43.000Z">
+
+照相机的隐式Intent：
+1Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+权限：">
+<meta property="og:updated_time" content="2016-09-27T08:11:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="04. Debugging Android Apps">
-<meta name="twitter:description" content="Run -&amp;gt; View Breakpoints
-Android Lint : Analyze -&amp;gt; Inspect Code
-怎么用好Lint？现在报的好多错误看不懂啊 ~
+<meta name="twitter:title" content="16. Taking Pictures with Intents">
+<meta name="twitter:description" content="还是这样，这些具体的技巧，等到用的时候再详细了解也不迟，所以今天一天就多过几章。好读，不求甚解了。
+layout文件的include引入
+    &amp;lt;include layout=&amp;quot;@layout/view_camera_and_title&amp;quot; /&amp;gt;
 
-Tools -&amp;gt; Android -&amp;gt; Sync Project with Gradle">
+
+照相机的隐式Intent：
+1Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+权限：">
 
 
 
@@ -128,9 +137,9 @@ Tools -&amp;gt; Android -&amp;gt; Sync Project with Gradle">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/18/04-Debugging-Android-Apps/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/27/16-Taking-Pictures-with-Intents/"/>
 
-  <title> 04. Debugging Android Apps | 菜菜园子 </title>
+  <title> 16. Taking Pictures with Intents | 菜菜园子 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -250,7 +259,7 @@ Tools -&amp;gt; Android -&amp;gt; Sync Project with Gradle">
             
             
               
-                04. Debugging Android Apps
+                16. Taking Pictures with Intents
               
             
           </h1>
@@ -262,8 +271,8 @@ Tools -&amp;gt; Android -&amp;gt; Sync Project with Gradle">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-18T10:20:39+08:00" content="2016-09-18">
-              2016-09-18
+            <time itemprop="dateCreated" datetime="2016-09-27T15:43:36+08:00" content="2016-09-27">
+              2016-09-27
             </time>
           </span>
 
@@ -309,12 +318,20 @@ Tools -&amp;gt; Android -&amp;gt; Sync Project with Gradle">
       
 
       
-        <p>Run -&gt; View Breakpoints</p>
-<p>Android Lint : Analyze -&gt; Inspect Code</p>
-<font color="Red"><br>怎么用好Lint？现在报的好多错误看不懂啊 ~<br></font>
+        <p>还是这样，这些具体的技巧，等到用的时候再详细了解也不迟，所以今天一天就多过几章。好读，不求甚解了。</p>
+<p>layout文件的include引入</p>
+<font color="Green"><br>    <code>&lt;include layout=&quot;@layout/view_camera_and_title&quot; /&gt;</code><br></font>
 
-<p>Tools -&gt; Android -&gt; Sync Project with Gradle</p>
 
+<p>照相机的隐式Intent：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Intent(MediaStore.ACTION_IMAGE_CAPTURE)</div></pre></td></tr></table></figure>
+<p>权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot;</div><div class="line">                 android:maxSdkVersion=&quot;18&quot;</div><div class="line">    /&gt;</div></pre></td></tr></table></figure>
+<p>这里有个复杂的Bitmap处理，完全没有理解 ~~~ 擦。简言之，就是用 <code>BitmapFactory</code> 把图片压缩成bitmap适合的大小，当然根据屏幕猜测了下bitmap的大小。</p>
+<p>目的主要是保证bitmap不要过大，占据太多内存。所以估算的也可用吧。（软件做了差值？）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;uses-feature android:name=&quot;android.hardware.camera&quot;</div><div class="line">              android:required=&quot;false&quot;</div><div class="line">    /&gt;</div></pre></td></tr></table></figure>
+<p>其中 <code>android:required</code> 如果为 <code>true</code> 的话，在google play商店中，没有拍照功能的硬件就安装不了此应用。</p>
+<font color="Green"><br>ViewTreeObserver<br><br>OnGlobalLayoutListener可以监听布局的传递、控制事件的发生<br></font>
       
     </div>
 
@@ -339,16 +356,16 @@ Tools -&amp;gt; Android -&amp;gt; Sync Project with Gradle">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/16/03-The-Activity-Lifecycle/" rel="next" title="03. The Activity Lifecycle">
-                <i class="fa fa-chevron-left"></i> 03. The Activity Lifecycle
+              <a href="/2016/09/27/15-Implicit-Intents/" rel="next" title="15. Implicit Intents">
+                <i class="fa fa-chevron-left"></i> 15. Implicit Intents
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/18/05-Your-Second-Activity/" rel="prev" title="05. Your Second Activity">
-                05. Your Second Activity <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/27/17-Two-Pane-Master-Detail-Interfaces/" rel="prev" title="17. Two-Pane Master-Detail Interfaces">
+                17. Two-Pane Master-Detail Interfaces <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

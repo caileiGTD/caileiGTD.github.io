@@ -237,6 +237,737 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/20/08-Creating-User-Interfaces-with-Layouts-and-Widgets/" itemprop="url">
+                  08. Creating User Interfaces with Layouts and Widgets
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-20T13:06:48+08:00" content="2016-09-20">
+              2016-09-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/images/AndroidProgramming/0801.png" alt=""></p>
+<font color="Green"><br>CheckBox<br></font>
+
+<h1 id="样式-style-amp-主题-theme"><a href="#样式-style-amp-主题-theme" class="headerlink" title="样式(style) &amp; 主题(theme)"></a>样式(style) &amp; 主题(theme)</h1><p>AndroidManifest.xml里设置Theme：</p>
+<pre><code>android:theme=&quot;@style/AppTheme&quot;
+</code></pre><p>values/styles.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light.DarkActionBar&quot;&gt;</div><div class="line">       &lt;!-- Customize your theme here. --&gt;</div><div class="line">       &lt;item name=&quot;colorPrimary&quot;&gt;@color/colorPrimary&lt;/item&gt;</div><div class="line">       &lt;item name=&quot;colorPrimaryDark&quot;&gt;@color/colorPrimaryDark&lt;/item&gt;</div><div class="line">       &lt;item name=&quot;colorAccent&quot;&gt;@color/colorAccent&lt;/item&gt;</div><div class="line">   &lt;/style&gt;</div></pre></td></tr></table></figure>
+<font color="Green"><br>CheckBox.setOnCheckedChangeListener(…)<br><br>- <strong>dp</strong> : 像素无关<br>- <strong>sp</strong> : 用于字体<br><br>以 <code>layout_</code> 开头的属性，都是和父组件相关的属性，它们会告诉父布局如何在内部安排自己的子元素。其余的都是和自身相关的属性。<br><br>- <strong>padding</strong> : 内边距<br>- <strong>margin</strong> : 外边距（所以为layout_xxxxxMargin）<br></font>
+
+<p>Create Landscape Variation 创建了 <code>/main/res/layout-land</code> 路径及在其中的布局xml文件</p>
+<font color="Green"><br>android:layout_weight<br></font>
+
+<h1 id="layout-width与layout-weight配合"><a href="#layout-width与layout-weight配合" class="headerlink" title="layout_width与layout_weight配合"></a>layout_width与layout_weight配合</h1><ul>
+<li>第一步先满足width</li>
+</ul>
+<p><img src="/images/AndroidProgramming/0802a.png" alt=""></p>
+<ul>
+<li>然后按照weight的比例分配extra space</li>
+</ul>
+<p>1:1</p>
+<p><img src="/images/AndroidProgramming/0802b.png" alt=""></p>
+<p>2:1</p>
+<p><img src="/images/AndroidProgramming/0802c.png" alt=""></p>
+<ul>
+<li>如果需要总空间等分，则应让两个控件都 <code>layout_width=0</code></li>
+</ul>
+<p><img src="/images/AndroidProgramming/0802d.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/19/07-UI-Fragments-and-the-Fragment-Manager/" itemprop="url">
+                  07. UI Fragments and the Fragment Manager
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-19T11:28:44+08:00" content="2016-09-19">
+              2016-09-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>fragment的生命周期方法是由托管activity调用的，而activity的生命周期方法由操作系统调用。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font color="Green">Fragment</font></td>
+<td>android.support.v4.app.Fragment</td>
+</tr>
+<tr>
+<td><font color="Green">FragmentActivity</font></td>
+<td>android.support.v4.app.Fragment.Activity</td>
+</tr>
+</tbody>
+</table>
+<p>File -&gt; Project Structure -&gt; app -&gt; Dependencies -&gt; Library Dependency</p>
+<p>com.google.android:support-v4:r7</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CrimeActivity extends FragmentActivity</div></pre></td></tr></table></figure>
+<font color="Green"><br>EditText<br><br>android:hint<br></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public View onCreateView(LayoutInflater inflater, ViewGroup container,</div><div class="line">                         Bundle savedInstanceState) &#123;</div><div class="line">    // Inflate the layout for this fragment</div><div class="line">    return inflater.inflate(R.layout.fragment_crime, container, false);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public View onCreateView(LayoutInflater inflater, ViewGroup container,</div><div class="line">                         Bundle savedInstanceState) &#123;</div><div class="line">    // Inflate the layout for this fragment</div><div class="line">    View v = inflater.inflate(R.layout.fragment_crime, container, false);</div><div class="line">    mCrimeTitleEditText = (EditText)v.findViewById(R.id.et_crime_title);</div><div class="line">    mCrimeTitleEditText.addTextChangedListener(new TextWatcher() &#123;</div><div class="line">        @Override</div><div class="line">        public void beforeTextChanged(CharSequence s, int start, int count, int after) &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public void onTextChanged(CharSequence s, int start, int before, int count) &#123;</div><div class="line">            mCrime.setmTitle(s.toString());</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public void afterTextChanged(Editable s) &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    return v;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注：</p>
+<p>Fragment生命期方法均为public</p>
+<font color="Green"><br>inflater.inflate(R.layout.fragment_crime, container, false);<br><br>addTextChangedListener()<br></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">    super.onCreate(savedInstanceState);</div><div class="line">    setContentView(R.layout.activity_crime);</div><div class="line"></div><div class="line">    FragmentManager fm = getSupportFragmentManager();</div><div class="line">    Fragment f = fm.findFragmentById(R.id.fragment_container);</div><div class="line">    if (f == null) &#123;</div><div class="line">        f = new CrimeFragment();</div><div class="line">        fm.beginTransaction()</div><div class="line">                .add(R.id.fragment_container, f)</div><div class="line">                .commit();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注：</p>
+<font color="Green"><br>getSupportFragmentManager()<br><br>findFragmentById(R.id.fragment_container)<br><br>fm.beginTransaction()<br>            .add(R.id.fragment_container, f)<br>            .commit();<br></font>
+
+<font color="Blue"><br>Activity销毁时，FragmentManager会将fragment队列保存下来。在Activity重建时，新的FragmentManager会获得保存的队列，并重建fragment队列，从而恢复原来的状态。<br></font>
+
+<font color="Green"><br>onAttach()<br><br>onCreate()<br><br>onCreateView()<br><br>onActivityCreated()<br><br>- onStart()<br><br>- onResume()<br><br>- onPause()<br><br>- onStop()<br><br>onDestroyView()<br><br>onDestroy()<br><br>onDetach()<br></font>
+
+<table>
+<thead>
+<tr>
+<th>内置版</th>
+<th>Support版</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activity</td>
+<td>FragmentActivity</td>
+</tr>
+<tr>
+<td>android.app.Fragment</td>
+<td>android.suport.v4.app.Fragment</td>
+</tr>
+<tr>
+<td>getFragmentManager()</td>
+<td>getSupportFragmentManager()</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/18/06-Android-SDK-Versions-and-Compatibility/" itemprop="url">
+                  06. Android SDK Versions and Compatibility
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-18T19:37:39+08:00" content="2016-09-18">
+              2016-09-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <table>
+<thead>
+<tr>
+<th>版本</th>
+<th>代号</th>
+<th>API Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.1</td>
+<td>Jelly Bean</td>
+<td>16</td>
+</tr>
+<tr>
+<td>4.2</td>
+<td>Jelly Bean</td>
+<td>17</td>
+</tr>
+<tr>
+<td>4.3</td>
+<td>Jelly Bean</td>
+<td>18</td>
+</tr>
+<tr>
+<td>4.4</td>
+<td>KitKat</td>
+<td>19</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>Lollipop</td>
+<td>21</td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>Lollipop</td>
+<td>22</td>
+</tr>
+<tr>
+<td>6.0</td>
+<td>Marshmallow</td>
+<td>23</td>
+</tr>
+<tr>
+<td>7.0</td>
+<td>Nougat</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+<font color="Green"><br>if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) {<br><br>}<br></font>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/18/05-Your-Second-Activity/" itemprop="url">
+                  05. Your Second Activity
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-18T14:55:17+08:00" content="2016-09-18">
+              2016-09-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>tools:text这个属性在preview中显示，运行时不会显示出来</p>
+<font color="Green"><br><br>public Intent(Context packageContext, Class&lt;?&gt; cls)<br><br>public Intent putExtra(…)<br><br>public void startActivityForResult(Intent intent, int requestCode)<br><br>getIntent().getBooleanExtra(…);<br></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = new Intent();</div><div class="line">   intent.putExtra(Extra_Cheated, true);</div><div class="line">   setResult(Activity.RESULT_OK, intent);</div></pre></td></tr></table></figure>
+<font color="Green"><br>protected void onActivityResult(int requestCode, int resultCode, Intent data)<br></font>
+
+<p>非常有趣的一点，在旋转后，CheatActivity被重新生成，然后其onCreate()函数中 <code>getIntent().getBooleanExtra(Extra_Answer, false);</code> 依然可以获得从QuizActivity传过来的参数。</p>
+<font color="Blue"><br>在Activity中调用Activity.finish()方法同样可以将Activity从ActivityManager管理的栈中弹出。<br></font>
+
+<p>注意key值多用 private static String，以及由此产生的生成Intent，取得Result Intent相应函数所处的Activity</p>
+<p>#传入时：</p>
+<p>在QuizActivity中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">private static int REQUEST_CHEAT_ACTIVITY = 0;</div><div class="line"></div><div class="line">Intent intent = CheatActivity.newIntent(QuizActivity.this, quizArray[mCurQuestionIndex].getmTrueFalseAnswer());</div><div class="line">startActivityForResult(intent, REQUEST_CHEAT_ACTIVITY);</div></pre></td></tr></table></figure>
+<p>在CheatActivity中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private static final String Extra_Answer = &quot;cheat_activity_extra_answer&quot;;</div><div class="line"></div><div class="line">public static Intent newIntent(Context context, boolean answer) &#123;</div><div class="line">    Intent intent = new Intent(context, CheatActivity.class);</div><div class="line">    intent.putExtra(Extra_Answer, answer);</div><div class="line">    return intent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>#传出时：（返回值）<br>在QuizActivity中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">private static int REQUEST_CHEAT_ACTIVITY = 0;</div><div class="line"></div><div class="line">@Override</div><div class="line">protected void onActivityResult(int requestCode, int resultCode, Intent data) &#123;</div><div class="line">    super.onActivityResult(requestCode, resultCode, data);</div><div class="line">    if (resultCode != Activity.RESULT_OK) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    if (requestCode == REQUEST_CHEAT_ACTIVITY) &#123;</div><div class="line">        if (data == null) &#123;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        mCheated = CheatActivity.hasCheated(data);</div><div class="line">        cheatArray[mCurQuestionIndex] = mCheated;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里再次把获取boolean类型的intent extra的任务放到了 <code>CheatActivity.hasCheated(data)</code> 中，传入intent，返回boolean</p>
+<p>在CheatActivity中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">private static final String Extra_Cheated = &quot;cheat_activity_extra_cheated&quot;;</div><div class="line"></div><div class="line">public static boolean hasCheated(Intent intent) &#123;</div><div class="line">    return intent.getBooleanExtra(Extra_Cheated, false);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private static final String Extra_Cheated = &quot;cheat_activity_extra_cheated&quot;;</div><div class="line"></div><div class="line">&#123;</div><div class="line">        Intent intent = new Intent();</div><div class="line">        intent.putExtra(Extra_Cheated, true);</div><div class="line">        setResult(Activity.RESULT_OK, intent);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><font color="Red"><br>用Intent传来传去，需要用到putExtra，是key-value的</font></p>
+<p>Activity在旋转时重新生成，需要Bundle的putXXXXX，也是key-value的</p>
+<p>生成了好多key，取名字是个问题</p>
+<ul>
+<li>有没有更好的方法</li>
+<li>key的命名应该遵循某种统一的规则<br></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/18/04-Debugging-Android-Apps/" itemprop="url">
+                  04. Debugging Android Apps
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-18T10:20:39+08:00" content="2016-09-18">
+              2016-09-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Run -&gt; View Breakpoints</p>
+<p>Android Lint : Analyze -&gt; Inspect Code</p>
+<font color="Red"><br>怎么用好Lint？现在报的好多错误看不懂啊 ~<br></font>
+
+<p>Tools -&gt; Android -&gt; Sync Project with Gradle</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/16/03-The-Activity-Lifecycle/" itemprop="url">
                   03. The Activity Lifecycle
                 </a>
@@ -809,249 +1540,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/13/初尝Android之开篇/" itemprop="url">
-                  初尝Android之开篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-13T14:29:50+08:00" content="2016-09-13">
-              2016-09-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="个人背景"><a href="#个人背景" class="headerlink" title="个人背景"></a>个人背景</h1><ul>
-<li>有近10年的工作经验，近4年的ios经验</li>
-<li>曾经纯纯的coder，现在管理整个Mobile Team包括ios, android, test</li>
-<li>ios算不上大牛，但在工作中基本也没有搞不定的feature，解不出的bug</li>
-<li>现在每天能有个把个小时自由支配的时间（x, x &gt;= 1 &amp;&amp; x &lt;= 3）</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/13/初尝Android之开篇/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/12/用Hexo搭建博客/" itemprop="url">
-                  Blog搭建
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-12T19:47:14+08:00" content="2016-09-12">
-              2016-09-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/杂项/" itemprop="url" rel="index">
-                    <span itemprop="name">杂项</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="hexo-next-github搭建Blog"><a href="#hexo-next-github搭建Blog" class="headerlink" title="hexo, next, github搭建Blog"></a>hexo, next, github搭建Blog</h1><ul>
-<li>下载并安装<a href="https://nodejs.org/en/">node.js</a></li>
-<li>安装hexo</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/12/用Hexo搭建博客/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1092,7 +1585,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

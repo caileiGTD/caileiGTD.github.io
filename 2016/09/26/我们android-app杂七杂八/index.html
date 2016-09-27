@@ -1,0 +1,623 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ios, android, music" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="菜菜园子" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1首先说jCenter，是一个代码库，相当于一个公共的存储控件，简单的来讲就是你把你写好的aar文件及一些文档描述文件之类的东西打包上传到jCenter服务器上，其他人就可以通过jCenter服务器下载到你上传的包了。
+那Bintray又是啥？Bintray是jCenter的提供商，他支持上传lib到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我们android app杂七杂八">
+<meta property="og:url" content="http://yoursite.com/2016/09/26/我们android-app杂七杂八/index.html">
+<meta property="og:site_name" content="菜菜园子">
+<meta property="og:description" content="com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1首先说jCenter，是一个代码库，相当于一个公共的存储控件，简单的来讲就是你把你写好的aar文件及一些文档描述文件之类的东西打包上传到jCenter服务器上，其他人就可以通过jCenter服务器下载到你上传的包了。
+那Bintray又是啥？Bintray是jCenter的提供商，他支持上传lib到">
+<meta property="og:updated_time" content="2016-09-26T10:54:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我们android app杂七杂八">
+<meta name="twitter:description" content="com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1首先说jCenter，是一个代码库，相当于一个公共的存储控件，简单的来讲就是你把你写好的aar文件及一些文档描述文件之类的东西打包上传到jCenter服务器上，其他人就可以通过jCenter服务器下载到你上传的包了。
+那Bintray又是啥？Bintray是jCenter的提供商，他支持上传lib到">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/26/我们android-app杂七杂八/"/>
+
+  <title> 我们android app杂七杂八 | 菜菜园子 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">菜菜园子</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                我们android app杂七杂八
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-26T14:22:04+08:00" content="2016-09-26">
+              2016-09-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/杂项/" itemprop="url" rel="index">
+                    <span itemprop="name">杂项</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="com-jfrog-bintray-gradle-gradle-bintray-plugin-1-1"><a href="#com-jfrog-bintray-gradle-gradle-bintray-plugin-1-1" class="headerlink" title="com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1"></a>com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1</h1><p>首先说jCenter，是一个代码库，相当于一个公共的存储控件，简单的来讲就是你把你写好的aar文件及一些文档描述文件之类的东西打包上传到jCenter服务器上，其他人就可以通过jCenter服务器下载到你上传的包了。</p>
+<p>那Bintray又是啥？Bintray是jCenter的提供商，他支持上传lib到多个平台，jCenter只是众多平台中的一个，形象的说jCenter是位于某地的仓库，Bintray是送货的卡车，你写的库就是货了。</p>
+<h1 id="com-github-dcendents-android-maven-gradle-plugin-1-3"><a href="#com-github-dcendents-android-maven-gradle-plugin-1-3" class="headerlink" title="com.github.dcendents:android-maven-gradle-plugin:1.3"></a>com.github.dcendents:android-maven-gradle-plugin:1.3</h1><p>这个东东也是为了把自己的库上传到jCenter的。</p>
+<hr>
+<h1 id="良师通"><a href="#良师通" class="headerlink" title="良师通"></a>良师通</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">|- app</div><div class="line">|</div><div class="line">|- androidlib</div><div class="line">|</div><div class="line">|- UniversalVideoView</div><div class="line">|</div><div class="line">|- android-pdf-viewer</div></pre></td></tr></table></figure>
+<p><strong>UniversalVideoView</strong>：<a href="https://github.com/linsea/UniversalVideoView" target="_blank" rel="external">https://github.com/linsea/UniversalVideoView</a></p>
+<p>我们是源码引入，然后在其上修改的。 <code>东西不多 2k LOC，应该定义好了接口，自己实现更好的video player，将来总会用到</code></p>
+<p><strong>android-pdf-viewer</strong>：<a href="https://github.com/barteksc/AndroidPdfViewer" target="_blank" rel="external">https://github.com/barteksc/AndroidPdfViewer</a></p>
+<p>这个也是源码引入，有修改么？ <code>库挺庞大，如果需要修改，除了源码引入然后修改，有没有什么更好的方法</code></p>
+<h2 id="app"><a href="#app" class="headerlink" title="app"></a>app</h2><p><strong>isoparser</strong>：MP4剪切、合并库，当时有个crash bug，换成最新版本 <code>isoparser-1.1.21.jar</code> 后解决</p>
+<p><strong>litepal</strong>：ORM(object/rational mapping)，《第一行代码Android》的作者”郭霖”有一系列不错的Blog介绍：<a href="http://blog.csdn.net/sinyu890807/article/details/38083103" target="_blank" rel="external">Android数据库高手秘籍</a></p>
+<p><strong>zxing</strong>：<a href="https://github.com/zxing/zxing" target="_blank" rel="external">https://github.com/zxing/zxing</a> 二维码识别，这个原生的就是java库。</p>
+<p><strong>recyclerview</strong>：com.android.support:recyclerview-v7</p>
+<p><strong>design</strong>：com.android.support:design，<code>Material design</code> 这个厉害了。一句话就是一些NB的效果，google一起都给放进来了：</p>
+<ul>
+<li><code>TextInputLayout</code>：方便的显示错误提示，etc？</li>
+<li><code>FloatingActionButton</code>：字面意思，好像是浮在view上的？</li>
+<li><code>Snackbar</code>：用户快速feedback？</li>
+<li><code>TabLayout</code>：左右滑动，topscroll / bottomscroll配合，pager?</li>
+<li><code>NavigationView</code>：左滑的drawer view？</li>
+<li><code>CoordinatorLayout</code>：view能完成一些自动的动画，到需要的位置？</li>
+<li><code>CollapsingToolbarLayout</code>：上滑下滑时，header view跟随zooming</li>
+</ul>
+<p><strong>percent</strong>：com.android.support:percent，百分比布局，可设置高度占父控件高度的百分比，宽度占父控件的百分比，etc</p>
+<p><strong>nineoldandroids</strong>：com.nineoldandroids:library，android的一个三方动画库，《Android开发艺术探索》作者 <code>任玉刚</code> 的<a href="http://blog.csdn.net/singwhatiwanna/article/details/17639987" target="_blank" rel="external">一篇Blog</a></p>
+<h2 id="androidlib"><a href="#androidlib" class="headerlink" title="androidlib"></a>androidlib</h2><p><strong>com.android.support:appcompat-v7</strong>：<font color="Red">这里有个疑问，androidlib里依赖的appcompat，和UniversalVideoView里依赖的appcompat版本居然不一样，这会怎么样？引入两份，加大体积？换成一样的呢？</font></p>
+<p><strong>okhttputils, okio</strong>：square的网络框架，我们用retrofit + okhttp。这个okhttputils为 <code>鸿洋</code> <a href="http://blog.csdn.net/lmj623565791" target="_blank" rel="external">Blog</a> 在okhttp之上做了一层封装，我们应该不会用，但是既然能做封装，应该对okhttp有一定了解，blog上原创又很多，留着看看。</p>
+<p><strong>glide</strong>：google推荐的图形库，我们用facebook的Fresco</p>
+<p><strong>otto</strong>：系统级notification，我们用event-bus</p>
+<p><strong>fastjson</strong>：这个是阿里开源的，我们还是用 <code>gson</code> 吧，出自google，倒不是崇洋媚外，也可能阿里的fastjson确实fast，但是强烈不喜欢丫的自己吹NB，说别人的为“龟速”</p>
+<p><strong>GifView</strong>：<a href="https://github.com/Cutta/GifView" target="_blank" rel="external">https://github.com/Cutta/GifView</a></p>
+<h1 id="易学易练"><a href="#易学易练" class="headerlink" title="易学易练"></a>易学易练</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">|- MainApp</div><div class="line">|</div><div class="line">|- YanxiuBaseCore</div><div class="line">|</div><div class="line">|- CommonCoreLib</div><div class="line">|</div><div class="line">|- LoginCommonLibs</div><div class="line">|</div><div class="line">|- ShareCommonLibs</div><div class="line">|</div><div class="line">|- YanxiuUpgradeLib</div></pre></td></tr></table></figure>
+<h2 id="MainApp"><a href="#MainApp" class="headerlink" title="MainApp"></a>MainApp</h2><h2 id="YanxiuBaseCore"><a href="#YanxiuBaseCore" class="headerlink" title="YanxiuBaseCore"></a>YanxiuBaseCore</h2><p><strong>fastjson</strong></p>
+<p><strong>volley</strong>：google的网络框架</p>
+<p><strong>com.android.support:appcompat-v7</strong></p>
+<h2 id="CommonCoreLib"><a href="#CommonCoreLib" class="headerlink" title="CommonCoreLib"></a>CommonCoreLib</h2><p><strong>cardview</strong>：com.android.support:cardview-v7，又一种布局<a href="http://www.kancloud.cn/digest/fastdev4android/109671" target="_blank" rel="external">Blog</a>，没细看</p>
+<p><strong>com.zhy:percent-support-extends</strong>：a extends lib for android-percent-support(Google百分比布局库的扩展)，这个<a href="https://github.com/hongyangAndroid/android-percent-support-extend" target="_blank" rel="external">hongyangAndroid</a>经常能见到。</p>
+<p><strong>eventbus</strong>：<a href="https://github.com/greenrobot/EventBus" target="_blank" rel="external">https://github.com/greenrobot/EventBus</a></p>
+<p><strong>scalpel</strong>：A surgical debugging tool to uncover the layers under your app. <a href="https://github.com/JakeWharton/scalpel" target="_blank" rel="external">https://github.com/JakeWharton/scalpel</a></p>
+<p><strong>Android-Universal-Image-Loader</strong>：<a href="https://github.com/nostra13/Android-Universal-Image-Loader" target="_blank" rel="external">这个</a>恐怕可以用Fresco来替代了，虽然这家伙的stars好多好多！</p>
+<h2 id="LoginCommonLibs"><a href="#LoginCommonLibs" class="headerlink" title="LoginCommonLibs"></a>LoginCommonLibs</h2><h2 id="ShareCommonLibs"><a href="#ShareCommonLibs" class="headerlink" title="ShareCommonLibs"></a>ShareCommonLibs</h2><h2 id="YanxiuUpgradeLib"><a href="#YanxiuUpgradeLib" class="headerlink" title="YanxiuUpgradeLib"></a>YanxiuUpgradeLib</h2>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/26/14-SQLite-Database/" rel="next" title="14. SQLite Database">
+                <i class="fa fa-chevron-left"></i> 14. SQLite Database
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/27/15-Implicit-Intents/" rel="prev" title="15. Implicit Intents">
+                15. Implicit Intents <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="cailei" />
+          <p class="site-author-name" itemprop="name">cailei</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#com-jfrog-bintray-gradle-gradle-bintray-plugin-1-1"><span class="nav-number">1.</span> <span class="nav-text">com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#com-github-dcendents-android-maven-gradle-plugin-1-3"><span class="nav-number">2.</span> <span class="nav-text">com.github.dcendents:android-maven-gradle-plugin:1.3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#良师通"><span class="nav-number">3.</span> <span class="nav-text">良师通</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#app"><span class="nav-number">3.1.</span> <span class="nav-text">app</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#androidlib"><span class="nav-number">3.2.</span> <span class="nav-text">androidlib</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#易学易练"><span class="nav-number">4.</span> <span class="nav-text">易学易练</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MainApp"><span class="nav-number">4.1.</span> <span class="nav-text">MainApp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#YanxiuBaseCore"><span class="nav-number">4.2.</span> <span class="nav-text">YanxiuBaseCore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CommonCoreLib"><span class="nav-number">4.3.</span> <span class="nav-text">CommonCoreLib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LoginCommonLibs"><span class="nav-number">4.4.</span> <span class="nav-text">LoginCommonLibs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ShareCommonLibs"><span class="nav-number">4.5.</span> <span class="nav-text">ShareCommonLibs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#YanxiuUpgradeLib"><span class="nav-number">4.6.</span> <span class="nav-text">YanxiuUpgradeLib</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cailei</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

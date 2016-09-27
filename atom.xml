@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-25T14:36:36.000Z</updated>
+  <updated>2016-09-27T09:44:38.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,16 +16,191 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>17. Two-Pane Master-Detail Interfaces</title>
+    <link href="http://yoursite.com/2016/09/27/17-Two-Pane-Master-Detail-Interfaces/"/>
+    <id>http://yoursite.com/2016/09/27/17-Two-Pane-Master-Detail-Interfaces/</id>
+    <published>2016-09-27T08:11:33.000Z</published>
+    <updated>2016-09-27T09:44:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天的最后一张，这张应该蛮有意思，但是应该只是展示了用fragment的好处。也就一并看了。</p>
+<p>别名，这样相同的R.layout.XXXXX对于不同的环境就能inflate出不同layout.xml了。</p>
+<p>refs.xml，用以前的 <code>activity_fragment</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;resources&gt;</div><div class="line">    &lt;item name=&quot;activity_masterdetail&quot; type=&quot;layout&quot;&gt;@layout/activity_fragment&lt;/item&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure>
+<p>refs.xml(sw600dp)，用pad的 <code>activity_twopane</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;resources&gt;</div><div class="line">    &lt;item name=&quot;activity_masterdetail&quot; type=&quot;layout&quot;&gt;@layout/activity_twopane&lt;/item&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure>
+<p>在Fragment里声明Callbacks接口，Activity实现Callbacks接口，然后由Fragment产生的事件通过Callbacks让Activity负责调度处理。</p>
+<p>在CrimeListFragment中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void onAttach(Activity activity) &#123;</div><div class="line">    super.onAttach(activity);</div><div class="line">    mCallbacks = (Callbacks) activity;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Override</div><div class="line">public void onDetach() &#123;</div><div class="line">    super.onDetach();</div><div class="line">    mCallbacks = null;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>CrimeListFragment点了哪个row -&gt; Callbacks -&gt; Activity -&gt; 显示相应的CrimeFragment<br>CrimeFragment修改crime信息 -&gt; Callbacks -&gt; Activity -&gt; 更新CrimeListFragment中对应的row</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天的最后一张，这张应该蛮有意思，但是应该只是展示了用fragment的好处。也就一并看了。&lt;/p&gt;
+&lt;p&gt;别名，这样相同的R.layout.XXXXX对于不同的环境就能inflate出不同layout.xml了。&lt;/p&gt;
+&lt;p&gt;refs.xml，用以前的 &lt;code&gt;ac
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>16. Taking Pictures with Intents</title>
+    <link href="http://yoursite.com/2016/09/27/16-Taking-Pictures-with-Intents/"/>
+    <id>http://yoursite.com/2016/09/27/16-Taking-Pictures-with-Intents/</id>
+    <published>2016-09-27T07:43:36.000Z</published>
+    <updated>2016-09-27T08:11:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>还是这样，这些具体的技巧，等到用的时候再详细了解也不迟，所以今天一天就多过几章。好读，不求甚解了。</p>
+<p>layout文件的include引入</p>
+<font color="Green"><br>    <code>&lt;include layout=&quot;@layout/view_camera_and_title&quot; /&gt;</code><br></font>
+
+
+<p>照相机的隐式Intent：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Intent(MediaStore.ACTION_IMAGE_CAPTURE)</div></pre></td></tr></table></figure>
+<p>权限：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot;</div><div class="line">                 android:maxSdkVersion=&quot;18&quot;</div><div class="line">    /&gt;</div></pre></td></tr></table></figure>
+<p>这里有个复杂的Bitmap处理，完全没有理解 ~~~ 擦。简言之，就是用 <code>BitmapFactory</code> 把图片压缩成bitmap适合的大小，当然根据屏幕猜测了下bitmap的大小。</p>
+<p>目的主要是保证bitmap不要过大，占据太多内存。所以估算的也可用吧。（软件做了差值？）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;uses-feature android:name=&quot;android.hardware.camera&quot;</div><div class="line">              android:required=&quot;false&quot;</div><div class="line">    /&gt;</div></pre></td></tr></table></figure>
+<p>其中 <code>android:required</code> 如果为 <code>true</code> 的话，在google play商店中，没有拍照功能的硬件就安装不了此应用。</p>
+<font color="Green"><br>ViewTreeObserver<br><br>OnGlobalLayoutListener可以监听布局的传递、控制事件的发生<br></font>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;还是这样，这些具体的技巧，等到用的时候再详细了解也不迟，所以今天一天就多过几章。好读，不求甚解了。&lt;/p&gt;
+&lt;p&gt;layout文件的include引入&lt;/p&gt;
+&lt;font color=&quot;Green&quot;&gt;&lt;br&gt;    &lt;code&gt;&amp;lt;include layout=&amp;quo
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>15. Implicit Intents</title>
+    <link href="http://yoursite.com/2016/09/27/15-Implicit-Intents/"/>
+    <id>http://yoursite.com/2016/09/27/15-Implicit-Intents/</id>
+    <published>2016-09-27T04:20:41.000Z</published>
+    <updated>2016-09-27T07:37:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>好吧，不得不说这章其实意义也不大。对于本章来说，知道可以干什么，远比怎么干重要，因为怎么干并不复杂，在用到的时候去了解就哦了 ~</p>
+<font color="Green"><br><strong>跳转网页</strong>：<code>Intent.ACTION_VIEW，URL</code><br><br><strong>发消息</strong>：有若干可选的activity都可以干发送消息这件事，eg，sms，邮件，微信。<code>Intent.ACTION_SEND，EXTRA_TEXT，EXTRA_SUBJECT</code><br><br><strong>设置每次都要选</strong>：Intent.createChooser(…)<br><br><strong>获取联系人</strong>：Intent.ACTION_PICK，ContactsContract.Contacts.CONTENT_URI<br><br>通过<code>ContentResolver</code>访问<code>ContentProvider</code><br><br><strong>检查是否有可相应的Activity</strong>：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">final Intent pickContact = new Intent(Intent.ACTION_PICK,</div><div class="line">                ContactsContract.Contacts.CONTENT_URI);</div></pre></td></tr></table></figure><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">PackageManager packageManager = getActivity().getPackageManager();</div><div class="line">   if (packageManager.resolveActivity(pickContact,</div><div class="line">           PackageManager.MATCH_DEFAULT_ONLY) == null) &#123;</div><div class="line">       mSuspectButton.setEnabled(false);</div><div class="line">   &#125;</div></pre></td></tr></table></figure><br><br>模拟一个PackageManager找不到适当Activity的情况pickContact.addCategory(Intent.CATEGORY_HOME);<br><br><strong>打电话</strong>：Intent.ACTION_DIAL,Intent.ACTION_CALL<br></font>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;好吧，不得不说这章其实意义也不大。对于本章来说，知道可以干什么，远比怎么干重要，因为怎么干并不复杂，在用到的时候去了解就哦了 ~&lt;/p&gt;
+&lt;font color=&quot;Green&quot;&gt;&lt;br&gt;&lt;strong&gt;跳转网页&lt;/strong&gt;：&lt;code&gt;Intent.ACTION_VI
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>我们android app杂七杂八</title>
+    <link href="http://yoursite.com/2016/09/26/%E6%88%91%E4%BB%ACandroid-app%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
+    <id>http://yoursite.com/2016/09/26/我们android-app杂七杂八/</id>
+    <published>2016-09-26T06:22:04.000Z</published>
+    <updated>2016-09-26T10:54:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="com-jfrog-bintray-gradle-gradle-bintray-plugin-1-1"><a href="#com-jfrog-bintray-gradle-gradle-bintray-plugin-1-1" class="headerlink" title="com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1"></a>com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1</h1><p>首先说jCenter，是一个代码库，相当于一个公共的存储控件，简单的来讲就是你把你写好的aar文件及一些文档描述文件之类的东西打包上传到jCenter服务器上，其他人就可以通过jCenter服务器下载到你上传的包了。</p>
+<p>那Bintray又是啥？Bintray是jCenter的提供商，他支持上传lib到多个平台，jCenter只是众多平台中的一个，形象的说jCenter是位于某地的仓库，Bintray是送货的卡车，你写的库就是货了。</p>
+<h1 id="com-github-dcendents-android-maven-gradle-plugin-1-3"><a href="#com-github-dcendents-android-maven-gradle-plugin-1-3" class="headerlink" title="com.github.dcendents:android-maven-gradle-plugin:1.3"></a>com.github.dcendents:android-maven-gradle-plugin:1.3</h1><p>这个东东也是为了把自己的库上传到jCenter的。</p>
+<hr>
+<h1 id="良师通"><a href="#良师通" class="headerlink" title="良师通"></a>良师通</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">|- app</div><div class="line">|</div><div class="line">|- androidlib</div><div class="line">|</div><div class="line">|- UniversalVideoView</div><div class="line">|</div><div class="line">|- android-pdf-viewer</div></pre></td></tr></table></figure>
+<p><strong>UniversalVideoView</strong>：<a href="https://github.com/linsea/UniversalVideoView" target="_blank" rel="external">https://github.com/linsea/UniversalVideoView</a></p>
+<p>我们是源码引入，然后在其上修改的。 <code>东西不多 2k LOC，应该定义好了接口，自己实现更好的video player，将来总会用到</code></p>
+<p><strong>android-pdf-viewer</strong>：<a href="https://github.com/barteksc/AndroidPdfViewer" target="_blank" rel="external">https://github.com/barteksc/AndroidPdfViewer</a></p>
+<p>这个也是源码引入，有修改么？ <code>库挺庞大，如果需要修改，除了源码引入然后修改，有没有什么更好的方法</code></p>
+<h2 id="app"><a href="#app" class="headerlink" title="app"></a>app</h2><p><strong>isoparser</strong>：MP4剪切、合并库，当时有个crash bug，换成最新版本 <code>isoparser-1.1.21.jar</code> 后解决</p>
+<p><strong>litepal</strong>：ORM(object/rational mapping)，《第一行代码Android》的作者”郭霖”有一系列不错的Blog介绍：<a href="http://blog.csdn.net/sinyu890807/article/details/38083103" target="_blank" rel="external">Android数据库高手秘籍</a></p>
+<p><strong>zxing</strong>：<a href="https://github.com/zxing/zxing" target="_blank" rel="external">https://github.com/zxing/zxing</a> 二维码识别，这个原生的就是java库。</p>
+<p><strong>recyclerview</strong>：com.android.support:recyclerview-v7</p>
+<p><strong>design</strong>：com.android.support:design，<code>Material design</code> 这个厉害了。一句话就是一些NB的效果，google一起都给放进来了：</p>
+<ul>
+<li><code>TextInputLayout</code>：方便的显示错误提示，etc？</li>
+<li><code>FloatingActionButton</code>：字面意思，好像是浮在view上的？</li>
+<li><code>Snackbar</code>：用户快速feedback？</li>
+<li><code>TabLayout</code>：左右滑动，topscroll / bottomscroll配合，pager?</li>
+<li><code>NavigationView</code>：左滑的drawer view？</li>
+<li><code>CoordinatorLayout</code>：view能完成一些自动的动画，到需要的位置？</li>
+<li><code>CollapsingToolbarLayout</code>：上滑下滑时，header view跟随zooming</li>
+</ul>
+<p><strong>percent</strong>：com.android.support:percent，百分比布局，可设置高度占父控件高度的百分比，宽度占父控件的百分比，etc</p>
+<p><strong>nineoldandroids</strong>：com.nineoldandroids:library，android的一个三方动画库，《Android开发艺术探索》作者 <code>任玉刚</code> 的<a href="http://blog.csdn.net/singwhatiwanna/article/details/17639987" target="_blank" rel="external">一篇Blog</a></p>
+<h2 id="androidlib"><a href="#androidlib" class="headerlink" title="androidlib"></a>androidlib</h2><p><strong>com.android.support:appcompat-v7</strong>：<font color="Red">这里有个疑问，androidlib里依赖的appcompat，和UniversalVideoView里依赖的appcompat版本居然不一样，这会怎么样？引入两份，加大体积？换成一样的呢？</font></p>
+<p><strong>okhttputils, okio</strong>：square的网络框架，我们用retrofit + okhttp。这个okhttputils为 <code>鸿洋</code> <a href="http://blog.csdn.net/lmj623565791" target="_blank" rel="external">Blog</a> 在okhttp之上做了一层封装，我们应该不会用，但是既然能做封装，应该对okhttp有一定了解，blog上原创又很多，留着看看。</p>
+<p><strong>glide</strong>：google推荐的图形库，我们用facebook的Fresco</p>
+<p><strong>otto</strong>：系统级notification，我们用event-bus</p>
+<p><strong>fastjson</strong>：这个是阿里开源的，我们还是用 <code>gson</code> 吧，出自google，倒不是崇洋媚外，也可能阿里的fastjson确实fast，但是强烈不喜欢丫的自己吹NB，说别人的为“龟速”</p>
+<p><strong>GifView</strong>：<a href="https://github.com/Cutta/GifView" target="_blank" rel="external">https://github.com/Cutta/GifView</a></p>
+<h1 id="易学易练"><a href="#易学易练" class="headerlink" title="易学易练"></a>易学易练</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">|- MainApp</div><div class="line">|</div><div class="line">|- YanxiuBaseCore</div><div class="line">|</div><div class="line">|- CommonCoreLib</div><div class="line">|</div><div class="line">|- LoginCommonLibs</div><div class="line">|</div><div class="line">|- ShareCommonLibs</div><div class="line">|</div><div class="line">|- YanxiuUpgradeLib</div></pre></td></tr></table></figure>
+<h2 id="MainApp"><a href="#MainApp" class="headerlink" title="MainApp"></a>MainApp</h2><h2 id="YanxiuBaseCore"><a href="#YanxiuBaseCore" class="headerlink" title="YanxiuBaseCore"></a>YanxiuBaseCore</h2><p><strong>fastjson</strong></p>
+<p><strong>volley</strong>：google的网络框架</p>
+<p><strong>com.android.support:appcompat-v7</strong></p>
+<h2 id="CommonCoreLib"><a href="#CommonCoreLib" class="headerlink" title="CommonCoreLib"></a>CommonCoreLib</h2><p><strong>cardview</strong>：com.android.support:cardview-v7，又一种布局<a href="http://www.kancloud.cn/digest/fastdev4android/109671" target="_blank" rel="external">Blog</a>，没细看</p>
+<p><strong>com.zhy:percent-support-extends</strong>：a extends lib for android-percent-support(Google百分比布局库的扩展)，这个<a href="https://github.com/hongyangAndroid/android-percent-support-extend" target="_blank" rel="external">hongyangAndroid</a>经常能见到。</p>
+<p><strong>eventbus</strong>：<a href="https://github.com/greenrobot/EventBus" target="_blank" rel="external">https://github.com/greenrobot/EventBus</a></p>
+<p><strong>scalpel</strong>：A surgical debugging tool to uncover the layers under your app. <a href="https://github.com/JakeWharton/scalpel" target="_blank" rel="external">https://github.com/JakeWharton/scalpel</a></p>
+<p><strong>Android-Universal-Image-Loader</strong>：<a href="https://github.com/nostra13/Android-Universal-Image-Loader" target="_blank" rel="external">这个</a>恐怕可以用Fresco来替代了，虽然这家伙的stars好多好多！</p>
+<h2 id="LoginCommonLibs"><a href="#LoginCommonLibs" class="headerlink" title="LoginCommonLibs"></a>LoginCommonLibs</h2><h2 id="ShareCommonLibs"><a href="#ShareCommonLibs" class="headerlink" title="ShareCommonLibs"></a>ShareCommonLibs</h2><h2 id="YanxiuUpgradeLib"><a href="#YanxiuUpgradeLib" class="headerlink" title="YanxiuUpgradeLib"></a>YanxiuUpgradeLib</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;com-jfrog-bintray-gradle-gradle-bintray-plugin-1-1&quot;&gt;&lt;a href=&quot;#com-jfrog-bintray-gradle-gradle-bintray-plugin-1-1&quot; class=&quot;headerlink&quot;
+    
+    </summary>
+    
+      <category term="杂项" scheme="http://yoursite.com/categories/%E6%9D%82%E9%A1%B9/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>14. SQLite Database</title>
+    <link href="http://yoursite.com/2016/09/26/14-SQLite-Database/"/>
+    <id>http://yoursite.com/2016/09/26/14-SQLite-Database/</id>
+    <published>2016-09-26T03:51:39.000Z</published>
+    <updated>2016-09-26T04:19:01.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>ORM (object/rational mapping)</strong> : litepal / greenDao</p>
+<font color="Green"><br>getApplictionContext()<br><br>SQLiteOpenHelper<br>- onCreate<br>- onUpgrade<br><br>CursorWrapper<br><br></font>
+
+<font color="Orange"><br>SQL语句中用 <code>&quot; = ?&quot;, XXXXX</code>，可以防止SQL脚本注入<br></font>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;ORM (object/rational mapping)&lt;/strong&gt; : litepal / greenDao&lt;/p&gt;
+&lt;font color=&quot;Green&quot;&gt;&lt;br&gt;getApplictionContext()&lt;br&gt;&lt;br&gt;SQLiteOpenH
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>13. The Toolbar</title>
     <link href="http://yoursite.com/2016/09/25/13-The-Toolbar/"/>
     <id>http://yoursite.com/2016/09/25/13-The-Toolbar/</id>
     <published>2016-09-25T14:17:27.000Z</published>
-    <updated>2016-09-25T14:36:36.000Z</updated>
+    <updated>2016-09-26T02:42:58.000Z</updated>
     
     <content type="html"><![CDATA[<p>说实话，感觉这章用处不大，所以看过书了之后，脑子里再过一遍。就没有再去码砖。</p>
 <font color="Green"><br>AppCompatActivity<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;plurals name=&quot;subtitle_plural&quot;&gt;</div><div class="line">	&lt;item quantity=&quot;one&quot;&gt;%1$s crime&lt;/item&gt;</div><div class="line">	&lt;item quantity=&quot;other&quot;&gt;%1$s crimes&lt;/item&gt;</div><div class="line">&lt;/plurals&gt;</div></pre></td></tr></table></figure><br><br>getResources().getQuantityString(R.plurals.subtitle_plural, crimeSize, crimeSize);<br></font>
 
 <p>说实话，确实不太理解，android转个屏幕还要考虑那么多需要save的东西，不过想想ios上旋转屏幕的处理部分，也是相当相当麻烦的啊</p>
+<p>好吧，实际上这章真的是粗略的一看，下面证据 <code>在我们的android工程中搜索onCreateOptionsMenu，找到0个匹配</code> 基本证明了我的想法，显示App中应该不会用到系统的这个难用的Toolbar，这样多少让我心情好了一些，等真正用到的时候再好好研究下，至少这块现在不是重点！ </p>
 ]]></content>
     
     <summary type="html">
@@ -945,200 +1120,6 @@
     </summary>
     
       <category term="android" scheme="http://yoursite.com/categories/android/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>初尝Android之开篇</title>
-    <link href="http://yoursite.com/2016/09/13/%E5%88%9D%E5%B0%9DAndroid%E4%B9%8B%E5%BC%80%E7%AF%87/"/>
-    <id>http://yoursite.com/2016/09/13/初尝Android之开篇/</id>
-    <published>2016-09-13T06:29:50.000Z</published>
-    <updated>2016-09-14T07:56:42.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="个人背景"><a href="#个人背景" class="headerlink" title="个人背景"></a>个人背景</h1><ul>
-<li>有近10年的工作经验，近4年的ios经验</li>
-<li>曾经纯纯的coder，现在管理整个Mobile Team包括ios, android, test</li>
-<li>ios算不上大牛，但在工作中基本也没有搞不定的feature，解不出的bug</li>
-<li>现在每天能有个把个小时自由支配的时间（x, x &gt;= 1 &amp;&amp; x &lt;= 3）</li>
-</ul>
-<a id="more"></a>
-<h1 id="学习原因"><a href="#学习原因" class="headerlink" title="学习原因"></a>学习原因</h1><ul>
-<li>曾经带领的ios team现在做项目基本让人省心，ios框架、人员都稳定成熟</li>
-<li>android团队，人员大部分新人，水平参差不齐，但全部为初、中级；目前android组内没有统一框架、规范，疑难杂症基本很难解决；暂时属于自由发挥，走哪儿算哪儿的状态</li>
-</ul>
-<blockquote>
-<p>鉴于以上，决心在中秋之后，年底之前 （2016.09.15 - 2016.12.31）争取混成android组内的<code>一哥</code>，也不知道是不是过于狂妄自大了一些。</p>
-</blockquote>
-<h1 id="敌我分析"><a href="#敌我分析" class="headerlink" title="敌我分析"></a>敌我分析</h1><h2 id="我之优势"><a href="#我之优势" class="headerlink" title="我之优势"></a>我之优势</h2><ul>
-<li>语言基础还不错，C++、Java语法层面应该问题不大</li>
-<li>有4年ios经验</li>
-<li>学习能力还不弱，至少不算笨吧，领悟力结合经验，虽然可能不如 <code>杨过</code> ，但怎么比 <code>郭靖</code> 强些的</li>
-<li>持之以恒的毅力方面应该已经过历史验证</li>
-<li><code>一哥</code>是玩笑了，其实我只需要能写feature，能帮android team解决疑难杂症就还好了，搬砖这种进度压力下的大强度重复劳动，我这里应该没有</li>
-</ul>
-<h2 id="我之劣势"><a href="#我之劣势" class="headerlink" title="我之劣势"></a>我之劣势</h2><ul>
-<li>虽然有可支配的时间，但时间段并不整。工作时经常被领导、同事打断；回家后儿子不拿iphone砸坏我的rmbp我已经谢天谢地</li>
-<li>比较懒，书上的例子有现成CD，上的code常常自以为懂了，所以不愿意自己再动手敲一遍。其实入门主要靠大量的、重复的练习</li>
-<li>入门可能并不难，但留给我的时间挺少的，况且我的目标不是入门了就OK的，还要想法成 <code>一哥</code> 的</li>
-</ul>
-<h1 id="神之目标、计划"><a href="#神之目标、计划" class="headerlink" title="神之目标、计划"></a>神之目标、计划</h1><blockquote>
-<p>好了，废话说了一箩筐，订下此次 <code>初尝Android</code> 的目标</p>
-</blockquote>
-<h2 id="1-选定一本入门书籍，一个月半月的时间学习完"><a href="#1-选定一本入门书籍，一个月半月的时间学习完" class="headerlink" title="1. 选定一本入门书籍，一个月半月的时间学习完"></a>1. 选定一本入门书籍，一个月半月的时间学习完</h2><p>不太差的书一本足以，以前考研时，地摊买了本￥8的考研数学，从头做到尾，加上最后突击做了几套试卷，居然也考出了全系数学第二的成绩（英语、政治永远的痛啊）。所以书不在多，关键是能坚持从头搞到尾。但毕竟磨刀不误砍柴工，还是花了一点时间挑了两本（之所以要两本，万一有本里有错误，多少有个参照）。</p>
-<ul>
-<li><strong>主</strong> <code>《Android Programming: The Big Nerd Ranch Guide, 2nd Edition》</code>, 这本从头到尾通读一下，以英文的为主，买了个盗版的中文，反正翻译就那么回事儿，床头撕吧撕吧，随翻随记随扔，也不心疼。总共34章，一天一章的话，一个月搞定。<code>每个例子都需要亲手敲一下，不能对照书，看完以后合上书敲</code></li>
-<li><strong>辅</strong> <code>《疯狂Android讲义，第三版》</code>, 国人的原创，买了本正版，算是支持下，另外这个不是学习主力，可以留他个全尸 ^_^ 。在 <strong>主</strong> 的例子都弄完以后，这本花一周。</li>
-</ul>
-<h2 id="2-常用的框架熟悉，目前想到的包括："><a href="#2-常用的框架熟悉，目前想到的包括：" class="headerlink" title="2.  常用的框架熟悉，目前想到的包括："></a>2.  常用的框架熟悉，目前想到的包括：</h2><p>这些个库，目前都是听了个名儿，看别人的开源App，公司的Android App里面有用到。然后制定计划的时候时不时查到一些blog也经常提到，在android入门了以后需要看看，也为后面定规矩，统一team埋下伏笔。</p>
-<p>原则上以现在的caib水平，任何一个库都是够用的了，跟读书一个道理，无论用哪个库，只要都搞得门儿清了，哪个都是好的不得了的。所以选择起来就简单了。</p>
-<p>基于这个原则其实很容易拍脑袋，现在基本就能定下来：(本着不偏不倚，实际上每个公司的风格都了解下，多学总没啥坏处)</p>
-<table>
-<thead>
-<tr>
-<th>开源库</th>
-<th>框架用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Retrofit + OkHttp</td>
-<td>源自<code>Square</code>的 网络框架</td>
-</tr>
-<tr>
-<td>Gson</td>
-<td>源自<code>Google</code>的 JSON序列化、反序列化 &lt;-&gt; POJO（Plain Ordinary Java Object）</td>
-</tr>
-<tr>
-<td>Fresco</td>
-<td>源自<code>Facebook</code>的 图片加载、缓存</td>
-</tr>
-<tr>
-<td>Flux</td>
-<td><code>？ 一套解耦的框架，但只是思想，需要自己理解并实现 ？</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="3-统一框架、统一coding-standard，为code-review打好基础"><a href="#3-统一框架、统一coding-standard，为code-review打好基础" class="headerlink" title="3.  统一框架、统一coding standard，为code review打好基础"></a>3.  统一框架、统一coding standard，为code review打好基础</h2><p>这个没啥好说的，folder结构，文件命名，Java Coding Standard</p>
-<h2 id="4-通过不断和team一起分析、编码、review-code，由-初-升-中"><a href="#4-通过不断和team一起分析、编码、review-code，由-初-升-中" class="headerlink" title="4.  通过不断和team一起分析、编码、review code，由 初 升 中"></a>4.  通过不断和team一起分析、编码、review code，由 <code>初</code> 升 <code>中</code></h2><h2 id="5-通过理解现有代码，并结合经验refactor，以及修复疑难杂症的bug，由-中-升-高"><a href="#5-通过理解现有代码，并结合经验refactor，以及修复疑难杂症的bug，由-中-升-高" class="headerlink" title="5.  通过理解现有代码，并结合经验refactor，以及修复疑难杂症的bug，由 中 升 高"></a>5.  通过理解现有代码，并结合经验refactor，以及修复疑难杂症的bug，由 <code>中</code> 升 <code>高</code></h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;个人背景&quot;&gt;&lt;a href=&quot;#个人背景&quot; class=&quot;headerlink&quot; title=&quot;个人背景&quot;&gt;&lt;/a&gt;个人背景&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;有近10年的工作经验，近4年的ios经验&lt;/li&gt;
-&lt;li&gt;曾经纯纯的coder，现在管理整个Mobile Team包括ios, android, test&lt;/li&gt;
-&lt;li&gt;ios算不上大牛，但在工作中基本也没有搞不定的feature，解不出的bug&lt;/li&gt;
-&lt;li&gt;现在每天能有个把个小时自由支配的时间（x, x &amp;gt;= 1 &amp;amp;&amp;amp; x &amp;lt;= 3）&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="android" scheme="http://yoursite.com/categories/android/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Blog搭建</title>
-    <link href="http://yoursite.com/2016/09/12/%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://yoursite.com/2016/09/12/用Hexo搭建博客/</id>
-    <published>2016-09-12T11:47:14.000Z</published>
-    <updated>2016-09-14T07:56:04.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="hexo-next-github搭建Blog"><a href="#hexo-next-github搭建Blog" class="headerlink" title="hexo, next, github搭建Blog"></a>hexo, next, github搭建Blog</h1><ul>
-<li>下载并安装<a href="https://nodejs.org/en/" target="_blank" rel="external">node.js</a></li>
-<li>安装hexo</li>
-</ul>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g hexo</div></pre></td></tr></table></figure>
-<ul>
-<li>生成博客路径</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir HexoBlog</div><div class="line">cd HexoBlog</div><div class="line">hexo init</div></pre></td></tr></table></figure>
-<ul>
-<li>安装插件</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>插件</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>npm install hexo-deployer-git –save</td>
-<td>向github发布blog</td>
-</tr>
-<tr>
-<td>npm install hexo-generator-feed –save</td>
-<td>添加rss</td>
-</tr>
-</tbody>
-</table>
-<h1 id="各种配置"><a href="#各种配置" class="headerlink" title="各种配置"></a>各种配置</h1><ul>
-<li>_config.yml</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">title: 菜菜园子 </div><div class="line">author: cailei</div><div class="line">language: zh-Hans</div><div class="line"></div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:caileiGTD/caileiGTD.github.io.git</div><div class="line">  branch: master</div><div class="line"></div><div class="line">rss: /atom.xml</div></pre></td></tr></table></figure>
-<ul>
-<li><p>添加头像themes/next/source/images/avatar.jpg</p>
-</li>
-<li><p>themes/next/_config.yml</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">avatar: /images/avatar.jpg</div><div class="line"></div><div class="line">menu:</div><div class="line">  home: /</div><div class="line">  categories: /categories</div><div class="line">  archives: /archives</div><div class="line">  </div><div class="line">scheme: Mist</div></pre></td></tr></table></figure>
-<ul>
-<li>默认post模板添加categories, scaffolds/post.md</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: &#123;&#123; title &#125;&#125;</div><div class="line">date: &#123;&#123; date &#125;&#125;</div><div class="line">categories:</div><div class="line">tags:</div><div class="line">---</div></pre></td></tr></table></figure>
-<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><p>hexo n “文章名”<br>hexo p (publish)<br>hexo g (generate)<br>hexo s (server)<br>hexo d (deploy)</p>
-<h1 id="删除HelloWorld"><a href="#删除HelloWorld" class="headerlink" title="删除HelloWorld"></a>删除HelloWorld</h1><p>hexo安装好后有个HelloWorld的post，现在将其删除</p>
-<ul>
-<li>delete source/_post/HelloWorld.md</li>
-<li>hexo clean</li>
-<li>hexo generate</li>
-</ul>
-<h1 id="坑爹"><a href="#坑爹" class="headerlink" title="坑爹"></a>坑爹</h1><p>开始时点categories显示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Cannot GET XXX</div></pre></td></tr></table></figure>
-<p>然后查到了 <a href="http://darren90.github.io/2015/08/01/Hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/" target="_blank" rel="external">这篇文章</a> 其中对 <code>source/categories/index.md</code> 文件中的内容写的如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">layout: categories</div><div class="line">title: categories</div><div class="line">---</div></pre></td></tr></table></figure>
-<p>照着修改后，解决了 <code>Cannot GET XXX</code> 的问题，但是categories点进去还是一片空白，于是又查到了 <a href="https://segmentfault.com/q/1010000002561642" target="_blank" rel="external">另一篇文章</a></p>
-<p>实际上 <code>source/categories/index.md</code> 的内容应该如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">title: categories</div><div class="line">type: &quot;categories&quot;</div><div class="line">---</div></pre></td></tr></table></figure>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><table>
-<thead>
-<tr>
-<th>url</th>
-<th>解决的问题</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://xiaodev.cn/2015/08/12/github-hexo搭建博客/" target="_blank" rel="external">http://xiaodev.cn/2015/08/12/github-hexo搭建博客/</a></td>
-<td>mac osx下搭建</td>
-</tr>
-<tr>
-<td><a href="https://segmentfault.com/a/1190000002632530" target="_blank" rel="external">https://segmentfault.com/a/1190000002632530</a></td>
-<td>rss</td>
-</tr>
-<tr>
-<td><a href="https://segmentfault.com/q/1010000002561642" target="_blank" rel="external">https://segmentfault.com/q/1010000002561642</a></td>
-<td>categories, tags</td>
-</tr>
-</tbody>
-</table>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;hexo-next-github搭建Blog&quot;&gt;&lt;a href=&quot;#hexo-next-github搭建Blog&quot; class=&quot;headerlink&quot; title=&quot;hexo, next, github搭建Blog&quot;&gt;&lt;/a&gt;hexo, next, github搭建Blog&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;下载并安装&lt;a href=&quot;https://nodejs.org/en/&quot;&gt;node.js&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;安装hexo&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="杂项" scheme="http://yoursite.com/categories/%E6%9D%82%E9%A1%B9/"/>
     
     
   </entry>
