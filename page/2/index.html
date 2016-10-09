@@ -237,6 +237,178 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/21/09-Displaying-Lists-with-RecyclerView/" itemprop="url">
+                  09. Displaying Lists with RecyclerView
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-21T18:49:56+08:00" content="2016-09-21">
+              2016-09-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>先感慨下，再笔记。<br>2016.09.21早上7：00不到起床，直奔环保新房，原本想投资一个车位，经过一早上的勘查，基于以下原因，这一期的车位暂时不投资购买了。</p>
+<ol>
+<li>可预见的近几年内很难有机会过去住</li>
+<li>宁可买个外地牌，也不太可能买新能源，也就不存在安装充电桩的问题</li>
+<li>开盘的产权车位仅仅不到1/5，而且我家楼下居然没有，还要在地下走个小5分钟才能上楼</li>
+<li>销售态度极其恶劣</li>
+</ol>
+<p>好吧这Blog主要记录android，上面只是留个备案，如果5年内，车位价格大涨，再次证明我眼光之差的话。我觉得我在退休前，依然还能有2到3次机会做出重大投资决定，到时候要坚定地吸取教训。</p>
+<p>下午本不想去公司了，可是想想确实手头还有事情。帮新人review code，花费的时间远比我自己想的多。还要自己动脑想下大致的实现。结果一下午就过去了。</p>
+<p>晚上真TM累，但是约定好的一章android还没有看！！！而且这章东西还挺多，如果说ios 60%以上都在和tableview打交道，那么recyclerview应该就是android里的tableview了。</p>
+<p>所以，在放松的打了1小时3局SC后（这个纯属精神上需要放松、快感），依然开始看书，然后自己开始敲code，的确概念还是比较多的，看完书敲code远没有前几章来的行云流水，是不是忘记了还要再书里再查找。<font color="Red"><strong>不过这样强迫自己多记住一点的方法，我感觉进步是最快的</strong></font></p>
+<p>然后android很不给力的有2个小坑，害我躺倒床上了，又起来两、三次验证自己的想法。最终搞定，满意睡去… …</p>
+<h1 id="下面开始正文："><a href="#下面开始正文：" class="headerlink" title="下面开始正文："></a>下面开始正文：</h1><p>activity 托管 fragment 代码大同小异，放到abstract class中了。(实际就是给fragment_container找对fragment)</p>
+<p>fragment里包含RecyclerView</p>
+<font color="Orange"><br>android studio中输入是模糊匹配，所以要输入<code>android.support.v7.widget.RecyclerView</code>可以输入&lt; a v7 re，然后tab键，或enter键，或者上下再选一下就好了<br></font>
+
+<font color="Green"><br>android.support.v7.widget.RecyclerView<br><br>RelativeLayout<br><br>android:layout_alignXXXXX    (ParentRight)<br><br>android:layout_toXXXXXof    (Left)<br><br>android:layout_XXXXX        (below)<br></font>
+
+<p>对于每个cell，<code>list_item_crime.xml</code></p>
+<p>对于fragment，<code>fragment_crime_list.xml</code></p>
+<p>对于activity，继承自 <code>SingleFragmentActivity</code></p>
+<h1 id="fragment"><a href="#fragment" class="headerlink" title="fragment"></a>fragment</h1><h2 id="为RecyclerView设置LayoutManager，布局用"><a href="#为RecyclerView设置LayoutManager，布局用" class="headerlink" title="为RecyclerView设置LayoutManager，布局用"></a>为RecyclerView设置LayoutManager，布局用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@Nullable</div><div class="line">@Override</div><div class="line">public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) &#123;</div><div class="line">    View view = inflater.inflate(R.layout.fragment_crime_list, container, false);</div><div class="line">    mRecyclerView = (RecyclerView)view.findViewById(R.id.crime_recycler_view);</div><div class="line">    mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));</div><div class="line"></div><div class="line">    return view;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<font color="Green"><br>LinearLayoutManager 继承自-&gt; LayoutManager<br><br>GridLayoutManager 继承自-&gt; LayoutManager<br></font>
+
+<h2 id="生成Adapter，并将其set给RecyclerView"><a href="#生成Adapter，并将其set给RecyclerView" class="headerlink" title="生成Adapter，并将其set给RecyclerView"></a>生成Adapter，并将其set给RecyclerView</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">CrimeLab crimeLab = CrimeLab.get(getActivity());</div><div class="line">List&lt;Crime&gt; crimes = crimeLab.getCrimes();</div><div class="line"></div><div class="line">mAdapter = new CrimeAdapter(crimes);</div><div class="line">mCrimeRecyclerView.setAdapter(mAdapter);</div></pre></td></tr></table></figure>
+<h1 id="ViewHolder"><a href="#ViewHolder" class="headerlink" title="ViewHolder"></a>ViewHolder</h1><h2 id="找到相应的UI-View，并bind数据和视图"><a href="#找到相应的UI-View，并bind数据和视图" class="headerlink" title="找到相应的UI View，并bind数据和视图"></a>找到相应的UI View，并bind数据和视图</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public void bindData(Crime crime) &#123;</div><div class="line">          mCrime = crime;</div><div class="line">          mTitleTextView.setText(mCrime.getTitle());</div><div class="line">          mDateTextView.setText(mCrime.getDate().toString());</div><div class="line">          mSolvedCheckBox.setChecked(mCrime.isSolved());</div><div class="line">      &#125;</div></pre></td></tr></table></figure>
+<h1 id="Adaptor"><a href="#Adaptor" class="headerlink" title="Adaptor"></a>Adaptor</h1><h2 id="实现各个代理接口"><a href="#实现各个代理接口" class="headerlink" title="实现各个代理接口"></a>实现各个代理接口</h2><p>Adaptor的声明：<code>private class CrimeAdapter extends RecyclerView.Adapter&lt;CrimeHolder&gt;</code></p>
+<p><code>public CrimeHolder onCreateViewHolder(ViewGroup parent, int viewType)</code> 取出cell对应的ViewHolder, ViewHolder负责cell的重用</p>
+<p><code>public void onBindViewHolder(CrimeHolder holder, int position)</code> 对新的 or 重用的cell做数据绑定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">      public CrimeHolder onCreateViewHolder(ViewGroup parent, int viewType) &#123;</div><div class="line">          LayoutInflater layoutInflater = LayoutInflater.from(getActivity());</div><div class="line">          View view = layoutInflater.inflate(R.layout.list_item_crime, parent, false);</div><div class="line">          return new CrimeHolder(view);</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      @Override</div><div class="line">      public void onBindViewHolder(CrimeHolder holder, int position) &#123;</div><div class="line">          Crime crime = mCrimes.get(position);</div><div class="line">          holder.bindCrime(crime);</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      @Override</div><div class="line">      public int getItemCount() &#123;</div><div class="line">          return mCrimes.size();</div><div class="line">      &#125;</div></pre></td></tr></table></figure>
+<h1 id="开始坑爹"><a href="#开始坑爹" class="headerlink" title="开始坑爹"></a>开始坑爹</h1><h2 id="cell的高度"><a href="#cell的高度" class="headerlink" title="cell的高度"></a>cell的高度</h2><p>自己猛敲了一通代码后，编译一次通过，觉得应该问题不大。运行后看到若干全屏的cell。看来</p>
+<ol>
+<li>模块整体没啥问题</li>
+<li>遗漏的某些细节</li>
+</ol>
+<p>尝试解决如下：</p>
+<ol>
+<li>再次看书，回想每个细节 （貌似细节都注意了，也没有什么不对的啊）</li>
+<li>仔细对比书上code和自己code中可能影响cell高度的代码，尤其是wrap_content, match_parent这种 （也没看出所以然）</li>
+<li>躺着闭眼思考，貌似我这每个cell占了全屏啊？再看看代码 <code>list_item_crime.xml</code> 里 RelativeLayout宽高果然是match_parent，改成wrap_content，✌️，搞定。但我明明跟着随书code仔细的对过了啊，虽然文件、类、布局命名不同，但是这些细节我应该不至于漏掉。</li>
+<li>再看随书代码，里面 <code>list_item_crime.xml</code> 里 RelativeLayout宽高局然也是match_parent！！！这，为啥，为啥，为啥。只能继续躺下思考，再过一遍流程。</li>
+</ol>
+<font color="Red"><br><strong>结论</strong><br><br>随书例子用的RecyclerView： <code>com.android.support:recyclerview-v7:22.1.0</code><br><br>而我用的：<code>com.android.support:recyclerview-v7:24.2.1</code><br><br></font>
+
+<p>替换后果然正常了，当然最最正确的，复合逻辑的，还是应该把item_cell根布局设置为wrap_content</p>
+<h2 id="多种不同类型的cell"><a href="#多种不同类型的cell" class="headerlink" title="多种不同类型的cell"></a>多种不同类型的cell</h2><p><code>public CrimeHolder onCreateViewHolder(ViewGroup parent, int viewType)</code> 中，第二个参数 <code>viewType</code> 引发了我的无限猜想。</p>
+<p>感觉上应该是为了支持不同cell样式而用的。躺下思考，又脑补了一遍流程。能确定的：</p>
+<ul>
+<li>应该对不同的cell类型有不同的ViewHolder，所以应该有类似如下代码才对：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">switch (viewType) &#123;</div><div class="line">	case TypeA:</div><div class="line">		return new ViewHolderA(inflate出来A类型cell的view);</div><div class="line">		break;</div><div class="line">	case TypeB:</div><div class="line">		return new ViewHolderB(inflate出来B类型cell的view);</div><div class="line">		break;</div><div class="line">	... ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>但是list中每个item都可能有不同的类型Type，怎么区别那个item用哪个类型呢？</li>
+</ul>
+<p>想了半天觉得一定缺少什么东西，把item和类型信息告诉给adaptor，于是又起来上网search，哇哈，原来Adaptor还有个接口 <code>@Override public int getItemViewType(int position)</code> 针对item的position给出相应的type。</p>
+<p>但是又有个问题想不通了，虽然 <code>onCreateViewHolder</code> 确实对每个 type (也就是list中每个item所需的type) 返回了不同的 ViewHolder。</p>
+<p>但 <code>@Override public void onBindViewHolder(CrimeHolder holder, int position)</code> 还要根据不同的position，获得不同的type，然后决定第一个参数传入的是哪种 ViewHolder 再调用相应的方法？</p>
+<p>所以，此处第一个参数不应该是特定的ViewHolder (此处为CrimeHolder) 而最好是ViewHolder的一个子类，但却是所有支持type的ViewHolder的父类，有一个需要继承的方法叫 <code>bindData(Object data)</code></p>
+<p>目前能想到的也就是这样解决了。 </p>
+<p>又想到一点： <strong>position 相当于 indexpath.row ，type相当于deque用到的identifier </strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/20/08-Creating-User-Interfaces-with-Layouts-and-Widgets/" itemprop="url">
                   08. Creating User Interfaces with Layouts and Widgets
                 </a>
@@ -1421,125 +1593,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/13/Android-Programming-计划-总纲/" itemprop="url">
-                  初级Android程序员 计划 & 总纲
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-13T16:49:09+08:00" content="2016-09-13">
-              2016-09-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h1><p>9月15日 - 10月31日</p>
-<ol>
-<li>每天一章 《Android Programming - The Big Nerd Ranch Guide, 2nd Edition》，包括手敲代码</li>
-<li>在[1]完成后，花1周通览一遍《疯狂Android讲义，第三版》</li>
-</ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/13/Android-Programming-计划-总纲/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1585,7 +1638,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1599,6 +1652,13 @@
             </div>
           
 
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
           
 
         </nav>

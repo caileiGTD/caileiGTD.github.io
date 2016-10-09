@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-27T09:44:38.000Z</updated>
+  <updated>2016-10-08T03:27:50.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,13 +16,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>国庆回来</title>
+    <link href="http://yoursite.com/2016/10/08/%E5%9B%BD%E5%BA%86%E5%9B%9E%E6%9D%A5/"/>
+    <id>http://yoursite.com/2016/10/08/国庆回来/</id>
+    <published>2016-10-08T03:23:08.000Z</published>
+    <updated>2016-10-08T03:27:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>国庆回来，满满的罪恶感，本来计划在家里好好看书学习的。但是确实没有心情与心境。放纵一天，干脆破罐子破摔，整个假期就是吃、喝、玩、乐。书不仅一页未读，甚至把节前看的还回去了一多半。</p>
+<p>好在做笔记就这点好处，你可以快速的回顾一遍之前的重点。</p>
+<p>人老了，记性不好，只能靠规矩来加强自己的战斗点数了。</p>
+<p>所以节后回来，花一天的时间回顾一下之前的章节，然后需要抓紧开始下面的部分。</p>
+<p>Flux架构的理解与应用又提到一个紧张的日程之上了 ~~~ 好在最终决定android暂时先不大规模重构，也算有口喘息之机吧。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;国庆回来，满满的罪恶感，本来计划在家里好好看书学习的。但是确实没有心情与心境。放纵一天，干脆破罐子破摔，整个假期就是吃、喝、玩、乐。书不仅一页未读，甚至把节前看的还回去了一多半。&lt;/p&gt;
+&lt;p&gt;好在做笔记就这点好处，你可以快速的回顾一遍之前的重点。&lt;/p&gt;
+&lt;p&gt;人老了，记
+    
+    </summary>
+    
+    
+      <category term="杂项" scheme="http://yoursite.com/tags/%E6%9D%82%E9%A1%B9/"/>
+    
+  </entry>
+  
+  <entry>
     <title>17. Two-Pane Master-Detail Interfaces</title>
     <link href="http://yoursite.com/2016/09/27/17-Two-Pane-Master-Detail-Interfaces/"/>
     <id>http://yoursite.com/2016/09/27/17-Two-Pane-Master-Detail-Interfaces/</id>
     <published>2016-09-27T08:11:33.000Z</published>
-    <updated>2016-09-27T09:44:38.000Z</updated>
+    <updated>2016-10-08T04:31:08.000Z</updated>
     
-    <content type="html"><![CDATA[<p>今天的最后一张，这张应该蛮有意思，但是应该只是展示了用fragment的好处。也就一并看了。</p>
+    <content type="html"><![CDATA[<p>今天的最后一章，这章应该蛮有意思，但是应该只是展示了用fragment的好处。也就一并看了。</p>
 <p>别名，这样相同的R.layout.XXXXX对于不同的环境就能inflate出不同layout.xml了。</p>
 <p>refs.xml，用以前的 <code>activity_fragment</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;resources&gt;</div><div class="line">    &lt;item name=&quot;activity_masterdetail&quot; type=&quot;layout&quot;&gt;@layout/activity_fragment&lt;/item&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure>
@@ -36,7 +63,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;今天的最后一张，这张应该蛮有意思，但是应该只是展示了用fragment的好处。也就一并看了。&lt;/p&gt;
+      &lt;p&gt;今天的最后一章，这章应该蛮有意思，但是应该只是展示了用fragment的好处。也就一并看了。&lt;/p&gt;
 &lt;p&gt;别名，这样相同的R.layout.XXXXX对于不同的环境就能inflate出不同layout.xml了。&lt;/p&gt;
 &lt;p&gt;refs.xml，用以前的 &lt;code&gt;ac
     
@@ -87,10 +114,10 @@
     <link href="http://yoursite.com/2016/09/27/15-Implicit-Intents/"/>
     <id>http://yoursite.com/2016/09/27/15-Implicit-Intents/</id>
     <published>2016-09-27T04:20:41.000Z</published>
-    <updated>2016-09-27T07:37:36.000Z</updated>
+    <updated>2016-10-08T04:29:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>好吧，不得不说这章其实意义也不大。对于本章来说，知道可以干什么，远比怎么干重要，因为怎么干并不复杂，在用到的时候去了解就哦了 ~</p>
-<font color="Green"><br><strong>跳转网页</strong>：<code>Intent.ACTION_VIEW，URL</code><br><br><strong>发消息</strong>：有若干可选的activity都可以干发送消息这件事，eg，sms，邮件，微信。<code>Intent.ACTION_SEND，EXTRA_TEXT，EXTRA_SUBJECT</code><br><br><strong>设置每次都要选</strong>：Intent.createChooser(…)<br><br><strong>获取联系人</strong>：Intent.ACTION_PICK，ContactsContract.Contacts.CONTENT_URI<br><br>通过<code>ContentResolver</code>访问<code>ContentProvider</code><br><br><strong>检查是否有可相应的Activity</strong>：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">final Intent pickContact = new Intent(Intent.ACTION_PICK,</div><div class="line">                ContactsContract.Contacts.CONTENT_URI);</div></pre></td></tr></table></figure><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">PackageManager packageManager = getActivity().getPackageManager();</div><div class="line">   if (packageManager.resolveActivity(pickContact,</div><div class="line">           PackageManager.MATCH_DEFAULT_ONLY) == null) &#123;</div><div class="line">       mSuspectButton.setEnabled(false);</div><div class="line">   &#125;</div></pre></td></tr></table></figure><br><br>模拟一个PackageManager找不到适当Activity的情况pickContact.addCategory(Intent.CATEGORY_HOME);<br><br><strong>打电话</strong>：Intent.ACTION_DIAL,Intent.ACTION_CALL<br></font>]]></content>
+<font color="Green"><br><strong>跳转网页</strong>：<code>Intent.ACTION_VIEW，URL</code><br><br><strong>发消息</strong>：有若干可选的activity都可以干发送消息这件事，eg，sms，邮件，微信。<code>Intent.ACTION_SEND，EXTRA_TEXT，EXTRA_SUBJECT</code><br><br><strong>设置每次都要选</strong>：Intent.createChooser(…)<br><br><strong>获取联系人</strong>：Intent.ACTION_PICK，ContactsContract.Contacts.CONTENT_URI<br><br>通过<code>ContentResolver</code>访问<code>ContentProvider</code><br><br><strong>检查是否有可响应的Activity</strong>：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">final Intent pickContact = new Intent(Intent.ACTION_PICK,</div><div class="line">                ContactsContract.Contacts.CONTENT_URI);</div></pre></td></tr></table></figure><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">PackageManager packageManager = getActivity().getPackageManager();</div><div class="line">   if (packageManager.resolveActivity(pickContact,</div><div class="line">           PackageManager.MATCH_DEFAULT_ONLY) == null) &#123;</div><div class="line">       mSuspectButton.setEnabled(false);</div><div class="line">   &#125;</div></pre></td></tr></table></figure><br><br>模拟一个PackageManager找不到适当Activity的情况pickContact.addCategory(Intent.CATEGORY_HOME);<br><br><strong>打电话</strong>：Intent.ACTION_DIAL,Intent.ACTION_CALL<br></font>]]></content>
     
     <summary type="html">
     
@@ -194,13 +221,13 @@
     <link href="http://yoursite.com/2016/09/25/13-The-Toolbar/"/>
     <id>http://yoursite.com/2016/09/25/13-The-Toolbar/</id>
     <published>2016-09-25T14:17:27.000Z</published>
-    <updated>2016-09-26T02:42:58.000Z</updated>
+    <updated>2016-10-08T04:25:33.000Z</updated>
     
     <content type="html"><![CDATA[<p>说实话，感觉这章用处不大，所以看过书了之后，脑子里再过一遍。就没有再去码砖。</p>
 <font color="Green"><br>AppCompatActivity<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;plurals name=&quot;subtitle_plural&quot;&gt;</div><div class="line">	&lt;item quantity=&quot;one&quot;&gt;%1$s crime&lt;/item&gt;</div><div class="line">	&lt;item quantity=&quot;other&quot;&gt;%1$s crimes&lt;/item&gt;</div><div class="line">&lt;/plurals&gt;</div></pre></td></tr></table></figure><br><br>getResources().getQuantityString(R.plurals.subtitle_plural, crimeSize, crimeSize);<br></font>
 
 <p>说实话，确实不太理解，android转个屏幕还要考虑那么多需要save的东西，不过想想ios上旋转屏幕的处理部分，也是相当相当麻烦的啊</p>
-<p>好吧，实际上这章真的是粗略的一看，下面证据 <code>在我们的android工程中搜索onCreateOptionsMenu，找到0个匹配</code> 基本证明了我的想法，显示App中应该不会用到系统的这个难用的Toolbar，这样多少让我心情好了一些，等真正用到的时候再好好研究下，至少这块现在不是重点！ </p>
+<p>好吧，实际上这章真的是粗略的一看，下面证据 <code>在我们的android工程中搜索onCreateOptionsMenu，找到0个匹配</code> 基本证明了我的想法，现实App中应该不会用到系统的这个难用的Toolbar，这样多少让我心情好了一些，等真正用到的时候再好好研究下，至少这块现在不是重点！ </p>
 ]]></content>
     
     <summary type="html">
@@ -255,7 +282,7 @@
     <link href="http://yoursite.com/2016/09/23/11-Using-ViewPager/"/>
     <id>http://yoursite.com/2016/09/23/11-Using-ViewPager/</id>
     <published>2016-09-23T02:16:32.000Z</published>
-    <updated>2016-09-23T08:32:15.000Z</updated>
+    <updated>2016-10-08T04:14:58.000Z</updated>
     
     <content type="html"><![CDATA[<p>人被掏空的感觉啊 ~~~</p>
 <p>今天的ViewPager又是重点，而且目测这周六、日的章节也都是重点章节。不过顶过这周应该就好很多了。话说工作日基本有稳定的输出，反而周六、日比较担心，还得伺候老的小的，偶尔还约着caib们打打sc。</p>
@@ -271,7 +298,7 @@
 <p><strong> FragmentPagerAdapter </strong> : 对于不用的fragment, 调用detach(Fragment)方法，只销毁了fragment视图，fragment实例还保留在FragmentManager中。</p>
 <font color="Orange"><br>可以以代码方式创建布局<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ViewPager vp = new ViewPager(this);</div><div class="line">setContentView(vp);</div></pre></td></tr></table></figure><br><br>但是google并不推荐，所以不要怕麻烦，写个xml布局文件<br></font>
 
-<font color="Red"><br>再次说明了命名相当重要<br><br># 1. Java文件命名<br>SingleFragmentActivity<br><br>- CrimeListActivity<br><br>    CrimeListFragment<br><br>- CrimeActivity<br><br>    CrimeFragment<br><br>- CrimePagerActivity<br><br>    CrimeFragment<br><br><br># 2. Layout文件命名<br><strong>activity_fragment</strong> 对应 <code>SingleFragmentActivity</code><br><br>由于 <code>CrimeListActivity</code> 继承自 <code>SingleFragmentActivity</code>，所以没有对应的layout.xml<br><br><strong>fragment_crime_list</strong> 对应 <code>CrimeListFragment</code><br><br><strong>activity_crime_pager</strong> 对应 <code>CrimePagerActivity</code><br><br>由于 <code>CrimeActivity</code> 继承自 <code>SingleFragmentActivity</code>，所以没有对应的layout.xml<br><br><strong>fragment_crime</strong> 对应 <code>CrimeFragment</code><br><br><strong>list_item_crime.xml</strong> 对应tableview中的一个cell<br><br># 3. @id命名<br><strong>activity_fragment</strong>里：<font color="Green">@+id/fragment_container</font>
+<font color="Red"><br>再次说明了命名相当重要<br><br># 1. Java文件命名<br><br>SingleFragmentActivity<br><br>- CrimeListActivity<br><br>    CrimeListFragment<br><br>- CrimeActivity<br><br>    CrimeFragment<br><br>- CrimePagerActivity<br><br>    CrimeFragment<br><br><br># 2. Layout文件命名<br><br><strong>activity_fragment</strong> 对应 <code>SingleFragmentActivity</code><br><br>由于 <code>CrimeListActivity</code> 继承自 <code>SingleFragmentActivity</code>，所以没有对应的layout.xml<br><br><strong>fragment_crime_list</strong> 对应 <code>CrimeListFragment</code><br><br><strong>activity_crime_pager</strong> 对应 <code>CrimePagerActivity</code><br><br>由于 <code>CrimeActivity</code> 继承自 <code>SingleFragmentActivity</code>，所以没有对应的layout.xml<br><br><strong>fragment_crime</strong> 对应 <code>CrimeFragment</code><br><br><strong>list_item_crime.xml</strong> 对应tableview中的一个cell<br><br># 3. @id命名<br><br><strong>activity_fragment</strong>里：<font color="Green">@+id/fragment_container</font>
 
 <p><strong>fragment_crime_list</strong>里：<font color="Green">@+id/crime_recycler_view</font></p>
 <p><strong>activity_crime_pager</strong>里：<font color="Green">@+id/activity_crime_pager_view_pager</font></p>
@@ -283,19 +310,19 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public static Intent newInIntent(Context packageContext, UUID crimeId) &#123;</div><div class="line">    Intent intent = new Intent(packageContext, CrimeActivity.class);</div><div class="line">    intent.putExtra(EXTRA_IN_CRIME_ID, crimeId);</div><div class="line">    return intent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="6-bundle传入参数key值"><a href="#6-bundle传入参数key值" class="headerlink" title="6. bundle传入参数key值"></a>6. bundle传入参数key值</h1><p>在 <code>CrimeFragment</code> 里：(BUNDLE_IN_XXXXX)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BUNDLE_IN_CRIME_ID = &quot;bundle.in.crime.id&quot;;</div></pre></td></tr></table></figure>
-<h1 id="6-fragment传入参数用的newInstance-…-静态方法"><a href="#6-fragment传入参数用的newInstance-…-静态方法" class="headerlink" title="6. fragment传入参数用的newInstance(…)静态方法"></a>6. fragment传入参数用的newInstance(…)静态方法</h1><p>在 <code>CrimeFragment</code> 里：(newInstance(…))</p>
+<h1 id="7-fragment传入参数用的newInstance-…-静态方法"><a href="#7-fragment传入参数用的newInstance-…-静态方法" class="headerlink" title="7. fragment传入参数用的newInstance(…)静态方法"></a>7. fragment传入参数用的newInstance(…)静态方法</h1><p>在 <code>CrimeFragment</code> 里：(newInstance(…))</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public static CrimeFragment newInstance(UUID crimeId) &#123;</div><div class="line">    Bundle args = new Bundle();</div><div class="line">    args.putSerializable(BUNDLE_IN_CRIME_ID, crimeId);</div><div class="line"></div><div class="line">    CrimeFragment fragment = new CrimeFragment();</div><div class="line">    fragment.setArguments(args);</div><div class="line">    return fragment;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>之后在 <code>CrimeFragment</code> 里获取</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UUID cid = (UUID)getArguments().getSerializable(BUNDLE_IN_CRIME_ID);</div></pre></td></tr></table></figure>
-<h1 id="7-activity-调用方-接收返回值时用的-int-requestCode"><a href="#7-activity-调用方-接收返回值时用的-int-requestCode" class="headerlink" title="7. activity 调用方 接收返回值时用的 int requestCode"></a>7. activity 调用方 接收返回值时用的 int requestCode</h1><p>在 <code>CrimeListFragment</code> 里：(REQUEST_CODE_XXXXX)</p>
+<h1 id="8-activity-调用方-接收返回值时用的-int-requestCode"><a href="#8-activity-调用方-接收返回值时用的-int-requestCode" class="headerlink" title="8. activity 调用方 接收返回值时用的 int requestCode"></a>8. activity 调用方 接收返回值时用的 int requestCode</h1><p>在 <code>CrimeListFragment</code> 里：(REQUEST_CODE_XXXXX)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private static final int REQUEST_CODE_CRIME_TITLE = 0;</div></pre></td></tr></table></figure>
 <p>在接收方 <code>CrimeListFragment</code> 里：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public void onActivityResult(int requestCode, int resultCode, Intent data) &#123;</div><div class="line">       super.onActivityResult(requestCode, resultCode, data);</div><div class="line">       if (resultCode == Activity.RESULT_CANCELED) &#123;</div><div class="line">           return;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       if (requestCode == REQUEST_CODE_CRIME_TITLE) &#123;</div><div class="line">           String s = CrimeActivity.crimeTitleFromOutIntent(data);</div><div class="line">           Log.e(&quot;CrimeListFragment&quot;, s);</div><div class="line">       &#125;</div><div class="line">       mAdapter.notifyDataSetChanged();</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<h1 id="8-activity-被调用方-返回值intent里的参数的key"><a href="#8-activity-被调用方-返回值intent里的参数的key" class="headerlink" title="8. activity 被调用方 返回值intent里的参数的key"></a>8. activity 被调用方 返回值intent里的参数的key</h1><p>在 <code>CrimeActivity</code> 里：(EXTRA_OUT_XXXXX)</p>
+<h1 id="9-activity-被调用方-返回值intent里的参数的key"><a href="#9-activity-被调用方-返回值intent里的参数的key" class="headerlink" title="9. activity 被调用方 返回值intent里的参数的key"></a>9. activity 被调用方 返回值intent里的参数的key</h1><p>在 <code>CrimeActivity</code> 里：(EXTRA_OUT_XXXXX)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private static final String EXTRA_OUT_CRIME_TITLE = &quot;extra.out.crime.title&quot;;</div></pre></td></tr></table></figure>
-<h1 id="9-activity-被调用方-生成返回值的newIntent-…-静态方法"><a href="#9-activity-被调用方-生成返回值的newIntent-…-静态方法" class="headerlink" title="9. activity 被调用方 生成返回值的newIntent(…)静态方法"></a>9. activity 被调用方 生成返回值的newIntent(…)静态方法</h1><p>在 <code>CrimeActivity</code> 里：(newOutIntent(…))</p>
+<h1 id="10-activity-被调用方-生成返回值的newIntent-…-静态方法"><a href="#10-activity-被调用方-生成返回值的newIntent-…-静态方法" class="headerlink" title="10. activity 被调用方 生成返回值的newIntent(…)静态方法"></a>10. activity 被调用方 生成返回值的newIntent(…)静态方法</h1><p>在 <code>CrimeActivity</code> 里：(newOutIntent(…))</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public static Intent newOutIntent(String s) &#123;</div><div class="line">    Intent intent = new Intent();</div><div class="line">    intent.putExtra(EXTRA_OUT_CRIME_TITLE, s);</div><div class="line">    return intent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="9-activity-被调用方-帮助解析返回Intent-…-静态方法"><a href="#9-activity-被调用方-帮助解析返回Intent-…-静态方法" class="headerlink" title="9. activity 被调用方 帮助解析返回Intent(…)静态方法"></a>9. activity 被调用方 帮助解析返回Intent(…)静态方法</h1><p>在 <code>CrimeActivity</code> 里：(xxxxxFromOutIntent(…))</p>
+<h1 id="11-activity-被调用方-帮助解析返回Intent-…-静态方法"><a href="#11-activity-被调用方-帮助解析返回Intent-…-静态方法" class="headerlink" title="11. activity 被调用方 帮助解析返回Intent(…)静态方法"></a>11. activity 被调用方 帮助解析返回Intent(…)静态方法</h1><p>在 <code>CrimeActivity</code> 里：(xxxxxFromOutIntent(…))</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public static String crimeTitleFromOutIntent(Intent intent) &#123;</div><div class="line">       return intent.getStringExtra(EXTRA_OUT_XXXXX);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
 <p></p></font><p></p>
 ]]></content>
@@ -319,7 +346,7 @@
     <link href="http://yoursite.com/2016/09/22/10-Using-Fragment-Arguments/"/>
     <id>http://yoursite.com/2016/09/22/10-Using-Fragment-Arguments/</id>
     <published>2016-09-22T06:37:50.000Z</published>
-    <updated>2016-09-23T02:00:52.000Z</updated>
+    <updated>2016-10-08T03:59:18.000Z</updated>
     
     <content type="html"><![CDATA[<p>由 CrimeListFragment 加载 CrimeActivity，并接受return值</p>
 <h1 id="在CrimeListFragment里"><a href="#在CrimeListFragment里" class="headerlink" title="在CrimeListFragment里"></a>在CrimeListFragment里</h1><h2 id="处理return相关"><a href="#处理return相关" class="headerlink" title="处理return相关"></a>处理return相关</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private static final int REQUEST_CRIME_ACTIVITY_CODE = 0;</div></pre></td></tr></table></figure>
@@ -327,7 +354,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">startActivityForResult(intent, REQUEST_CRIME_ACTIVITY_CODE);</div></pre></td></tr></table></figure>
 <h2 id="intent参数"><a href="#intent参数" class="headerlink" title="intent参数"></a>intent参数</h2><p>从CrimeActivity来构建Intent</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Intent intent = CrimeActivity.newIntent(getActivity(), data.getmId());</div></pre></td></tr></table></figure>
-<h1 id="在CrimeActivity里"><a href="#在CrimeActivity里" class="headerlink" title="在CrimeActivity里"></a>在CrimeActivity里</h1><h2 id="帮助处理返回"><a href="#帮助处理返回" class="headerlink" title="帮助处理返回"></a>帮助处理返回</h2><p>在CrimeListFragment.onActivityResult或许result用到</p>
+<h1 id="在CrimeActivity里"><a href="#在CrimeActivity里" class="headerlink" title="在CrimeActivity里"></a>在CrimeActivity里</h1><h2 id="帮助处理返回"><a href="#帮助处理返回" class="headerlink" title="帮助处理返回"></a>帮助处理返回</h2><p>在CrimeListFragment.onActivityResult获取result用到</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public static String returnString(Intent intent) &#123;</div><div class="line">       return intent.getStringExtra(RETURN_STRING);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
 <h2 id="帮助构建Intent参数"><a href="#帮助构建Intent参数" class="headerlink" title="帮助构建Intent参数"></a>帮助构建Intent参数</h2><p>在CrimeListFragment需要 <code>startActivityForResult(intent, REQUEST_CRIME_ACTIVITY_CODE);</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public static Intent newIntent(Context packageContext, UUID cid) &#123;</div><div class="line">    Intent intent = new Intent(packageContext, CrimeActivity.class);</div><div class="line">    intent.putExtra(EXTRA_CRIME_ID, cid);</div><div class="line">    return intent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -864,258 +891,6 @@
     <summary type="html">
     
       &lt;p&gt;需求截图:&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="android" scheme="http://yoursite.com/categories/android/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>初级Android程序员 计划 &amp; 总纲</title>
-    <link href="http://yoursite.com/2016/09/13/Android-Programming-%E8%AE%A1%E5%88%92-%E6%80%BB%E7%BA%B2/"/>
-    <id>http://yoursite.com/2016/09/13/Android-Programming-计划-总纲/</id>
-    <published>2016-09-13T08:49:09.000Z</published>
-    <updated>2016-09-14T07:56:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h1><p>9月15日 - 10月31日</p>
-<ol>
-<li>每天一章 《Android Programming - The Big Nerd Ranch Guide, 2nd Edition》，包括手敲代码</li>
-<li>在[1]完成后，花1周通览一遍《疯狂Android讲义，第三版》</li>
-</ol>
-<a id="more"></a>
-<h1 id="规矩"><a href="#规矩" class="headerlink" title="规矩"></a>规矩</h1><table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>抒情文字（其实就是絮叨）</td>
-<td>用到markdown里的引用></td>
-</tr>
-<tr>
-<td>正常行文</td>
-<td>default字体颜色</td>
-</tr>
-<tr>
-<td>需要记忆（背下来！）</td>
-<td><font color="Green"> 绿色 </font></td>
-</tr>
-<tr>
-<td>小技巧, Tip</td>
-<td><font color="Orange"> 桔色 </font></td>
-</tr>
-<tr>
-<td>可记可不记，至少混个眼熟</td>
-<td><font color="Blue"> 蓝色 </font></td>
-</tr>
-<tr>
-<td>疑问，留待以后解决</td>
-<td><font color="Red"> 红色 </font></td>
-</tr>
-</tbody>
-</table>
-<h1 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h1><table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>GeoQuiz</td>
-<td>1, 2, 3, 5, 6</td>
-</tr>
-<tr>
-<td>CriminalItent</td>
-<td>7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 33</td>
-</tr>
-<tr>
-<td>BeatBox</td>
-<td>18, 19, 20, 21, 33</td>
-</tr>
-<tr>
-<td>NerdLauncher</td>
-<td>22</td>
-</tr>
-<tr>
-<td>PhotoGallery</td>
-<td>23, 24, 25, 26, 27, 28</td>
-</tr>
-<tr>
-<td>DragAndDraw</td>
-<td>29</td>
-</tr>
-<tr>
-<td>Sunset</td>
-<td>30</td>
-</tr>
-<tr>
-<td>Locatr</td>
-<td>31, 32</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>章节</th>
-<th>重点</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1. Your First Android Application</td>
-<td><a href="https://caileigtd.github.io/2016/09/14/01-Your-First-Android-Application/" target="_blank" rel="external">链接</a></td>
-</tr>
-<tr>
-<td>2. Android and Model-View-Controller</td>
-<td></td>
-</tr>
-<tr>
-<td>3. The Activity Lifecycle</td>
-<td></td>
-</tr>
-<tr>
-<td>4. Debugging Android Apps</td>
-<td></td>
-</tr>
-<tr>
-<td>5. <strong><font color="Red">Your Second Activity</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>6. Android SDK Versions and Compatibility</td>
-<td></td>
-</tr>
-<tr>
-<td>7. <strong><font color="Red">UI Fragments and the Fragment Manager</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>8. Creating User Interfaces with Layouts and Widgets</td>
-<td></td>
-</tr>
-<tr>
-<td>9. <strong><font color="Red">Displaying Lists with RecyclerView</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>10. <strong><font color="Red">Using Fragment Arguments</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>11. <strong><font color="Red">Using ViewPager</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>12. <strong><font color="Red">Dialogs</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>13. <strong><font color="Red">The Toolbar</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>14. SQLite Databases</td>
-<td></td>
-</tr>
-<tr>
-<td>15. <strong><font color="Red">Implicit Intents</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>16. Taking Pictures with Intents</td>
-<td></td>
-</tr>
-<tr>
-<td>17. Two-Pane Master-Detail Interfaces</td>
-<td></td>
-</tr>
-<tr>
-<td>18. Assets</td>
-<td></td>
-</tr>
-<tr>
-<td>19. Audio Playback with SoundPool</td>
-<td></td>
-</tr>
-<tr>
-<td>20. Styles and Themes</td>
-<td></td>
-</tr>
-<tr>
-<td>21. <strong><font color="Red">XML Drawables</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>22. <strong><font color="Red">More About Intents and Tasks</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>23. HTTP &amp; Background Tasks</td>
-<td></td>
-</tr>
-<tr>
-<td>24. <strong><font color="Red">Loppers, Handlers, and HandlerThread</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>25. Search</td>
-<td></td>
-</tr>
-<tr>
-<td>26. Background Services</td>
-<td></td>
-</tr>
-<tr>
-<td>27. <strong><font color="Red">Broadcast Intents</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>28. Browsing the Web and WebView</td>
-<td></td>
-</tr>
-<tr>
-<td>29. <strong><font color="Red">Custom Views and Touch Events</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>30. <strong><font color="Red">Property Animation</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>31. Locations and Play Services</td>
-<td></td>
-</tr>
-<tr>
-<td>32. Maps</td>
-<td></td>
-</tr>
-<tr>
-<td>33. <strong><font color="Red">Material Design</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>34. Afterword</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;计划&quot;&gt;&lt;a href=&quot;#计划&quot; class=&quot;headerlink&quot; title=&quot;计划&quot;&gt;&lt;/a&gt;计划&lt;/h1&gt;&lt;p&gt;9月15日 - 10月31日&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;每天一章 《Android Programming - The Big Nerd Ranch Guide, 2nd Edition》，包括手敲代码&lt;/li&gt;
-&lt;li&gt;在[1]完成后，花1周通览一遍《疯狂Android讲义，第三版》&lt;/li&gt;
-&lt;/ol&gt;
     
     </summary>
     
