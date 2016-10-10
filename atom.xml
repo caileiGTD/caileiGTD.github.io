@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-10-10T09:22:00.000Z</updated>
+  <updated>2016-10-10T10:18:45.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>21. XML drawable</title>
+    <link href="http://yoursite.com/2016/10/10/21-XML-drawable/"/>
+    <id>http://yoursite.com/2016/10/10/21-XML-drawable/</id>
+    <published>2016-10-10T09:23:53.000Z</published>
+    <updated>2016-10-10T10:18:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>诚然这章听上去比较重要，但是实际就是几个文件，xml属性，了解了就OK了。</p>
+<h1 id="shape-drawable-xxx-normal-xml"><a href="#shape-drawable-xxx-normal-xml" class="headerlink" title="shape drawable, xxx_normal.xml"></a>shape drawable, xxx_normal.xml</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">       android:shape=&quot;oval&quot;&gt;</div><div class="line"></div><div class="line">    &lt;solid</div><div class="line">        android:color=&quot;@color/dark_blue&quot;/&gt;</div><div class="line">&lt;/shape&gt;</div></pre></td></tr></table></figure>
+<h1 id="state-list-drawable-xxx-xml"><a href="#state-list-drawable-xxx-xml" class="headerlink" title="state list drawable, xxx.xml"></a>state list drawable, xxx.xml</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;selector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/button_beat_box_pressed&quot;</div><div class="line">          android:state_pressed=&quot;true&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/button_beat_box_normal&quot; /&gt;</div><div class="line">&lt;/selector&gt;</div></pre></td></tr></table></figure>
+<h1 id="layer-list-drawable-xxx-pressed-xml"><a href="#layer-list-drawable-xxx-pressed-xml" class="headerlink" title="layer list drawable, xxx_pressed.xml"></a>layer list drawable, xxx_pressed.xml</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;layer-list xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</div><div class="line">    &lt;item&gt;</div><div class="line">        &lt;shape</div><div class="line">            android:shape=&quot;oval&quot;&gt;</div><div class="line"></div><div class="line">            &lt;solid</div><div class="line">                android:color=&quot;@color/red&quot;/&gt;</div><div class="line">        &lt;/shape&gt;</div><div class="line">    &lt;/item&gt;</div><div class="line">    &lt;item&gt;</div><div class="line">        &lt;shape</div><div class="line">            android:shape=&quot;oval&quot;&gt;</div><div class="line"></div><div class="line">            &lt;stroke</div><div class="line">                android:width=&quot;4dp&quot;</div><div class="line">                android:color=&quot;@color/dark_red&quot;/&gt;</div><div class="line"></div><div class="line">        &lt;/shape&gt;</div><div class="line">    &lt;/item&gt;</div><div class="line">&lt;/layer-list&gt;</div></pre></td></tr></table></figure>
+<p>真正是用的时候，只需如此：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;style name=&quot;BeatBoxButton&quot; parent=&quot;android:style/Widget.Holo.Button&quot;&gt;</div><div class="line">    &lt;item name=&quot;android:background&quot;&gt;@drawable/button_beat_box&lt;/item&gt;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<h1 id="9-patch"><a href="#9-patch" class="headerlink" title=".9 patch"></a>.9 patch</h1><p>top, left标记了图像的可伸缩区域，bottom, right定义了drawable区域，是绘制内容（通常是文字）的地方。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;诚然这章听上去比较重要，但是实际就是几个文件，xml属性，了解了就OK了。&lt;/p&gt;
+&lt;h1 id=&quot;shape-drawable-xxx-normal-xml&quot;&gt;&lt;a href=&quot;#shape-drawable-xxx-normal-xml&quot; class=&quot;headerli
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>20. Styles and Themes</title>
@@ -848,33 +876,6 @@
 &lt;p&gt;Android Lint : Analyze -&amp;gt; Inspect Code&lt;/p&gt;
 &lt;font color=&quot;Red&quot;&gt;&lt;br&gt;怎么用好Lint？现在报的好多错误看不懂啊 ~&lt;br&gt;&lt;/font&gt;
 
-    
-    </summary>
-    
-      <category term="android" scheme="http://yoursite.com/categories/android/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>03. The Activity Lifecycle</title>
-    <link href="http://yoursite.com/2016/09/16/03-The-Activity-Lifecycle/"/>
-    <id>http://yoursite.com/2016/09/16/03-The-Activity-Lifecycle/</id>
-    <published>2016-09-16T13:18:43.000Z</published>
-    <updated>2016-09-18T02:14:03.000Z</updated>
-    
-    <content type="html"><![CDATA[<font color="Green"><br>onCreate()<br><br>onStart()<br><br>onResume()<br><em>*</em><br>onPause()<br><br>onStop()<br><br>onDestroy()<br></font>
-
-<font color="Blue"><br>res -&gt; new Resource Directory -&gt; layout -&gt; orientation -&gt; Landscape<br></font>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onSaveInstanceState(Bundle outState)</div></pre></td></tr></table></figure>
-<font color="Blue"><br>在Bundle中存储和恢复的数据类型只能是primitive type或实现了Serializable或Parcelable接口的对象<br></font>
-
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;font color=&quot;Green&quot;&gt;&lt;br&gt;onCreate()&lt;br&gt;&lt;br&gt;onStart()&lt;br&gt;&lt;br&gt;onResume()&lt;br&gt;&lt;em&gt;*&lt;/em&gt;&lt;br&gt;onPause()&lt;br&gt;&lt;br&gt;onStop()&lt;br&gt;&lt;br&gt;onDestroy()&lt;br&gt;&lt;/fon
     
     </summary>
     

@@ -86,25 +86,19 @@
 
 
 
-<meta name="description" content="计划9月15日 - 10月31日
-
-每天一章 《Android Programming - The Big Nerd Ranch Guide, 2nd Edition》，包括手敲代码
-在[1]完成后，花1周通览一遍《疯狂Android讲义，第三版》">
+<meta name="description" content="诚然这章听上去比较重要，但是实际就是几个文件，xml属性，了解了就OK了。
+shape drawable, xxx_normal.xml123456&amp;lt;shape xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;       android:shape=&amp;quot;oval&amp;quot;&amp;gt;    &amp;lt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初级Android程序员 计划 & 总纲">
-<meta property="og:url" content="http://yoursite.com/2016/09/13/Android-Programming-计划-总纲/index.html">
+<meta property="og:title" content="21. XML drawable">
+<meta property="og:url" content="http://yoursite.com/2016/10/10/21-XML-drawable/index.html">
 <meta property="og:site_name" content="菜菜园子">
-<meta property="og:description" content="计划9月15日 - 10月31日
-
-每天一章 《Android Programming - The Big Nerd Ranch Guide, 2nd Edition》，包括手敲代码
-在[1]完成后，花1周通览一遍《疯狂Android讲义，第三版》">
-<meta property="og:updated_time" content="2016-09-14T07:56:48.000Z">
+<meta property="og:description" content="诚然这章听上去比较重要，但是实际就是几个文件，xml属性，了解了就OK了。
+shape drawable, xxx_normal.xml123456&amp;lt;shape xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;       android:shape=&amp;quot;oval&amp;quot;&amp;gt;    &amp;lt">
+<meta property="og:updated_time" content="2016-10-10T10:18:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初级Android程序员 计划 & 总纲">
-<meta name="twitter:description" content="计划9月15日 - 10月31日
-
-每天一章 《Android Programming - The Big Nerd Ranch Guide, 2nd Edition》，包括手敲代码
-在[1]完成后，花1周通览一遍《疯狂Android讲义，第三版》">
+<meta name="twitter:title" content="21. XML drawable">
+<meta name="twitter:description" content="诚然这章听上去比较重要，但是实际就是几个文件，xml属性，了解了就OK了。
+shape drawable, xxx_normal.xml123456&amp;lt;shape xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;       android:shape=&amp;quot;oval&amp;quot;&amp;gt;    &amp;lt">
 
 
 
@@ -125,9 +119,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/13/Android-Programming-计划-总纲/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/10/21-XML-drawable/"/>
 
-  <title> 初级Android程序员 计划 & 总纲 | 菜菜园子 </title>
+  <title> 21. XML drawable | 菜菜园子 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -247,7 +241,7 @@
             
             
               
-                初级Android程序员 计划 & 总纲
+                21. XML drawable
               
             
           </h1>
@@ -259,8 +253,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-13T16:49:09+08:00" content="2016-09-13">
-              2016-09-13
+            <time itemprop="dateCreated" datetime="2016-10-10T17:23:53+08:00" content="2016-10-10">
+              2016-10-10
             </time>
           </span>
 
@@ -306,234 +300,13 @@
       
 
       
-        <h1 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h1><p>9月15日 - 10月31日</p>
-<ol>
-<li>每天一章 《Android Programming - The Big Nerd Ranch Guide, 2nd Edition》，包括手敲代码</li>
-<li>在[1]完成后，花1周通览一遍《疯狂Android讲义，第三版》</li>
-</ol>
-<a id="more"></a>
-<h1 id="规矩"><a href="#规矩" class="headerlink" title="规矩"></a>规矩</h1><table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>抒情文字（其实就是絮叨）</td>
-<td>用到markdown里的引用></td>
-</tr>
-<tr>
-<td>正常行文</td>
-<td>default字体颜色</td>
-</tr>
-<tr>
-<td>需要记忆（背下来！）</td>
-<td><font color="Green"> 绿色 </font></td>
-</tr>
-<tr>
-<td>小技巧, Tip</td>
-<td><font color="Orange"> 桔色 </font></td>
-</tr>
-<tr>
-<td>可记可不记，至少混个眼熟</td>
-<td><font color="Blue"> 蓝色 </font></td>
-</tr>
-<tr>
-<td>疑问，留待以后解决</td>
-<td><font color="Red"> 红色 </font></td>
-</tr>
-</tbody>
-</table>
-<h1 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h1><table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>GeoQuiz</td>
-<td>1, 2, 3, 5, 6</td>
-</tr>
-<tr>
-<td>CriminalItent</td>
-<td>7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 33</td>
-</tr>
-<tr>
-<td>BeatBox</td>
-<td>18, 19, 20, 21, 33</td>
-</tr>
-<tr>
-<td>NerdLauncher</td>
-<td>22</td>
-</tr>
-<tr>
-<td>PhotoGallery</td>
-<td>23, 24, 25, 26, 27, 28</td>
-</tr>
-<tr>
-<td>DragAndDraw</td>
-<td>29</td>
-</tr>
-<tr>
-<td>Sunset</td>
-<td>30</td>
-</tr>
-<tr>
-<td>Locatr</td>
-<td>31, 32</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>章节</th>
-<th>重点</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1. Your First Android Application</td>
-<td><a href="https://caileigtd.github.io/2016/09/14/01-Your-First-Android-Application/" target="_blank" rel="external">链接</a></td>
-</tr>
-<tr>
-<td>2. Android and Model-View-Controller</td>
-<td></td>
-</tr>
-<tr>
-<td>3. The Activity Lifecycle</td>
-<td></td>
-</tr>
-<tr>
-<td>4. Debugging Android Apps</td>
-<td></td>
-</tr>
-<tr>
-<td>5. <strong><font color="Red">Your Second Activity</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>6. Android SDK Versions and Compatibility</td>
-<td></td>
-</tr>
-<tr>
-<td>7. <strong><font color="Red">UI Fragments and the Fragment Manager</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>8. Creating User Interfaces with Layouts and Widgets</td>
-<td></td>
-</tr>
-<tr>
-<td>9. <strong><font color="Red">Displaying Lists with RecyclerView</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>10. <strong><font color="Red">Using Fragment Arguments</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>11. <strong><font color="Red">Using ViewPager</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>12. <strong><font color="Red">Dialogs</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>13. <strong><font color="Red">The Toolbar</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>14. SQLite Databases</td>
-<td></td>
-</tr>
-<tr>
-<td>15. <strong><font color="Red">Implicit Intents</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>16. Taking Pictures with Intents</td>
-<td></td>
-</tr>
-<tr>
-<td>17. Two-Pane Master-Detail Interfaces</td>
-<td></td>
-</tr>
-<tr>
-<td>18. Assets</td>
-<td></td>
-</tr>
-<tr>
-<td>19. Audio Playback with SoundPool</td>
-<td></td>
-</tr>
-<tr>
-<td>20. Styles and Themes</td>
-<td></td>
-</tr>
-<tr>
-<td>21. <strong><font color="Red">XML Drawables</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>22. <strong><font color="Red">More About Intents and Tasks</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>23. HTTP &amp; Background Tasks</td>
-<td></td>
-</tr>
-<tr>
-<td>24. <strong><font color="Red">Loppers, Handlers, and HandlerThread</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>25. Search</td>
-<td></td>
-</tr>
-<tr>
-<td>26. Background Services</td>
-<td></td>
-</tr>
-<tr>
-<td>27. <strong><font color="Red">Broadcast Intents</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>28. Browsing the Web and WebView</td>
-<td></td>
-</tr>
-<tr>
-<td>29. <strong><font color="Red">Custom Views and Touch Events</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>30. <strong><font color="Red">Property Animation</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>31. Locations and Play Services</td>
-<td></td>
-</tr>
-<tr>
-<td>32. Maps</td>
-<td></td>
-</tr>
-<tr>
-<td>33. <strong><font color="Red">Material Design</font></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>34. Afterword</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+        <p>诚然这章听上去比较重要，但是实际就是几个文件，xml属性，了解了就OK了。</p>
+<h1 id="shape-drawable-xxx-normal-xml"><a href="#shape-drawable-xxx-normal-xml" class="headerlink" title="shape drawable, xxx_normal.xml"></a>shape drawable, xxx_normal.xml</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">       android:shape=&quot;oval&quot;&gt;</div><div class="line"></div><div class="line">    &lt;solid</div><div class="line">        android:color=&quot;@color/dark_blue&quot;/&gt;</div><div class="line">&lt;/shape&gt;</div></pre></td></tr></table></figure>
+<h1 id="state-list-drawable-xxx-xml"><a href="#state-list-drawable-xxx-xml" class="headerlink" title="state list drawable, xxx.xml"></a>state list drawable, xxx.xml</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;selector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/button_beat_box_pressed&quot;</div><div class="line">          android:state_pressed=&quot;true&quot;/&gt;</div><div class="line">    &lt;item android:drawable=&quot;@drawable/button_beat_box_normal&quot; /&gt;</div><div class="line">&lt;/selector&gt;</div></pre></td></tr></table></figure>
+<h1 id="layer-list-drawable-xxx-pressed-xml"><a href="#layer-list-drawable-xxx-pressed-xml" class="headerlink" title="layer list drawable, xxx_pressed.xml"></a>layer list drawable, xxx_pressed.xml</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;layer-list xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</div><div class="line">    &lt;item&gt;</div><div class="line">        &lt;shape</div><div class="line">            android:shape=&quot;oval&quot;&gt;</div><div class="line"></div><div class="line">            &lt;solid</div><div class="line">                android:color=&quot;@color/red&quot;/&gt;</div><div class="line">        &lt;/shape&gt;</div><div class="line">    &lt;/item&gt;</div><div class="line">    &lt;item&gt;</div><div class="line">        &lt;shape</div><div class="line">            android:shape=&quot;oval&quot;&gt;</div><div class="line"></div><div class="line">            &lt;stroke</div><div class="line">                android:width=&quot;4dp&quot;</div><div class="line">                android:color=&quot;@color/dark_red&quot;/&gt;</div><div class="line"></div><div class="line">        &lt;/shape&gt;</div><div class="line">    &lt;/item&gt;</div><div class="line">&lt;/layer-list&gt;</div></pre></td></tr></table></figure>
+<p>真正是用的时候，只需如此：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;style name=&quot;BeatBoxButton&quot; parent=&quot;android:style/Widget.Holo.Button&quot;&gt;</div><div class="line">    &lt;item name=&quot;android:background&quot;&gt;@drawable/button_beat_box&lt;/item&gt;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<h1 id="9-patch"><a href="#9-patch" class="headerlink" title=".9 patch"></a>.9 patch</h1><p>top, left标记了图像的可伸缩区域，bottom, right定义了drawable区域，是绘制内容（通常是文字）的地方。</p>
 
       
     </div>
@@ -559,17 +332,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/13/初尝Android之开篇/" rel="next" title="初尝Android之开篇">
-                <i class="fa fa-chevron-left"></i> 初尝Android之开篇
+              <a href="/2016/10/10/20-Styles-and-Themes/" rel="next" title="20. Styles and Themes">
+                <i class="fa fa-chevron-left"></i> 20. Styles and Themes
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/14/01-Your-First-Android-Application/" rel="prev" title="01, Your First Android Application">
-                01, Your First Android Application <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -690,7 +459,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#计划"><span class="nav-number">1.</span> <span class="nav-text">计划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#规矩"><span class="nav-number">2.</span> <span class="nav-text">规矩</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重点"><span class="nav-number">3.</span> <span class="nav-text">重点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#shape-drawable-xxx-normal-xml"><span class="nav-number">1.</span> <span class="nav-text">shape drawable, xxx_normal.xml</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#state-list-drawable-xxx-xml"><span class="nav-number">2.</span> <span class="nav-text">state list drawable, xxx.xml</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#layer-list-drawable-xxx-pressed-xml"><span class="nav-number">3.</span> <span class="nav-text">layer list drawable, xxx_pressed.xml</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-patch"><span class="nav-number">4.</span> <span class="nav-text">.9 patch</span></a></li></ol></div>
             
           </div>
         </section>
