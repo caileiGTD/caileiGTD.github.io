@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-10-10T08:58:17.000Z</updated>
+  <updated>2016-10-10T09:22:00.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>20. Styles and Themes</title>
+    <link href="http://yoursite.com/2016/10/10/20-Styles-and-Themes/"/>
+    <id>http://yoursite.com/2016/10/10/20-Styles-and-Themes/</id>
+    <published>2016-10-10T09:09:09.000Z</published>
+    <updated>2016-10-10T09:22:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>实话实说，这章真的不知道讲的是啥。记住两个名字 <code>style</code>&amp; <code>theme</code>，其中默认的theme应该就是 <code>AppTheme</code> 这个名字。搜了下我们的app里没有自定义的theme，倒是style里每个人貌似都加入了一些东东</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:theme=&quot;@style/AppTheme&quot;</div></pre></td></tr></table></figure>
+<p>个人理解 style 就是把一堆相同的属性弄到一起，方便layout文件里拿来就用，免得啰嗦：</p>
+<p>下面这个是真实项目中的一个例子，虽然，我依旧觉得命名如同狗屎：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;TextView</div><div class="line">	style=&quot;@style/workshop_detail_tv_1&quot;</div><div class="line">	android:text=&quot;@string/subject&quot; /&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;style name=&quot;workshop_detail_tv_1&quot;&gt;</div><div class="line">    &lt;item name=&quot;android:layout_width&quot;&gt;wrap_content&lt;/item&gt;</div><div class="line">    &lt;item name=&quot;android:layout_height&quot;&gt;@dimen/dimen_45dp&lt;/item&gt;</div><div class="line">    &lt;item name=&quot;android:layout_gravity&quot;&gt;center_vertical&lt;/item&gt;</div><div class="line">    &lt;item name=&quot;android:gravity&quot;&gt;center&lt;/item&gt;</div><div class="line">    &lt;item name=&quot;android:layout_marginLeft&quot;&gt;@dimen/dimen_15dp&lt;/item&gt;</div><div class="line">    &lt;item name=&quot;android:textColor&quot;&gt;@color/color_a1a7ae&lt;/item&gt;</div><div class="line">    &lt;item name=&quot;android:textSize&quot;&gt;@dimen/dimen_15sp&lt;/item&gt;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;实话实说，这章真的不知道讲的是啥。记住两个名字 &lt;code&gt;style&lt;/code&gt;&amp;amp; &lt;code&gt;theme&lt;/code&gt;，其中默认的theme应该就是 &lt;code&gt;AppTheme&lt;/code&gt; 这个名字。搜了下我们的app里没有自定义的theme，倒是styl
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>19. Audio Playback with SoundPool</title>
@@ -850,41 +875,6 @@
     <summary type="html">
     
       &lt;font color=&quot;Green&quot;&gt;&lt;br&gt;onCreate()&lt;br&gt;&lt;br&gt;onStart()&lt;br&gt;&lt;br&gt;onResume()&lt;br&gt;&lt;em&gt;*&lt;/em&gt;&lt;br&gt;onPause()&lt;br&gt;&lt;br&gt;onStop()&lt;br&gt;&lt;br&gt;onDestroy()&lt;br&gt;&lt;/fon
-    
-    </summary>
-    
-      <category term="android" scheme="http://yoursite.com/categories/android/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>02, Android and Model-View-Controller</title>
-    <link href="http://yoursite.com/2016/09/14/02-Android-and-Model-View-Controller/"/>
-    <id>http://yoursite.com/2016/09/14/02-Android-and-Model-View-Controller/</id>
-    <published>2016-09-14T08:45:03.000Z</published>
-    <updated>2016-09-15T12:35:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/images/AndroidProgramming/0201.png" alt=""></p>
-<font color="Red">这里有个很蛋疼的问题，R.id.xxxxx，取回来都是一个整型的resId，怎么直接取到相应的String呢？</font>
-
-<font color="Green"><br>TextView.setText()<br><br>Toast.makeText().show()<br></font>
-
-
-
-<font color="Blue"><br>drawable-mdpi<br><br>drawable-hdpi<br><br>drawable-xhdpi<br><br>drawable-xxhdpi<br><br>都在 <code>src/main/res/</code> 下<br></font>
-
-
-
-<font color="Green"><br>android:drawableRight=”@drawable/xxxxx”<br><br>android:drawablePadding<br><br>ImageButton<br><br>android:src<br></font>
-
-<font color="Red"><br>Button的继承树，和ImageButton，居然相去甚远，为啥不统一起来？<br><br>Button -&gt; TextView -&gt; View<br><br>ImageButton -&gt; ImageView -&gt; View<br></font>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;/images/AndroidProgramming/0201.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;font color=&quot;Red&quot;&gt;这里有个很蛋疼的问题，R.id.xxxxx，取回来都是一个整型的resId，怎么直接取到相应的String呢？&lt;/fon
     
     </summary>
     
