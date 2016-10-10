@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-10-10T08:37:18.000Z</updated>
+  <updated>2016-10-10T08:58:17.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>19. Audio Playback with SoundPool</title>
+    <link href="http://yoursite.com/2016/10/10/19-Audio-Playback-with-SoundPool/"/>
+    <id>http://yoursite.com/2016/10/10/19-Audio-Playback-with-SoundPool/</id>
+    <published>2016-10-10T08:50:47.000Z</published>
+    <updated>2016-10-10T08:58:17.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>setRetainInstance(true)</code><br>新的Activity -&gt; 新的FragmentManager -&gt; <font color="orange">老的</font>Fragment -&gt; 新的RecyclerView</p>
+<p><code>setRetainInstance(false)</code> 这个是默认<br>新的Activity -&gt; 新的FragmentManager -&gt; <font color="orange">新的</font>Fragment -&gt; 新的RecyclerView</p>
+<p>保留的fragment只能处理activity因设备旋转而销毁的情况。如果activity是因操作系统需要回收内存而被销毁，则所有保留的fragment也会随之销毁。</p>
+<p>这章最终升华为：何时用 <code>onSaveInstanceState</code>，何时用 <code>setRetainInstance(true)</code></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;setRetainInstance(true)&lt;/code&gt;&lt;br&gt;新的Activity -&amp;gt; 新的FragmentManager -&amp;gt; &lt;font color=&quot;orange&quot;&gt;老的&lt;/font&gt;Fragment -&amp;gt; 新的RecyclerV
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>18. Assets</title>
@@ -865,29 +889,6 @@
     </summary>
     
       <category term="android" scheme="http://yoursite.com/categories/android/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo技巧</title>
-    <link href="http://yoursite.com/2016/09/14/Hexo%E6%8A%80%E5%B7%A7/"/>
-    <id>http://yoursite.com/2016/09/14/Hexo技巧/</id>
-    <published>2016-09-14T07:58:41.000Z</published>
-    <updated>2016-09-14T08:01:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>技巧不断补充… …</p>
-<h1 id="首页仅仅显示摘要"><a href="#首页仅仅显示摘要" class="headerlink" title="首页仅仅显示摘要"></a>首页仅仅显示摘要</h1><p>在文章中加入<code>&lt;!-- more --&gt;</code>，上面的部分为摘要</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;技巧不断补充… …&lt;/p&gt;
-&lt;h1 id=&quot;首页仅仅显示摘要&quot;&gt;&lt;a href=&quot;#首页仅仅显示摘要&quot; class=&quot;headerlink&quot; title=&quot;首页仅仅显示摘要&quot;&gt;&lt;/a&gt;首页仅仅显示摘要&lt;/h1&gt;&lt;p&gt;在文章中加入&lt;code&gt;&amp;lt;!-- more --&amp;g
-    
-    </summary>
-    
-      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
     
     
   </entry>

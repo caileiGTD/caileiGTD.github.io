@@ -237,6 +237,122 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/10/19-Audio-Playback-with-SoundPool/" itemprop="url">
+                  19. Audio Playback with SoundPool
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-10T16:50:47+08:00" content="2016-10-10">
+              2016-10-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>setRetainInstance(true)</code><br>新的Activity -&gt; 新的FragmentManager -&gt; <font color="orange">老的</font>Fragment -&gt; 新的RecyclerView</p>
+<p><code>setRetainInstance(false)</code> 这个是默认<br>新的Activity -&gt; 新的FragmentManager -&gt; <font color="orange">新的</font>Fragment -&gt; 新的RecyclerView</p>
+<p>保留的fragment只能处理activity因设备旋转而销毁的情况。如果activity是因操作系统需要回收内存而被销毁，则所有保留的fragment也会随之销毁。</p>
+<p>这章最终升华为：何时用 <code>onSaveInstanceState</code>，何时用 <code>setRetainInstance(true)</code></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/10/18-Assets/" itemprop="url">
                   18. Assets
                 </a>
@@ -1311,159 +1427,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/23/11-Using-ViewPager/" itemprop="url">
-                  11. Using ViewPager
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-23T10:16:32+08:00" content="2016-09-23">
-              2016-09-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>人被掏空的感觉啊 ~~~</p>
-<p>今天的ViewPager又是重点，而且目测这周六、日的章节也都是重点章节。不过顶过这周应该就好很多了。话说工作日基本有稳定的输出，反而周六、日比较担心，还得伺候老的小的，偶尔还约着caib们打打sc。</p>
-<p>言归正传</p>
-<p>如同CrimeActivity，CrimePagerActivity为了接收传入param，也需要定义类似的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public static Intent newIntent(Context packageContext, UUID cid) &#123;</div><div class="line">       Intent intent = new Intent(packageContext, CrimePagerActivity.class);</div><div class="line">       intent.putExtra(EXTRA_CRIME_ID, cid);</div><div class="line">       return intent;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<font color="Orange"><br>由于斟酌了intent的key的所属，为private static final，所以两个Activity都用了相同的key值<br></font>
-
-<font color="Green"><br>关于ViewPager只需要记住如下方法即可，特别注意new FragmentStatePagerAdapter构造函数需要传入FragmentMananer实例 <code>fm</code><br></font>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">mViewPager.setAdapter(new FragmentStatePagerAdapter(fm) &#123;</div><div class="line">    @Override</div><div class="line">    public Fragment getItem(int position) &#123;</div><div class="line">        UUID cid = mCrimes.get(position).getmId();</div><div class="line">        return CrimeFragment.newInstance(cid);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int getCount() &#123;</div><div class="line">        return mCrimes.size();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p><strong> FragmentStatePagerAdapter </strong> : 对于不用的fragment，调用remove(Fragment)方法，用onSaveInstanceState(Bundle)来存储并恢复</p>
-<p><strong> FragmentPagerAdapter </strong> : 对于不用的fragment, 调用detach(Fragment)方法，只销毁了fragment视图，fragment实例还保留在FragmentManager中。</p>
-<font color="Orange"><br>可以以代码方式创建布局<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ViewPager vp = new ViewPager(this);</div><div class="line">setContentView(vp);</div></pre></td></tr></table></figure><br><br>但是google并不推荐，所以不要怕麻烦，写个xml布局文件<br></font>
-
-<font color="Red"><br>再次说明了命名相当重要<br><br># 1. Java文件命名<br><br>SingleFragmentActivity<br><br>- CrimeListActivity<br><br>    CrimeListFragment<br><br>- CrimeActivity<br><br>    CrimeFragment<br><br>- CrimePagerActivity<br><br>    CrimeFragment<br><br><br># 2. Layout文件命名<br><br><strong>activity_fragment</strong> 对应 <code>SingleFragmentActivity</code><br><br>由于 <code>CrimeListActivity</code> 继承自 <code>SingleFragmentActivity</code>，所以没有对应的layout.xml<br><br><strong>fragment_crime_list</strong> 对应 <code>CrimeListFragment</code><br><br><strong>activity_crime_pager</strong> 对应 <code>CrimePagerActivity</code><br><br>由于 <code>CrimeActivity</code> 继承自 <code>SingleFragmentActivity</code>，所以没有对应的layout.xml<br><br><strong>fragment_crime</strong> 对应 <code>CrimeFragment</code><br><br><strong>list_item_crime.xml</strong> 对应tableview中的一个cell<br><br># 3. @id命名<br><br><strong>activity_fragment</strong>里：<font color="Green">@+id/fragment_container</font>
-
-<p><strong>fragment_crime_list</strong>里：<font color="Green">@+id/crime_recycler_view</font></p>
-<p><strong>activity_crime_pager</strong>里：<font color="Green">@+id/activity_crime_pager_view_pager</font></p>
-<p><strong>fragment_crime</strong>里：<font color="Green">@+id/crime_title 和 @+id/crime_date 和 @+id/crime_solved</font></p>
-<p><strong>list_item_crime.xml</strong>里：<font color="Green">@+id/list_item_crime_solved_check_box 和 @+id/list_item_crime_title_text_view 和 @+id/list_item_crime_date_text_view</font></p>
-<h1 id="4-intent传入参数key值"><a href="#4-intent传入参数key值" class="headerlink" title="4. intent传入参数key值"></a>4. intent传入参数key值</h1><p>在 <code>CrimeActivity</code> 里：(EXTRA_IN_XXXXX)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">EXTRA_IN_CRIME_ID = &quot;extra.in.crime.id&quot;;</div></pre></td></tr></table></figure>
-<h1 id="5-activity传入参数用的newIntent-…-静态方法"><a href="#5-activity传入参数用的newIntent-…-静态方法" class="headerlink" title="5. activity传入参数用的newIntent(…)静态方法"></a>5. activity传入参数用的newIntent(…)静态方法</h1><p>在 <code>CrimeActivity</code> 里：(newInIntent(…))</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public static Intent newInIntent(Context packageContext, UUID crimeId) &#123;</div><div class="line">    Intent intent = new Intent(packageContext, CrimeActivity.class);</div><div class="line">    intent.putExtra(EXTRA_IN_CRIME_ID, crimeId);</div><div class="line">    return intent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="6-bundle传入参数key值"><a href="#6-bundle传入参数key值" class="headerlink" title="6. bundle传入参数key值"></a>6. bundle传入参数key值</h1><p>在 <code>CrimeFragment</code> 里：(BUNDLE_IN_XXXXX)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BUNDLE_IN_CRIME_ID = &quot;bundle.in.crime.id&quot;;</div></pre></td></tr></table></figure>
-<h1 id="7-fragment传入参数用的newInstance-…-静态方法"><a href="#7-fragment传入参数用的newInstance-…-静态方法" class="headerlink" title="7. fragment传入参数用的newInstance(…)静态方法"></a>7. fragment传入参数用的newInstance(…)静态方法</h1><p>在 <code>CrimeFragment</code> 里：(newInstance(…))</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public static CrimeFragment newInstance(UUID crimeId) &#123;</div><div class="line">    Bundle args = new Bundle();</div><div class="line">    args.putSerializable(BUNDLE_IN_CRIME_ID, crimeId);</div><div class="line"></div><div class="line">    CrimeFragment fragment = new CrimeFragment();</div><div class="line">    fragment.setArguments(args);</div><div class="line">    return fragment;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>之后在 <code>CrimeFragment</code> 里获取</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UUID cid = (UUID)getArguments().getSerializable(BUNDLE_IN_CRIME_ID);</div></pre></td></tr></table></figure>
-<h1 id="8-activity-调用方-接收返回值时用的-int-requestCode"><a href="#8-activity-调用方-接收返回值时用的-int-requestCode" class="headerlink" title="8. activity 调用方 接收返回值时用的 int requestCode"></a>8. activity 调用方 接收返回值时用的 int requestCode</h1><p>在 <code>CrimeListFragment</code> 里：(REQUEST_CODE_XXXXX)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private static final int REQUEST_CODE_CRIME_TITLE = 0;</div></pre></td></tr></table></figure>
-<p>在接收方 <code>CrimeListFragment</code> 里：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public void onActivityResult(int requestCode, int resultCode, Intent data) &#123;</div><div class="line">       super.onActivityResult(requestCode, resultCode, data);</div><div class="line">       if (resultCode == Activity.RESULT_CANCELED) &#123;</div><div class="line">           return;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       if (requestCode == REQUEST_CODE_CRIME_TITLE) &#123;</div><div class="line">           String s = CrimeActivity.crimeTitleFromOutIntent(data);</div><div class="line">           Log.e(&quot;CrimeListFragment&quot;, s);</div><div class="line">       &#125;</div><div class="line">       mAdapter.notifyDataSetChanged();</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<h1 id="9-activity-被调用方-返回值intent里的参数的key"><a href="#9-activity-被调用方-返回值intent里的参数的key" class="headerlink" title="9. activity 被调用方 返回值intent里的参数的key"></a>9. activity 被调用方 返回值intent里的参数的key</h1><p>在 <code>CrimeActivity</code> 里：(EXTRA_OUT_XXXXX)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private static final String EXTRA_OUT_CRIME_TITLE = &quot;extra.out.crime.title&quot;;</div></pre></td></tr></table></figure>
-<h1 id="10-activity-被调用方-生成返回值的newIntent-…-静态方法"><a href="#10-activity-被调用方-生成返回值的newIntent-…-静态方法" class="headerlink" title="10. activity 被调用方 生成返回值的newIntent(…)静态方法"></a>10. activity 被调用方 生成返回值的newIntent(…)静态方法</h1><p>在 <code>CrimeActivity</code> 里：(newOutIntent(…))</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public static Intent newOutIntent(String s) &#123;</div><div class="line">    Intent intent = new Intent();</div><div class="line">    intent.putExtra(EXTRA_OUT_CRIME_TITLE, s);</div><div class="line">    return intent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="11-activity-被调用方-帮助解析返回Intent-…-静态方法"><a href="#11-activity-被调用方-帮助解析返回Intent-…-静态方法" class="headerlink" title="11. activity 被调用方 帮助解析返回Intent(…)静态方法"></a>11. activity 被调用方 帮助解析返回Intent(…)静态方法</h1><p>在 <code>CrimeActivity</code> 里：(xxxxxFromOutIntent(…))</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public static String crimeTitleFromOutIntent(Intent intent) &#123;</div><div class="line">       return intent.getStringExtra(EXTRA_OUT_XXXXX);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<p></p></font><p></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1509,7 +1472,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
