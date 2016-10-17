@@ -237,6 +237,136 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/17/22-More-About-Intents-and-Tasks/" itemprop="url">
+                  22. More About Intents and Tasks
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-17T13:51:40+08:00" content="2016-10-17">
+              2016-10-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>恩，看来越往后进度确实越慢了些。今天才把这章过了一遍，其实intent, task这些暂时用不到的，可以等到用的时候再详细的看一遍。所以本章最重要的一点是，再次把recyclerview的流程过了一遍，越来越熟了，已经能基本不参考以前的代码徒手写出了。但是：<br>1，命名由于没有定规则，起的还是乱七八糟的<br>2，对于不同layout里的常用的attribute及其作用还是搞不定，目前基本是baidu或google查找</p>
+<font color="green"><br>PackageManager<br></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Intent startupIntent = new Intent(Intent.ACTION_MAIN);</div><div class="line">startupIntent.addCategory(Intent.CATEGORY_LAUNCHER);</div><div class="line">PackageManager pm = getActivity().getPackageManager();</div><div class="line">List&lt;ResolveInfo&gt; datas = pm.queryIntentActivities(startupIntent, 0);</div></pre></td></tr></table></figure>
+<p>以下几点还没有太记清楚，温习一遍：</p>
+<p>Adaptor里 <code>LayoutInflater inflater = LayoutInflater.from(getActivity());</code><br>layout xml里 <code>gravity -&gt; TextView 和 layout_gravity -&gt; LinearLayout</code></p>
+<font color="green"><br>ResolveInfo<br><br>ActivityInfo<br></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ActivityInfo ai = data.activityInfo;</div><div class="line">Intent i = new Intent(Intent.ACTION_MAIN)</div><div class="line">        .setClassName(ai.applicationInfo.packageName, ai.name);</div><div class="line">startActivity(i);</div></pre></td></tr></table></figure>
+<font color="green"><br>overview screen， 就是点击”方块”型的虚拟按键，然后弹出最近使用程序的View<br></font>
+
+<font color="red"><br>几个属性，大体理解了，但是完全记不住，用到的时候需要google帮助<br><br><em> FLAG_ACTIVITY_NEW_TASK
+</em> “android.intent.action.MAIN”<br><em> “android.intent.category.LAUNCHER”
+</em> “android.intent.category.HOME”<br><em> “android.intent.category.DEFAULT”<br><br>对于Lollipop来说还有：
+
+</em> android.intent.action.SEND<br><em> android.intent.action.SEND_MULTIPLE<br><br>并发文档（concurrent documents）<br><br>如果无论如何都想创建新Task
+
+</em> Intent.FLAG_ACTIVITY_NEW<br><em> Intent.FLAG_ACTIVITY_MULTIPLE_TASK<br>或
+</em> documentLaunchMode=”always”<br><br></font>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/10/21-XML-drawable/" itemprop="url">
                   21. XML drawable
                 </a>
@@ -1305,122 +1435,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/26/14-SQLite-Database/" itemprop="url">
-                  14. SQLite Database
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-26T11:51:39+08:00" content="2016-09-26">
-              2016-09-26
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>ORM (object/rational mapping)</strong> : litepal / greenDao</p>
-<font color="Green"><br>getApplictionContext()<br><br>SQLiteOpenHelper<br>- onCreate<br>- onUpgrade<br><br>CursorWrapper<br><br></font>
-
-<font color="Orange"><br>SQL语句中用 <code>&quot; = ?&quot;, XXXXX</code>，可以防止SQL脚本注入<br></font>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1466,7 +1480,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

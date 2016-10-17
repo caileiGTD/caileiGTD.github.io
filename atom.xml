@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-10-10T10:18:45.000Z</updated>
+  <updated>2016-10-17T09:22:11.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>22. More About Intents and Tasks</title>
+    <link href="http://yoursite.com/2016/10/17/22-More-About-Intents-and-Tasks/"/>
+    <id>http://yoursite.com/2016/10/17/22-More-About-Intents-and-Tasks/</id>
+    <published>2016-10-17T05:51:40.000Z</published>
+    <updated>2016-10-17T09:22:11.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>恩，看来越往后进度确实越慢了些。今天才把这章过了一遍，其实intent, task这些暂时用不到的，可以等到用的时候再详细的看一遍。所以本章最重要的一点是，再次把recyclerview的流程过了一遍，越来越熟了，已经能基本不参考以前的代码徒手写出了。但是：<br>1，命名由于没有定规则，起的还是乱七八糟的<br>2，对于不同layout里的常用的attribute及其作用还是搞不定，目前基本是baidu或google查找</p>
+<font color="green"><br>PackageManager<br></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Intent startupIntent = new Intent(Intent.ACTION_MAIN);</div><div class="line">startupIntent.addCategory(Intent.CATEGORY_LAUNCHER);</div><div class="line">PackageManager pm = getActivity().getPackageManager();</div><div class="line">List&lt;ResolveInfo&gt; datas = pm.queryIntentActivities(startupIntent, 0);</div></pre></td></tr></table></figure>
+<p>以下几点还没有太记清楚，温习一遍：</p>
+<p>Adaptor里 <code>LayoutInflater inflater = LayoutInflater.from(getActivity());</code><br>layout xml里 <code>gravity -&gt; TextView 和 layout_gravity -&gt; LinearLayout</code></p>
+<font color="green"><br>ResolveInfo<br><br>ActivityInfo<br></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ActivityInfo ai = data.activityInfo;</div><div class="line">Intent i = new Intent(Intent.ACTION_MAIN)</div><div class="line">        .setClassName(ai.applicationInfo.packageName, ai.name);</div><div class="line">startActivity(i);</div></pre></td></tr></table></figure>
+<font color="green"><br>overview screen， 就是点击”方块”型的虚拟按键，然后弹出最近使用程序的View<br></font>
+
+<font color="red"><br>几个属性，大体理解了，但是完全记不住，用到的时候需要google帮助<br><br><em> FLAG_ACTIVITY_NEW_TASK
+</em> “android.intent.action.MAIN”<br><em> “android.intent.category.LAUNCHER”
+</em> “android.intent.category.HOME”<br><em> “android.intent.category.DEFAULT”<br><br>对于Lollipop来说还有：
+
+</em> android.intent.action.SEND<br><em> android.intent.action.SEND_MULTIPLE<br><br>并发文档（concurrent documents）<br><br>如果无论如何都想创建新Task
+
+</em> Intent.FLAG_ACTIVITY_NEW<br><em> Intent.FLAG_ACTIVITY_MULTIPLE_TASK<br>或
+</em> documentLaunchMode=”always”<br><br></font>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;恩，看来越往后进度确实越慢了些。今天才把这章过了一遍，其实intent, task这些暂时用不到的，可以等到用的时候再详细的看一遍。所以本章最重要的一点是，再次把recyclerview的流程过了一遍，越来越熟了，已经能基本不参考以前的代码徒手写出了。但是：&lt;br&gt;1，命名
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>21. XML drawable</title>
@@ -848,34 +886,6 @@
     
       &lt;p&gt;tools:text这个属性在preview中显示，运行时不会显示出来&lt;/p&gt;
 &lt;font color=&quot;Green&quot;&gt;&lt;br&gt;&lt;br&gt;public Intent(Context packageContext, Class&amp;lt;?&amp;gt; cls)&lt;br&gt;&lt;br&gt;publ
-    
-    </summary>
-    
-      <category term="android" scheme="http://yoursite.com/categories/android/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>04. Debugging Android Apps</title>
-    <link href="http://yoursite.com/2016/09/18/04-Debugging-Android-Apps/"/>
-    <id>http://yoursite.com/2016/09/18/04-Debugging-Android-Apps/</id>
-    <published>2016-09-18T02:20:39.000Z</published>
-    <updated>2016-09-18T03:59:43.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Run -&gt; View Breakpoints</p>
-<p>Android Lint : Analyze -&gt; Inspect Code</p>
-<font color="Red"><br>怎么用好Lint？现在报的好多错误看不懂啊 ~<br></font>
-
-<p>Tools -&gt; Android -&gt; Sync Project with Gradle</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Run -&amp;gt; View Breakpoints&lt;/p&gt;
-&lt;p&gt;Android Lint : Analyze -&amp;gt; Inspect Code&lt;/p&gt;
-&lt;font color=&quot;Red&quot;&gt;&lt;br&gt;怎么用好Lint？现在报的好多错误看不懂啊 ~&lt;br&gt;&lt;/font&gt;
-
     
     </summary>
     
