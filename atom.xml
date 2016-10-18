@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-10-17T09:22:11.000Z</updated>
+  <updated>2016-10-18T03:18:27.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>23. HTTP &amp; Background Tasks</title>
+    <link href="http://yoursite.com/2016/10/18/23-HTTP-Background-Tasks/"/>
+    <id>http://yoursite.com/2016/10/18/23-HTTP-Background-Tasks/</id>
+    <published>2016-10-18T02:28:23.000Z</published>
+    <updated>2016-10-18T03:18:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>这章重要，也不重要，重要在于网络请求无论哪个App都会用到，AsyncTask应该不仅仅可以用于网络请求。不重要在于，在我的android体系里，okhttp, gson为首选的被证实优秀的网络框架。</p>
+<font color="red"><br>吐槽的一点是，一般国外的书都用的Flickr，而在兲朝Flickr几乎不可用，所以每每想做demo，都下不得手。<br></font>
+
+<p>所以，还是粗略记录吧，就不敲code了。</p>
+<font color="green"><br>HttpURLConnection，这个基本已经被google废弃了吧<br><br>Uri parse() buildUpon() appendQueryParameter()，这些算是生成 GET 形式 url 的一些便利方法<br><br>JSONObject，JSONArray，用来解析Json的原生类，可以完全用Gson代替<br><br>重点看下AsyncTask<br>AsyncTask enables proper and easy use of the UI thread. This class allows to perform background operations and publish results on the UI thread without having to manipulate threads and/or handlers.<br><br>AsyncTask is designed to be a helper class around Thread and Handler and does not constitute a generic threading framework.<br><br>AsyncTasks should ideally be used for short operations (a few seconds at the most.) If you need to keep threads running for long periods of time, it is highly recommended you use the various APIs provided by the java.util.concurrent package such as Executor, ThreadPoolExecutor and FutureTask.<br><br>An asynchronous task is defined by a computation that runs on a background thread and whose result is published on the UI thread. An asynchronous task is defined by 3 generic types, called Params, Progress and Result, and 4 steps, called <code>onPreExecute</code>, <code>doInBackground</code>, <code>onProgressUpdate</code> and <code>onPostExecute</code>.<br></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">private class FetchItemsTask extends AsyncTask&lt;Void,Void,List&lt;GalleryItem&gt;&gt; &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected List&lt;GalleryItem&gt; doInBackground(Void... params) &#123;</div><div class="line">        return new FlickrFetchr().fetchItems();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onPostExecute(List&lt;GalleryItem&gt; items) &#123;</div><div class="line">        mItems = items;</div><div class="line">        setupAdapter();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后在主线程调用，<code>new FetchItemsTask().execute();</code></p>
+<p>task.execute(“param1”, “param2”, “etc”);</p>
+<p>public Void doInBackground(Void… params) {</p>
+<p>}</p>
+<p>在doInBackground()中调用publishProgress()，则主线程中onProgressUpdate()会被回调</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这章重要，也不重要，重要在于网络请求无论哪个App都会用到，AsyncTask应该不仅仅可以用于网络请求。不重要在于，在我的android体系里，okhttp, gson为首选的被证实优秀的网络框架。&lt;/p&gt;
+&lt;font color=&quot;red&quot;&gt;&lt;br&gt;吐槽的一点是，一般国
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>22. More About Intents and Tasks</title>
@@ -837,55 +870,6 @@
 &lt;td&gt;Jelly Bean&lt;/td&gt;
 &lt;td&gt;16&lt;/td&gt;
 &lt;/t
-    
-    </summary>
-    
-      <category term="android" scheme="http://yoursite.com/categories/android/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>05. Your Second Activity</title>
-    <link href="http://yoursite.com/2016/09/18/05-Your-Second-Activity/"/>
-    <id>http://yoursite.com/2016/09/18/05-Your-Second-Activity/</id>
-    <published>2016-09-18T06:55:17.000Z</published>
-    <updated>2016-09-18T11:31:56.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>tools:text这个属性在preview中显示，运行时不会显示出来</p>
-<font color="Green"><br><br>public Intent(Context packageContext, Class&lt;?&gt; cls)<br><br>public Intent putExtra(…)<br><br>public void startActivityForResult(Intent intent, int requestCode)<br><br>getIntent().getBooleanExtra(…);<br></font>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = new Intent();</div><div class="line">   intent.putExtra(Extra_Cheated, true);</div><div class="line">   setResult(Activity.RESULT_OK, intent);</div></pre></td></tr></table></figure>
-<font color="Green"><br>protected void onActivityResult(int requestCode, int resultCode, Intent data)<br></font>
-
-<p>非常有趣的一点，在旋转后，CheatActivity被重新生成，然后其onCreate()函数中 <code>getIntent().getBooleanExtra(Extra_Answer, false);</code> 依然可以获得从QuizActivity传过来的参数。</p>
-<font color="Blue"><br>在Activity中调用Activity.finish()方法同样可以将Activity从ActivityManager管理的栈中弹出。<br></font>
-
-<p>注意key值多用 private static String，以及由此产生的生成Intent，取得Result Intent相应函数所处的Activity</p>
-<p>#传入时：</p>
-<p>在QuizActivity中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">private static int REQUEST_CHEAT_ACTIVITY = 0;</div><div class="line"></div><div class="line">Intent intent = CheatActivity.newIntent(QuizActivity.this, quizArray[mCurQuestionIndex].getmTrueFalseAnswer());</div><div class="line">startActivityForResult(intent, REQUEST_CHEAT_ACTIVITY);</div></pre></td></tr></table></figure>
-<p>在CheatActivity中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private static final String Extra_Answer = &quot;cheat_activity_extra_answer&quot;;</div><div class="line"></div><div class="line">public static Intent newIntent(Context context, boolean answer) &#123;</div><div class="line">    Intent intent = new Intent(context, CheatActivity.class);</div><div class="line">    intent.putExtra(Extra_Answer, answer);</div><div class="line">    return intent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>#传出时：（返回值）<br>在QuizActivity中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">private static int REQUEST_CHEAT_ACTIVITY = 0;</div><div class="line"></div><div class="line">@Override</div><div class="line">protected void onActivityResult(int requestCode, int resultCode, Intent data) &#123;</div><div class="line">    super.onActivityResult(requestCode, resultCode, data);</div><div class="line">    if (resultCode != Activity.RESULT_OK) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    if (requestCode == REQUEST_CHEAT_ACTIVITY) &#123;</div><div class="line">        if (data == null) &#123;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        mCheated = CheatActivity.hasCheated(data);</div><div class="line">        cheatArray[mCurQuestionIndex] = mCheated;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这里再次把获取boolean类型的intent extra的任务放到了 <code>CheatActivity.hasCheated(data)</code> 中，传入intent，返回boolean</p>
-<p>在CheatActivity中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">private static final String Extra_Cheated = &quot;cheat_activity_extra_cheated&quot;;</div><div class="line"></div><div class="line">public static boolean hasCheated(Intent intent) &#123;</div><div class="line">    return intent.getBooleanExtra(Extra_Cheated, false);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private static final String Extra_Cheated = &quot;cheat_activity_extra_cheated&quot;;</div><div class="line"></div><div class="line">&#123;</div><div class="line">        Intent intent = new Intent();</div><div class="line">        intent.putExtra(Extra_Cheated, true);</div><div class="line">        setResult(Activity.RESULT_OK, intent);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><font color="Red"><br>用Intent传来传去，需要用到putExtra，是key-value的</font></p>
-<p>Activity在旋转时重新生成，需要Bundle的putXXXXX，也是key-value的</p>
-<p>生成了好多key，取名字是个问题</p>
-<ul>
-<li>有没有更好的方法</li>
-<li>key的命名应该遵循某种统一的规则<br></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;tools:text这个属性在preview中显示，运行时不会显示出来&lt;/p&gt;
-&lt;font color=&quot;Green&quot;&gt;&lt;br&gt;&lt;br&gt;public Intent(Context packageContext, Class&amp;lt;?&amp;gt; cls)&lt;br&gt;&lt;br&gt;publ
     
     </summary>
     

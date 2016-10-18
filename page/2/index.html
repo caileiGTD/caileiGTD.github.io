@@ -237,6 +237,158 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/26/我们android-app杂七杂八/" itemprop="url">
+                  我们android app杂七杂八
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-26T14:22:04+08:00" content="2016-09-26">
+              2016-09-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/杂项/" itemprop="url" rel="index">
+                    <span itemprop="name">杂项</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="com-jfrog-bintray-gradle-gradle-bintray-plugin-1-1"><a href="#com-jfrog-bintray-gradle-gradle-bintray-plugin-1-1" class="headerlink" title="com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1"></a>com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1</h1><p>首先说jCenter，是一个代码库，相当于一个公共的存储控件，简单的来讲就是你把你写好的aar文件及一些文档描述文件之类的东西打包上传到jCenter服务器上，其他人就可以通过jCenter服务器下载到你上传的包了。</p>
+<p>那Bintray又是啥？Bintray是jCenter的提供商，他支持上传lib到多个平台，jCenter只是众多平台中的一个，形象的说jCenter是位于某地的仓库，Bintray是送货的卡车，你写的库就是货了。</p>
+<h1 id="com-github-dcendents-android-maven-gradle-plugin-1-3"><a href="#com-github-dcendents-android-maven-gradle-plugin-1-3" class="headerlink" title="com.github.dcendents:android-maven-gradle-plugin:1.3"></a>com.github.dcendents:android-maven-gradle-plugin:1.3</h1><p>这个东东也是为了把自己的库上传到jCenter的。</p>
+<hr>
+<h1 id="良师通"><a href="#良师通" class="headerlink" title="良师通"></a>良师通</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">|- app</div><div class="line">|</div><div class="line">|- androidlib</div><div class="line">|</div><div class="line">|- UniversalVideoView</div><div class="line">|</div><div class="line">|- android-pdf-viewer</div></pre></td></tr></table></figure>
+<p><strong>UniversalVideoView</strong>：<a href="https://github.com/linsea/UniversalVideoView" target="_blank" rel="external">https://github.com/linsea/UniversalVideoView</a></p>
+<p>我们是源码引入，然后在其上修改的。 <code>东西不多 2k LOC，应该定义好了接口，自己实现更好的video player，将来总会用到</code></p>
+<p><strong>android-pdf-viewer</strong>：<a href="https://github.com/barteksc/AndroidPdfViewer" target="_blank" rel="external">https://github.com/barteksc/AndroidPdfViewer</a></p>
+<p>这个也是源码引入，有修改么？ <code>库挺庞大，如果需要修改，除了源码引入然后修改，有没有什么更好的方法</code></p>
+<h2 id="app"><a href="#app" class="headerlink" title="app"></a>app</h2><p><strong>isoparser</strong>：MP4剪切、合并库，当时有个crash bug，换成最新版本 <code>isoparser-1.1.21.jar</code> 后解决</p>
+<p><strong>litepal</strong>：ORM(object/rational mapping)，《第一行代码Android》的作者”郭霖”有一系列不错的Blog介绍：<a href="http://blog.csdn.net/sinyu890807/article/details/38083103" target="_blank" rel="external">Android数据库高手秘籍</a></p>
+<p><strong>zxing</strong>：<a href="https://github.com/zxing/zxing" target="_blank" rel="external">https://github.com/zxing/zxing</a> 二维码识别，这个原生的就是java库。</p>
+<p><strong>recyclerview</strong>：com.android.support:recyclerview-v7</p>
+<p><strong>design</strong>：com.android.support:design，<code>Material design</code> 这个厉害了。一句话就是一些NB的效果，google一起都给放进来了：</p>
+<ul>
+<li><code>TextInputLayout</code>：方便的显示错误提示，etc？</li>
+<li><code>FloatingActionButton</code>：字面意思，好像是浮在view上的？</li>
+<li><code>Snackbar</code>：用户快速feedback？</li>
+<li><code>TabLayout</code>：左右滑动，topscroll / bottomscroll配合，pager?</li>
+<li><code>NavigationView</code>：左滑的drawer view？</li>
+<li><code>CoordinatorLayout</code>：view能完成一些自动的动画，到需要的位置？</li>
+<li><code>CollapsingToolbarLayout</code>：上滑下滑时，header view跟随zooming</li>
+</ul>
+<p><strong>percent</strong>：com.android.support:percent，百分比布局，可设置高度占父控件高度的百分比，宽度占父控件的百分比，etc</p>
+<p><strong>nineoldandroids</strong>：com.nineoldandroids:library，android的一个三方动画库，《Android开发艺术探索》作者 <code>任玉刚</code> 的<a href="http://blog.csdn.net/singwhatiwanna/article/details/17639987" target="_blank" rel="external">一篇Blog</a></p>
+<h2 id="androidlib"><a href="#androidlib" class="headerlink" title="androidlib"></a>androidlib</h2><p><strong>com.android.support:appcompat-v7</strong>：<font color="Red">这里有个疑问，androidlib里依赖的appcompat，和UniversalVideoView里依赖的appcompat版本居然不一样，这会怎么样？引入两份，加大体积？换成一样的呢？</font></p>
+<p><strong>okhttputils, okio</strong>：square的网络框架，我们用retrofit + okhttp。这个okhttputils为 <code>鸿洋</code> <a href="http://blog.csdn.net/lmj623565791" target="_blank" rel="external">Blog</a> 在okhttp之上做了一层封装，我们应该不会用，但是既然能做封装，应该对okhttp有一定了解，blog上原创又很多，留着看看。</p>
+<p><strong>glide</strong>：google推荐的图形库，我们用facebook的Fresco</p>
+<p><strong>otto</strong>：系统级notification，我们用event-bus</p>
+<p><strong>fastjson</strong>：这个是阿里开源的，我们还是用 <code>gson</code> 吧，出自google，倒不是崇洋媚外，也可能阿里的fastjson确实fast，但是强烈不喜欢丫的自己吹NB，说别人的为“龟速”</p>
+<p><strong>GifView</strong>：<a href="https://github.com/Cutta/GifView" target="_blank" rel="external">https://github.com/Cutta/GifView</a></p>
+<h1 id="易学易练"><a href="#易学易练" class="headerlink" title="易学易练"></a>易学易练</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">|- MainApp</div><div class="line">|</div><div class="line">|- YanxiuBaseCore</div><div class="line">|</div><div class="line">|- CommonCoreLib</div><div class="line">|</div><div class="line">|- LoginCommonLibs</div><div class="line">|</div><div class="line">|- ShareCommonLibs</div><div class="line">|</div><div class="line">|- YanxiuUpgradeLib</div></pre></td></tr></table></figure>
+<h2 id="MainApp"><a href="#MainApp" class="headerlink" title="MainApp"></a>MainApp</h2><h2 id="YanxiuBaseCore"><a href="#YanxiuBaseCore" class="headerlink" title="YanxiuBaseCore"></a>YanxiuBaseCore</h2><p><strong>fastjson</strong></p>
+<p><strong>volley</strong>：google的网络框架</p>
+<p><strong>com.android.support:appcompat-v7</strong></p>
+<h2 id="CommonCoreLib"><a href="#CommonCoreLib" class="headerlink" title="CommonCoreLib"></a>CommonCoreLib</h2><p><strong>cardview</strong>：com.android.support:cardview-v7，又一种布局<a href="http://www.kancloud.cn/digest/fastdev4android/109671" target="_blank" rel="external">Blog</a>，没细看</p>
+<p><strong>com.zhy:percent-support-extends</strong>：a extends lib for android-percent-support(Google百分比布局库的扩展)，这个<a href="https://github.com/hongyangAndroid/android-percent-support-extend" target="_blank" rel="external">hongyangAndroid</a>经常能见到。</p>
+<p><strong>eventbus</strong>：<a href="https://github.com/greenrobot/EventBus" target="_blank" rel="external">https://github.com/greenrobot/EventBus</a></p>
+<p><strong>scalpel</strong>：A surgical debugging tool to uncover the layers under your app. <a href="https://github.com/JakeWharton/scalpel" target="_blank" rel="external">https://github.com/JakeWharton/scalpel</a></p>
+<p><strong>Android-Universal-Image-Loader</strong>：<a href="https://github.com/nostra13/Android-Universal-Image-Loader" target="_blank" rel="external">这个</a>恐怕可以用Fresco来替代了，虽然这家伙的stars好多好多！</p>
+<h2 id="LoginCommonLibs"><a href="#LoginCommonLibs" class="headerlink" title="LoginCommonLibs"></a>LoginCommonLibs</h2><h2 id="ShareCommonLibs"><a href="#ShareCommonLibs" class="headerlink" title="ShareCommonLibs"></a>ShareCommonLibs</h2><h2 id="YanxiuUpgradeLib"><a href="#YanxiuUpgradeLib" class="headerlink" title="YanxiuUpgradeLib"></a>YanxiuUpgradeLib</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/26/14-SQLite-Database/" itemprop="url">
                   14. SQLite Database
                 </a>
@@ -1510,146 +1662,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/18/05-Your-Second-Activity/" itemprop="url">
-                  05. Your Second Activity
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-18T14:55:17+08:00" content="2016-09-18">
-              2016-09-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>tools:text这个属性在preview中显示，运行时不会显示出来</p>
-<font color="Green"><br><br>public Intent(Context packageContext, Class&lt;?&gt; cls)<br><br>public Intent putExtra(…)<br><br>public void startActivityForResult(Intent intent, int requestCode)<br><br>getIntent().getBooleanExtra(…);<br></font>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = new Intent();</div><div class="line">   intent.putExtra(Extra_Cheated, true);</div><div class="line">   setResult(Activity.RESULT_OK, intent);</div></pre></td></tr></table></figure>
-<font color="Green"><br>protected void onActivityResult(int requestCode, int resultCode, Intent data)<br></font>
-
-<p>非常有趣的一点，在旋转后，CheatActivity被重新生成，然后其onCreate()函数中 <code>getIntent().getBooleanExtra(Extra_Answer, false);</code> 依然可以获得从QuizActivity传过来的参数。</p>
-<font color="Blue"><br>在Activity中调用Activity.finish()方法同样可以将Activity从ActivityManager管理的栈中弹出。<br></font>
-
-<p>注意key值多用 private static String，以及由此产生的生成Intent，取得Result Intent相应函数所处的Activity</p>
-<p>#传入时：</p>
-<p>在QuizActivity中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">private static int REQUEST_CHEAT_ACTIVITY = 0;</div><div class="line"></div><div class="line">Intent intent = CheatActivity.newIntent(QuizActivity.this, quizArray[mCurQuestionIndex].getmTrueFalseAnswer());</div><div class="line">startActivityForResult(intent, REQUEST_CHEAT_ACTIVITY);</div></pre></td></tr></table></figure>
-<p>在CheatActivity中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private static final String Extra_Answer = &quot;cheat_activity_extra_answer&quot;;</div><div class="line"></div><div class="line">public static Intent newIntent(Context context, boolean answer) &#123;</div><div class="line">    Intent intent = new Intent(context, CheatActivity.class);</div><div class="line">    intent.putExtra(Extra_Answer, answer);</div><div class="line">    return intent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>#传出时：（返回值）<br>在QuizActivity中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">private static int REQUEST_CHEAT_ACTIVITY = 0;</div><div class="line"></div><div class="line">@Override</div><div class="line">protected void onActivityResult(int requestCode, int resultCode, Intent data) &#123;</div><div class="line">    super.onActivityResult(requestCode, resultCode, data);</div><div class="line">    if (resultCode != Activity.RESULT_OK) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    if (requestCode == REQUEST_CHEAT_ACTIVITY) &#123;</div><div class="line">        if (data == null) &#123;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        mCheated = CheatActivity.hasCheated(data);</div><div class="line">        cheatArray[mCurQuestionIndex] = mCheated;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这里再次把获取boolean类型的intent extra的任务放到了 <code>CheatActivity.hasCheated(data)</code> 中，传入intent，返回boolean</p>
-<p>在CheatActivity中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">private static final String Extra_Cheated = &quot;cheat_activity_extra_cheated&quot;;</div><div class="line"></div><div class="line">public static boolean hasCheated(Intent intent) &#123;</div><div class="line">    return intent.getBooleanExtra(Extra_Cheated, false);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private static final String Extra_Cheated = &quot;cheat_activity_extra_cheated&quot;;</div><div class="line"></div><div class="line">&#123;</div><div class="line">        Intent intent = new Intent();</div><div class="line">        intent.putExtra(Extra_Cheated, true);</div><div class="line">        setResult(Activity.RESULT_OK, intent);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><font color="Red"><br>用Intent传来传去，需要用到putExtra，是key-value的</font></p>
-<p>Activity在旋转时重新生成，需要Bundle的putXXXXX，也是key-value的</p>
-<p>生成了好多key，取名字是个问题</p>
-<ul>
-<li>有没有更好的方法</li>
-<li>key的命名应该遵循某种统一的规则<br></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1695,7 +1707,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

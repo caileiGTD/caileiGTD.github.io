@@ -86,22 +86,28 @@
 
 
 
-<meta name="description" content="hexo, next, github搭建Blog
-下载并安装node.js
-安装hexo">
+<meta name="description" content="这章重要，也不重要，重要在于网络请求无论哪个App都会用到，AsyncTask应该不仅仅可以用于网络请求。不重要在于，在我的android体系里，okhttp, gson为首选的被证实优秀的网络框架。
+吐槽的一点是，一般国外的书都用的Flickr，而在兲朝Flickr几乎不可用，所以每每想做demo，都下不得手。
+
+所以，还是粗略记录吧，就不敲code了。
+HttpURLConnection，这个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Blog搭建">
-<meta property="og:url" content="http://yoursite.com/2016/09/12/用Hexo搭建博客/index.html">
+<meta property="og:title" content="23. HTTP & Background Tasks">
+<meta property="og:url" content="http://yoursite.com/2016/10/18/23-HTTP-Background-Tasks/index.html">
 <meta property="og:site_name" content="菜菜园子">
-<meta property="og:description" content="hexo, next, github搭建Blog
-下载并安装node.js
-安装hexo">
-<meta property="og:updated_time" content="2016-09-14T07:56:04.000Z">
+<meta property="og:description" content="这章重要，也不重要，重要在于网络请求无论哪个App都会用到，AsyncTask应该不仅仅可以用于网络请求。不重要在于，在我的android体系里，okhttp, gson为首选的被证实优秀的网络框架。
+吐槽的一点是，一般国外的书都用的Flickr，而在兲朝Flickr几乎不可用，所以每每想做demo，都下不得手。
+
+所以，还是粗略记录吧，就不敲code了。
+HttpURLConnection，这个">
+<meta property="og:updated_time" content="2016-10-18T03:18:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog搭建">
-<meta name="twitter:description" content="hexo, next, github搭建Blog
-下载并安装node.js
-安装hexo">
+<meta name="twitter:title" content="23. HTTP & Background Tasks">
+<meta name="twitter:description" content="这章重要，也不重要，重要在于网络请求无论哪个App都会用到，AsyncTask应该不仅仅可以用于网络请求。不重要在于，在我的android体系里，okhttp, gson为首选的被证实优秀的网络框架。
+吐槽的一点是，一般国外的书都用的Flickr，而在兲朝Flickr几乎不可用，所以每每想做demo，都下不得手。
+
+所以，还是粗略记录吧，就不敲code了。
+HttpURLConnection，这个">
 
 
 
@@ -122,9 +128,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/12/用Hexo搭建博客/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/18/23-HTTP-Background-Tasks/"/>
 
-  <title> Blog搭建 | 菜菜园子 </title>
+  <title> 23. HTTP & Background Tasks | 菜菜园子 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -244,7 +250,7 @@
             
             
               
-                Blog搭建
+                23. HTTP & Background Tasks
               
             
           </h1>
@@ -256,8 +262,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-12T19:47:14+08:00" content="2016-09-12">
-              2016-09-12
+            <time itemprop="dateCreated" datetime="2016-10-18T10:28:23+08:00" content="2016-10-18">
+              2016-10-18
             </time>
           </span>
 
@@ -270,8 +276,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/杂项/" itemprop="url" rel="index">
-                    <span itemprop="name">杂项</span>
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
                   </a>
                 </span>
 
@@ -303,88 +309,18 @@
       
 
       
-        <h1 id="hexo-next-github搭建Blog"><a href="#hexo-next-github搭建Blog" class="headerlink" title="hexo, next, github搭建Blog"></a>hexo, next, github搭建Blog</h1><ul>
-<li>下载并安装<a href="https://nodejs.org/en/" target="_blank" rel="external">node.js</a></li>
-<li>安装hexo</li>
-</ul>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g hexo</div></pre></td></tr></table></figure>
-<ul>
-<li>生成博客路径</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir HexoBlog</div><div class="line">cd HexoBlog</div><div class="line">hexo init</div></pre></td></tr></table></figure>
-<ul>
-<li>安装插件</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>插件</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>npm install hexo-deployer-git –save</td>
-<td>向github发布blog</td>
-</tr>
-<tr>
-<td>npm install hexo-generator-feed –save</td>
-<td>添加rss</td>
-</tr>
-</tbody>
-</table>
-<h1 id="各种配置"><a href="#各种配置" class="headerlink" title="各种配置"></a>各种配置</h1><ul>
-<li>_config.yml</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">title: 菜菜园子 </div><div class="line">author: cailei</div><div class="line">language: zh-Hans</div><div class="line"></div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:caileiGTD/caileiGTD.github.io.git</div><div class="line">  branch: master</div><div class="line"></div><div class="line">rss: /atom.xml</div></pre></td></tr></table></figure>
-<ul>
-<li><p>添加头像themes/next/source/images/avatar.jpg</p>
-</li>
-<li><p>themes/next/_config.yml</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">avatar: /images/avatar.jpg</div><div class="line"></div><div class="line">menu:</div><div class="line">  home: /</div><div class="line">  categories: /categories</div><div class="line">  archives: /archives</div><div class="line">  </div><div class="line">scheme: Mist</div></pre></td></tr></table></figure>
-<ul>
-<li>默认post模板添加categories, scaffolds/post.md</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: &#123;&#123; title &#125;&#125;</div><div class="line">date: &#123;&#123; date &#125;&#125;</div><div class="line">categories:</div><div class="line">tags:</div><div class="line">---</div></pre></td></tr></table></figure>
-<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><p>hexo n “文章名”<br>hexo p (publish)<br>hexo g (generate)<br>hexo s (server)<br>hexo d (deploy)</p>
-<h1 id="删除HelloWorld"><a href="#删除HelloWorld" class="headerlink" title="删除HelloWorld"></a>删除HelloWorld</h1><p>hexo安装好后有个HelloWorld的post，现在将其删除</p>
-<ul>
-<li>delete source/_post/HelloWorld.md</li>
-<li>hexo clean</li>
-<li>hexo generate</li>
-</ul>
-<h1 id="坑爹"><a href="#坑爹" class="headerlink" title="坑爹"></a>坑爹</h1><p>开始时点categories显示</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Cannot GET XXX</div></pre></td></tr></table></figure>
-<p>然后查到了 <a href="http://darren90.github.io/2015/08/01/Hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/" target="_blank" rel="external">这篇文章</a> 其中对 <code>source/categories/index.md</code> 文件中的内容写的如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">layout: categories</div><div class="line">title: categories</div><div class="line">---</div></pre></td></tr></table></figure>
-<p>照着修改后，解决了 <code>Cannot GET XXX</code> 的问题，但是categories点进去还是一片空白，于是又查到了 <a href="https://segmentfault.com/q/1010000002561642" target="_blank" rel="external">另一篇文章</a></p>
-<p>实际上 <code>source/categories/index.md</code> 的内容应该如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">title: categories</div><div class="line">type: &quot;categories&quot;</div><div class="line">---</div></pre></td></tr></table></figure>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><table>
-<thead>
-<tr>
-<th>url</th>
-<th>解决的问题</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://xiaodev.cn/2015/08/12/github-hexo搭建博客/" target="_blank" rel="external">http://xiaodev.cn/2015/08/12/github-hexo搭建博客/</a></td>
-<td>mac osx下搭建</td>
-</tr>
-<tr>
-<td><a href="https://segmentfault.com/a/1190000002632530" target="_blank" rel="external">https://segmentfault.com/a/1190000002632530</a></td>
-<td>rss</td>
-</tr>
-<tr>
-<td><a href="https://segmentfault.com/q/1010000002561642" target="_blank" rel="external">https://segmentfault.com/q/1010000002561642</a></td>
-<td>categories, tags</td>
-</tr>
-</tbody>
-</table>
+        <p>这章重要，也不重要，重要在于网络请求无论哪个App都会用到，AsyncTask应该不仅仅可以用于网络请求。不重要在于，在我的android体系里，okhttp, gson为首选的被证实优秀的网络框架。</p>
+<font color="red"><br>吐槽的一点是，一般国外的书都用的Flickr，而在兲朝Flickr几乎不可用，所以每每想做demo，都下不得手。<br></font>
+
+<p>所以，还是粗略记录吧，就不敲code了。</p>
+<font color="green"><br>HttpURLConnection，这个基本已经被google废弃了吧<br><br>Uri parse() buildUpon() appendQueryParameter()，这些算是生成 GET 形式 url 的一些便利方法<br><br>JSONObject，JSONArray，用来解析Json的原生类，可以完全用Gson代替<br><br>重点看下AsyncTask<br>AsyncTask enables proper and easy use of the UI thread. This class allows to perform background operations and publish results on the UI thread without having to manipulate threads and/or handlers.<br><br>AsyncTask is designed to be a helper class around Thread and Handler and does not constitute a generic threading framework.<br><br>AsyncTasks should ideally be used for short operations (a few seconds at the most.) If you need to keep threads running for long periods of time, it is highly recommended you use the various APIs provided by the java.util.concurrent package such as Executor, ThreadPoolExecutor and FutureTask.<br><br>An asynchronous task is defined by a computation that runs on a background thread and whose result is published on the UI thread. An asynchronous task is defined by 3 generic types, called Params, Progress and Result, and 4 steps, called <code>onPreExecute</code>, <code>doInBackground</code>, <code>onProgressUpdate</code> and <code>onPostExecute</code>.<br></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">private class FetchItemsTask extends AsyncTask&lt;Void,Void,List&lt;GalleryItem&gt;&gt; &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected List&lt;GalleryItem&gt; doInBackground(Void... params) &#123;</div><div class="line">        return new FlickrFetchr().fetchItems();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onPostExecute(List&lt;GalleryItem&gt; items) &#123;</div><div class="line">        mItems = items;</div><div class="line">        setupAdapter();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后在主线程调用，<code>new FetchItemsTask().execute();</code></p>
+<p>task.execute(“param1”, “param2”, “etc”);</p>
+<p>public Void doInBackground(Void… params) {</p>
+<p>}</p>
+<p>在doInBackground()中调用publishProgress()，则主线程中onProgressUpdate()会被回调</p>
 
       
     </div>
@@ -410,13 +346,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/10/17/22-More-About-Intents-and-Tasks/" rel="next" title="22. More About Intents and Tasks">
+                <i class="fa fa-chevron-left"></i> 22. More About Intents and Tasks
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/13/初尝Android之开篇/" rel="prev" title="初尝Android之开篇">
-                初尝Android之开篇 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -537,7 +473,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo-next-github搭建Blog"><span class="nav-number">1.</span> <span class="nav-text">hexo, next, github搭建Blog</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#各种配置"><span class="nav-number">2.</span> <span class="nav-text">各种配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用命令"><span class="nav-number">3.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除HelloWorld"><span class="nav-number">4.</span> <span class="nav-text">删除HelloWorld</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#坑爹"><span class="nav-number">5.</span> <span class="nav-text">坑爹</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
