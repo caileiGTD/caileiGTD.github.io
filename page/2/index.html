@@ -237,6 +237,119 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/27/15-Implicit-Intents/" itemprop="url">
+                  15. Implicit Intents
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-27T12:20:41+08:00" content="2016-09-27">
+              2016-09-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>好吧，不得不说这章其实意义也不大。对于本章来说，知道可以干什么，远比怎么干重要，因为怎么干并不复杂，在用到的时候去了解就哦了 ~</p>
+<font color="Green"><br><strong>跳转网页</strong>：<code>Intent.ACTION_VIEW，URL</code><br><br><strong>发消息</strong>：有若干可选的activity都可以干发送消息这件事，eg，sms，邮件，微信。<code>Intent.ACTION_SEND，EXTRA_TEXT，EXTRA_SUBJECT</code><br><br><strong>设置每次都要选</strong>：Intent.createChooser(…)<br><br><strong>获取联系人</strong>：Intent.ACTION_PICK，ContactsContract.Contacts.CONTENT_URI<br><br>通过<code>ContentResolver</code>访问<code>ContentProvider</code><br><br><strong>检查是否有可响应的Activity</strong>：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">final Intent pickContact = new Intent(Intent.ACTION_PICK,</div><div class="line">                ContactsContract.Contacts.CONTENT_URI);</div></pre></td></tr></table></figure><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">PackageManager packageManager = getActivity().getPackageManager();</div><div class="line">   if (packageManager.resolveActivity(pickContact,</div><div class="line">           PackageManager.MATCH_DEFAULT_ONLY) == null) &#123;</div><div class="line">       mSuspectButton.setEnabled(false);</div><div class="line">   &#125;</div></pre></td></tr></table></figure><br><br>模拟一个PackageManager找不到适当Activity的情况pickContact.addCategory(Intent.CATEGORY_HOME);<br><br><strong>打电话</strong>：Intent.ACTION_DIAL,Intent.ACTION_CALL<br></font>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/26/我们android-app杂七杂八/" itemprop="url">
                   我们android app杂七杂八
                 </a>
@@ -1499,169 +1612,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/18/06-Android-SDK-Versions-and-Compatibility/" itemprop="url">
-                  06. Android SDK Versions and Compatibility
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-18T19:37:39+08:00" content="2016-09-18">
-              2016-09-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <table>
-<thead>
-<tr>
-<th>版本</th>
-<th>代号</th>
-<th>API Level</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>4.1</td>
-<td>Jelly Bean</td>
-<td>16</td>
-</tr>
-<tr>
-<td>4.2</td>
-<td>Jelly Bean</td>
-<td>17</td>
-</tr>
-<tr>
-<td>4.3</td>
-<td>Jelly Bean</td>
-<td>18</td>
-</tr>
-<tr>
-<td>4.4</td>
-<td>KitKat</td>
-<td>19</td>
-</tr>
-<tr>
-<td>5.0</td>
-<td>Lollipop</td>
-<td>21</td>
-</tr>
-<tr>
-<td>5.1</td>
-<td>Lollipop</td>
-<td>22</td>
-</tr>
-<tr>
-<td>6.0</td>
-<td>Marshmallow</td>
-<td>23</td>
-</tr>
-<tr>
-<td>7.0</td>
-<td>Nougat</td>
-<td>24</td>
-</tr>
-</tbody>
-</table>
-<font color="Green"><br>if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) {<br><br>}<br></font>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1707,7 +1657,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

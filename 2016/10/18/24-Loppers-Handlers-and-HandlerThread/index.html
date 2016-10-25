@@ -86,19 +86,25 @@
 
 
 
-<meta name="description" content="tools:text这个属性在preview中显示，运行时不会显示出来
-public Intent(Context packageContext, Class&amp;lt;?&amp;gt; cls)public Intent putExtra(…)public void startActivityForResult(Intent intent, int requestCode)getIntent().getB">
+<meta name="description" content="粗略的过了一遍，感觉基本没有看懂 ~~~10月25日，终于又找了个风和日丽，中午小憩了一会儿的下午，把这章又细细的从头到尾看了一遍，总算明白了。
+简言之如下：1，每个Thread有一个Looper用来处理消息队列2，Looper里的消息可以用若干Handler来处理3，在某Thread Context里new出来的Handler就在某Thread执行
+##Thread的Code表象：
+1Thumb">
 <meta property="og:type" content="article">
-<meta property="og:title" content="05. Your Second Activity">
-<meta property="og:url" content="http://yoursite.com/2016/09/18/05-Your-Second-Activity/index.html">
+<meta property="og:title" content="24. Loppers, Handlers, and HandlerThread">
+<meta property="og:url" content="http://yoursite.com/2016/10/18/24-Loppers-Handlers-and-HandlerThread/index.html">
 <meta property="og:site_name" content="菜菜园子">
-<meta property="og:description" content="tools:text这个属性在preview中显示，运行时不会显示出来
-public Intent(Context packageContext, Class&amp;lt;?&amp;gt; cls)public Intent putExtra(…)public void startActivityForResult(Intent intent, int requestCode)getIntent().getB">
-<meta property="og:updated_time" content="2016-09-18T11:31:56.000Z">
+<meta property="og:description" content="粗略的过了一遍，感觉基本没有看懂 ~~~10月25日，终于又找了个风和日丽，中午小憩了一会儿的下午，把这章又细细的从头到尾看了一遍，总算明白了。
+简言之如下：1，每个Thread有一个Looper用来处理消息队列2，Looper里的消息可以用若干Handler来处理3，在某Thread Context里new出来的Handler就在某Thread执行
+##Thread的Code表象：
+1Thumb">
+<meta property="og:updated_time" content="2016-10-25T06:55:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="05. Your Second Activity">
-<meta name="twitter:description" content="tools:text这个属性在preview中显示，运行时不会显示出来
-public Intent(Context packageContext, Class&amp;lt;?&amp;gt; cls)public Intent putExtra(…)public void startActivityForResult(Intent intent, int requestCode)getIntent().getB">
+<meta name="twitter:title" content="24. Loppers, Handlers, and HandlerThread">
+<meta name="twitter:description" content="粗略的过了一遍，感觉基本没有看懂 ~~~10月25日，终于又找了个风和日丽，中午小憩了一会儿的下午，把这章又细细的从头到尾看了一遍，总算明白了。
+简言之如下：1，每个Thread有一个Looper用来处理消息队列2，Looper里的消息可以用若干Handler来处理3，在某Thread Context里new出来的Handler就在某Thread执行
+##Thread的Code表象：
+1Thumb">
 
 
 
@@ -119,9 +125,9 @@ public Intent(Context packageContext, Class&amp;lt;?&amp;gt; cls)public Intent p
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/18/05-Your-Second-Activity/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/18/24-Loppers-Handlers-and-HandlerThread/"/>
 
-  <title> 05. Your Second Activity | 菜菜园子 </title>
+  <title> 24. Loppers, Handlers, and HandlerThread | 菜菜园子 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -241,7 +247,7 @@ public Intent(Context packageContext, Class&amp;lt;?&amp;gt; cls)public Intent p
             
             
               
-                05. Your Second Activity
+                24. Loppers, Handlers, and HandlerThread
               
             
           </h1>
@@ -253,8 +259,8 @@ public Intent(Context packageContext, Class&amp;lt;?&amp;gt; cls)public Intent p
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-18T14:55:17+08:00" content="2016-09-18">
-              2016-09-18
+            <time itemprop="dateCreated" datetime="2016-10-18T11:19:58+08:00" content="2016-10-18">
+              2016-10-18
             </time>
           </span>
 
@@ -300,34 +306,22 @@ public Intent(Context packageContext, Class&amp;lt;?&amp;gt; cls)public Intent p
       
 
       
-        <p>tools:text这个属性在preview中显示，运行时不会显示出来</p>
-<font color="Green"><br><br>public Intent(Context packageContext, Class&lt;?&gt; cls)<br><br>public Intent putExtra(…)<br><br>public void startActivityForResult(Intent intent, int requestCode)<br><br>getIntent().getBooleanExtra(…);<br></font>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = new Intent();</div><div class="line">   intent.putExtra(Extra_Cheated, true);</div><div class="line">   setResult(Activity.RESULT_OK, intent);</div></pre></td></tr></table></figure>
-<font color="Green"><br>protected void onActivityResult(int requestCode, int resultCode, Intent data)<br></font>
-
-<p>非常有趣的一点，在旋转后，CheatActivity被重新生成，然后其onCreate()函数中 <code>getIntent().getBooleanExtra(Extra_Answer, false);</code> 依然可以获得从QuizActivity传过来的参数。</p>
-<font color="Blue"><br>在Activity中调用Activity.finish()方法同样可以将Activity从ActivityManager管理的栈中弹出。<br></font>
-
-<p>注意key值多用 private static String，以及由此产生的生成Intent，取得Result Intent相应函数所处的Activity</p>
-<p>#传入时：</p>
-<p>在QuizActivity中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">private static int REQUEST_CHEAT_ACTIVITY = 0;</div><div class="line"></div><div class="line">Intent intent = CheatActivity.newIntent(QuizActivity.this, quizArray[mCurQuestionIndex].getmTrueFalseAnswer());</div><div class="line">startActivityForResult(intent, REQUEST_CHEAT_ACTIVITY);</div></pre></td></tr></table></figure>
-<p>在CheatActivity中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private static final String Extra_Answer = &quot;cheat_activity_extra_answer&quot;;</div><div class="line"></div><div class="line">public static Intent newIntent(Context context, boolean answer) &#123;</div><div class="line">    Intent intent = new Intent(context, CheatActivity.class);</div><div class="line">    intent.putExtra(Extra_Answer, answer);</div><div class="line">    return intent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>#传出时：（返回值）<br>在QuizActivity中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">private static int REQUEST_CHEAT_ACTIVITY = 0;</div><div class="line"></div><div class="line">@Override</div><div class="line">protected void onActivityResult(int requestCode, int resultCode, Intent data) &#123;</div><div class="line">    super.onActivityResult(requestCode, resultCode, data);</div><div class="line">    if (resultCode != Activity.RESULT_OK) &#123;</div><div class="line">        return;</div><div class="line">    &#125;</div><div class="line">    if (requestCode == REQUEST_CHEAT_ACTIVITY) &#123;</div><div class="line">        if (data == null) &#123;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        mCheated = CheatActivity.hasCheated(data);</div><div class="line">        cheatArray[mCurQuestionIndex] = mCheated;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这里再次把获取boolean类型的intent extra的任务放到了 <code>CheatActivity.hasCheated(data)</code> 中，传入intent，返回boolean</p>
-<p>在CheatActivity中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">private static final String Extra_Cheated = &quot;cheat_activity_extra_cheated&quot;;</div><div class="line"></div><div class="line">public static boolean hasCheated(Intent intent) &#123;</div><div class="line">    return intent.getBooleanExtra(Extra_Cheated, false);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private static final String Extra_Cheated = &quot;cheat_activity_extra_cheated&quot;;</div><div class="line"></div><div class="line">&#123;</div><div class="line">        Intent intent = new Intent();</div><div class="line">        intent.putExtra(Extra_Cheated, true);</div><div class="line">        setResult(Activity.RESULT_OK, intent);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><font color="Red"><br>用Intent传来传去，需要用到putExtra，是key-value的</font></p>
-<p>Activity在旋转时重新生成，需要Bundle的putXXXXX，也是key-value的</p>
-<p>生成了好多key，取名字是个问题</p>
-<ul>
-<li>有没有更好的方法</li>
-<li>key的命名应该遵循某种统一的规则<br></li>
-</ul>
+        <p>粗略的过了一遍，感觉基本没有看懂 ~~~<br>10月25日，终于又找了个风和日丽，中午小憩了一会儿的下午，把这章又细细的从头到尾看了一遍，总算明白了。</p>
+<p>简言之如下：<br>1，每个Thread有一个Looper用来处理消息队列<br>2，Looper里的消息可以用若干Handler来处理<br>3，在某Thread Context里new出来的Handler就在某Thread执行</p>
+<p>##<br>Thread的Code表象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ThumbnailDownloader&lt;T&gt; extends HandlerThread</div></pre></td></tr></table></figure>
+<p>其中T为一个ViewHolder，图片完成下载后，bindData给ViewHolder</p>
+<p>##<br>UI线程需要new出Thread以处理图片下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 在fragment的onCreate()中</div><div class="line">mThumbnailDownloader = new ThumbnailDownloader&lt;&gt;(responseHandler);</div><div class="line">mThumbnailDownloader.start();</div><div class="line">mThumbnailDownloader.getLooper();</div><div class="line"></div><div class="line">// 在fragment的onDestroy()中</div><div class="line">mThumbnailDownloader.quit();</div></pre></td></tr></table></figure>
+<p>##<br>HandlerThread的子类需要实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 被主线程调用时需要，发送Message到Looper的Message队列</div><div class="line">mRequestHandler.obtainMessage(MESSAGE_DOWNLOAD, target)</div><div class="line">                    .sendToTarget();</div><div class="line"></div><div class="line">// 需要重载实现onLooperPrepared()，在其中new出各个Handler来处理Message</div><div class="line">	@Override</div><div class="line">    protected void onLooperPrepared() &#123;</div><div class="line">        mRequestHandler = new Handler() &#123;</div><div class="line">            @Override</div><div class="line">            public void handleMessage(Message msg) &#123;</div><div class="line">                if (msg.what == MESSAGE_DOWNLOAD) &#123;</div><div class="line">                    T target = (T) msg.obj;</div><div class="line">                    Log.i(TAG, &quot;Got a request for URL: &quot; + mRequestMap.get(target));</div><div class="line">                    handleRequest(target);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>##<br>图片下载完成后，需要调用UI线程的Handler，让UI线程的Looper去处理更新页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// HandlerThread初始化时传入了UI线程里的Handler实例</div><div class="line">Handler responseHandler = new Handler();</div><div class="line">mThumbnailDownloader = new ThumbnailDownloader&lt;&gt;(responseHandler);</div></pre></td></tr></table></figure>
+<p>HandlerThread的子类通过UI线程的Handler，来发送Message，一个Runnable就是一个Message</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">mResponseHandler.post(new Runnable() &#123;</div><div class="line">    public void run() &#123;</div><div class="line">        if (mRequestMap.get(target) != url) &#123;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        mRequestMap.remove(target);</div><div class="line">        mThumbnailDownloadListener.onThumbnailDownloaded(target, bitmap);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>##<br>发过去的消息，在UI线程执行，但是执行的是HandlerThread的子类里的方法（Runnable的run()方法）<br>所以，需要类似delegate或listener的方式，让HandlerThread来调用UI类的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">// UI类里</div><div class="line">mThumbnailDownloader.setThumbnailDownloadListener(</div><div class="line">    new ThumbnailDownloader.ThumbnailDownloadListener&lt;PhotoHolder&gt;() &#123;</div><div class="line">        @Override</div><div class="line">        public void onThumbnailDownloaded(PhotoHolder photoHolder, Bitmap bitmap) &#123;</div><div class="line">            Drawable drawable = new BitmapDrawable(getResources(), bitmap);</div><div class="line">            photoHolder.bindDrawable(drawable);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">);</div><div class="line"></div><div class="line">// HandlerThread里提供setListener或delegate属性</div><div class="line">public void setThumbnailDownloadListener(ThumbnailDownloadListener&lt;T&gt; listener) &#123;</div><div class="line">    mThumbnailDownloadListener = listener;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public ThumbnailDownloader(Handler responseHandler) &#123;</div><div class="line">    super(TAG);</div><div class="line">    mResponseHandler = responseHandler;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>##<br>上述就是Android下线程间通信的大概了，总算可以继续进行下去了，顺利的话，11月前争取整本书过一遍！</p>
 
       
     </div>
@@ -353,17 +347,13 @@ public Intent(Context packageContext, Class&amp;lt;?&amp;gt; cls)public Intent p
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/18/04-Debugging-Android-Apps/" rel="next" title="04. Debugging Android Apps">
-                <i class="fa fa-chevron-left"></i> 04. Debugging Android Apps
+              <a href="/2016/10/18/23-HTTP-Background-Tasks/" rel="next" title="23. HTTP & Background Tasks">
+                <i class="fa fa-chevron-left"></i> 23. HTTP & Background Tasks
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/18/06-Android-SDK-Versions-and-Compatibility/" rel="prev" title="06. Android SDK Versions and Compatibility">
-                06. Android SDK Versions and Compatibility <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
