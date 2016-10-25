@@ -86,25 +86,28 @@
 
 
 
-<meta name="description" content="ORM (object/rational mapping) : litepal / greenDao
-getApplictionContext()SQLiteOpenHelper- onCreate- onUpgradeCursorWrapper
+<meta name="description" content="这章主要讲述了没有界面的后台处理，我们的代码中没有用到，想想感觉将来做些流氓的事时应该仔细研究下本章。
+IntentServiceAlertManager以及用PendingIntent打包Intent并发送给AlertManager
 
-SQL语句中用 &amp;quot; = ?&amp;quot;, XXXXX，可以防止SQL脚本注入">
+AlertManager作用如同定时器，到时间去启动后台IntentService
+1234567891011121314Intent i = PollServi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="14. SQLite Database">
-<meta property="og:url" content="http://yoursite.com/2016/09/26/14-SQLite-Database/index.html">
+<meta property="og:title" content="26. Background Services">
+<meta property="og:url" content="http://yoursite.com/2016/10/25/26-Background-Services/index.html">
 <meta property="og:site_name" content="菜菜园子">
-<meta property="og:description" content="ORM (object/rational mapping) : litepal / greenDao
-getApplictionContext()SQLiteOpenHelper- onCreate- onUpgradeCursorWrapper
+<meta property="og:description" content="这章主要讲述了没有界面的后台处理，我们的代码中没有用到，想想感觉将来做些流氓的事时应该仔细研究下本章。
+IntentServiceAlertManager以及用PendingIntent打包Intent并发送给AlertManager
 
-SQL语句中用 &amp;quot; = ?&amp;quot;, XXXXX，可以防止SQL脚本注入">
-<meta property="og:updated_time" content="2016-09-26T04:19:01.000Z">
+AlertManager作用如同定时器，到时间去启动后台IntentService
+1234567891011121314Intent i = PollServi">
+<meta property="og:updated_time" content="2016-10-25T09:08:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="14. SQLite Database">
-<meta name="twitter:description" content="ORM (object/rational mapping) : litepal / greenDao
-getApplictionContext()SQLiteOpenHelper- onCreate- onUpgradeCursorWrapper
+<meta name="twitter:title" content="26. Background Services">
+<meta name="twitter:description" content="这章主要讲述了没有界面的后台处理，我们的代码中没有用到，想想感觉将来做些流氓的事时应该仔细研究下本章。
+IntentServiceAlertManager以及用PendingIntent打包Intent并发送给AlertManager
 
-SQL语句中用 &amp;quot; = ?&amp;quot;, XXXXX，可以防止SQL脚本注入">
+AlertManager作用如同定时器，到时间去启动后台IntentService
+1234567891011121314Intent i = PollServi">
 
 
 
@@ -125,9 +128,9 @@ SQL语句中用 &amp;quot; = ?&amp;quot;, XXXXX，可以防止SQL脚本注入">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/26/14-SQLite-Database/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/25/26-Background-Services/"/>
 
-  <title> 14. SQLite Database | 菜菜园子 </title>
+  <title> 26. Background Services | 菜菜园子 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -247,7 +250,7 @@ SQL语句中用 &amp;quot; = ?&amp;quot;, XXXXX，可以防止SQL脚本注入">
             
             
               
-                14. SQLite Database
+                26. Background Services
               
             
           </h1>
@@ -259,8 +262,8 @@ SQL语句中用 &amp;quot; = ?&amp;quot;, XXXXX，可以防止SQL脚本注入">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-26T11:51:39+08:00" content="2016-09-26">
-              2016-09-26
+            <time itemprop="dateCreated" datetime="2016-10-25T15:33:28+08:00" content="2016-10-25">
+              2016-10-25
             </time>
           </span>
 
@@ -306,10 +309,21 @@ SQL语句中用 &amp;quot; = ?&amp;quot;, XXXXX，可以防止SQL脚本注入">
       
 
       
-        <p><strong>ORM (object/rational mapping)</strong> : litepal / greenDao</p>
-<font color="Green"><br>getApplictionContext()<br><br>SQLiteOpenHelper<br>- onCreate<br>- onUpgrade<br><br>CursorWrapper<br><br></font>
+        <p>这章主要讲述了没有界面的后台处理，我们的代码中没有用到，想想感觉将来做些流氓的事时应该仔细研究下本章。</p>
+<font color="green"><br>IntentService<br><br>AlertManager以及用PendingIntent打包Intent并发送给AlertManager<br></font>
 
-<font color="Orange"><br>SQL语句中用 <code>&quot; = ?&quot;, XXXXX</code>，可以防止SQL脚本注入<br></font>
+<p>AlertManager作用如同定时器，到时间去启动后台IntentService</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Intent i = PollService.newIntent(context);</div><div class="line">PendingIntent pi = PendingIntent.getService(</div><div class="line">        context, 0, i, 0);</div><div class="line"></div><div class="line">AlarmManager alarmManager = (AlarmManager)</div><div class="line">        context.getSystemService(Context.ALARM_SERVICE);</div><div class="line"></div><div class="line">if (isOn) &#123;</div><div class="line">    alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,</div><div class="line">            SystemClock.elapsedRealtime(), POLL_INTERVAL, pi);</div><div class="line">&#125; else &#123;</div><div class="line">    alarmManager.cancel(pi);</div><div class="line">    pi.cancel();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>后台完成后，通知App</p>
+<font color="green"><br>Notification<br><br>NotificationCompat<br><br>sticky vs non-sticky<br><br>API21以后可用<br><br>JobScheduler / JobService<br><br>sync adaptor<br></font>
+
+<p>总结就是三种方式</p>
+<ol>
+<li>AlertManager</li>
+<li>JobScheduler / JobService</li>
+<li>content provider, sync adaptor, sync service</li>
+</ol>
+<p>好吧，我承认没啥使用场景，这章，以及下一章会看的云里雾里，但是用到的时候知道有这么个东东，再回头来精读吧。</p>
 
       
     </div>
@@ -335,16 +349,16 @@ SQL语句中用 &amp;quot; = ?&amp;quot;, XXXXX，可以防止SQL脚本注入">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/25/13-The-Toolbar/" rel="next" title="13. The Toolbar">
-                <i class="fa fa-chevron-left"></i> 13. The Toolbar
+              <a href="/2016/10/25/25-Search/" rel="next" title="25. Search">
+                <i class="fa fa-chevron-left"></i> 25. Search
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/26/我们android-app杂七杂八/" rel="prev" title="我们android app杂七杂八">
-                我们android app杂七杂八 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/10/25/27-broadcast-intent/" rel="prev" title="27. broadcast intent">
+                27. broadcast intent <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

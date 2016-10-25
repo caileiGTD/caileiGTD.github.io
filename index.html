@@ -237,6 +237,493 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/25/28-Browsing-the-Web-and-WebView/" itemprop="url">
+                  28. Browsing the Web and WebView
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-25T17:50:48+08:00" content="2016-10-25">
+              2016-10-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这章非常具体了，就列几个名字，需要用到的时候再好好研究：</p>
+<font color="green"><br>隐式Intent<br><br>WebView<br><br>WebViewClient<br><br>android:configChanges=”orientation|screenSzie”, 应对设备旋转后重建activity<br></font>
+
+<p>ok，暂时也就这些。</p>
+<p>明天开始进入新的一块，应该是蛮重要的一块，就是customize view + 动画，这个再看过，就算暂时学成出山。开始实操鸟 ~~~~</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/25/27-broadcast-intent/" itemprop="url">
+                  27. broadcast intent
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-25T17:09:56+08:00" content="2016-10-25">
+              2016-10-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>broadcast intent</code> 可同时被多个叫做 <code>broadcast receiver</code> 的组件接收。</p>
+<h2 id="开机时broadcast"><a href="#开机时broadcast" class="headerlink" title="开机时broadcast"></a>开机时broadcast</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class StartupReceiver extends BroadcastReceiver&#123;</div><div class="line">    private static final String TAG = &quot;StartupReceiver&quot;;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onReceive(Context context, Intent intent) &#123;</div><div class="line">        Log.i(TAG, &quot;Received broadcast intent: &quot; + intent.getAction());</div><div class="line"></div><div class="line">        boolean isOn = QueryPreferences.isAlarmOn(context);</div><div class="line">        PollService.setServiceAlarm(context, isOn);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>onReceive(Context, Intent)方法运行完，receiver就不存在了。此方法是在主线程运行的。</p>
+<p>manifest文件中加入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;receiver android:name=&quot;.StartupReceiver&quot; &gt;</div><div class="line">    &lt;intent-filter&gt;</div><div class="line">        &lt;action android:name=&quot;android.intent.action.BOOT_COMPLETED&quot; /&gt;</div><div class="line">    &lt;/intent-filter&gt;</div><div class="line">&lt;/receiver&gt;</div></pre></td></tr></table></figure>
+<h2 id="App打开状态下，只有在列表页才刷新"><a href="#App打开状态下，只有在列表页才刷新" class="headerlink" title="App打开状态下，只有在列表页才刷新"></a>App打开状态下，只有在列表页才刷新</h2><ul>
+<li>后台Service发消息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sendBroadcast(new Intent(ACTION_SHOW_NOTIFICATION))</div></pre></td></tr></table></figure>
+<ul>
+<li>注册receiver</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">getActivity().registerReceiver(mOnShowNotification, filter,</div><div class="line">                PollService.PERM_PRIVATE, null);</div><div class="line">                </div><div class="line">getActivity().unregisterReceiver(mOnShowNotification);</div></pre></td></tr></table></figure>
+<h2 id="有序broadcast"><a href="#有序broadcast" class="headerlink" title="有序broadcast"></a>有序broadcast</h2><p>按照顺序 <code>sendOrderedBoradcst</code>，还能设置返回值</p>
+<p>broadcast可以跨App传递，如果仅仅App内传递，可以用EventBus</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/25/26-Background-Services/" itemprop="url">
+                  26. Background Services
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-25T15:33:28+08:00" content="2016-10-25">
+              2016-10-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这章主要讲述了没有界面的后台处理，我们的代码中没有用到，想想感觉将来做些流氓的事时应该仔细研究下本章。</p>
+<font color="green"><br>IntentService<br><br>AlertManager以及用PendingIntent打包Intent并发送给AlertManager<br></font>
+
+<p>AlertManager作用如同定时器，到时间去启动后台IntentService</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Intent i = PollService.newIntent(context);</div><div class="line">PendingIntent pi = PendingIntent.getService(</div><div class="line">        context, 0, i, 0);</div><div class="line"></div><div class="line">AlarmManager alarmManager = (AlarmManager)</div><div class="line">        context.getSystemService(Context.ALARM_SERVICE);</div><div class="line"></div><div class="line">if (isOn) &#123;</div><div class="line">    alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,</div><div class="line">            SystemClock.elapsedRealtime(), POLL_INTERVAL, pi);</div><div class="line">&#125; else &#123;</div><div class="line">    alarmManager.cancel(pi);</div><div class="line">    pi.cancel();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>后台完成后，通知App</p>
+<font color="green"><br>Notification<br><br>NotificationCompat<br><br>sticky vs non-sticky<br><br>API21以后可用<br><br>JobScheduler / JobService<br><br>sync adaptor<br></font>
+
+<p>总结就是三种方式</p>
+<ol>
+<li>AlertManager</li>
+<li>JobScheduler / JobService</li>
+<li>content provider, sync adaptor, sync service</li>
+</ol>
+<p>好吧，我承认没啥使用场景，这章，以及下一章会看的云里雾里，但是用到的时候知道有这么个东东，再回头来精读吧。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/25/25-Search/" itemprop="url">
+                  25. Search
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-25T15:28:15+08:00" content="2016-10-25">
+              2016-10-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>没什么好说的，记住以下两个类就好了</p>
+<font color="green"><br>SearchView<br><br>PreferenceManager<br></font>
+
+<p>其中PreferenceManager，SharedPreferences类似于ios的NSUserDefaults，用于App内部存储</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/18/24-Loppers-Handlers-and-HandlerThread/" itemprop="url">
                   24. Loppers, Handlers, and HandlerThread
                 </a>
@@ -950,483 +1437,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/10/18-Assets/" itemprop="url">
-                  18. Assets
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-10T10:39:33+08:00" content="2016-10-10">
-              2016-10-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Android有assets和resources两大资源系统<br>这章其实讲assets的地方并没啥复杂，记住以下几个函数就好了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">AssetManager am = getActivity().getAssets();</div><div class="line">   String[] filepaths = null;</div><div class="line">   try &#123;</div><div class="line">       filepaths = am.list(&quot;sample_sounds&quot;);</div><div class="line">   &#125; catch (IOException e) &#123;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<p>不过正好是个机会，再次回顾一下recyclerview，如果说ios中70%的情况都是和tableview打交道，那么recyclerview就是android中的tableview，多写多熟练就好了。</p>
-<font color="red"><br>先记录个坑:<br><br>appcompat, recyclerview的版本需要保持一致，否则运行时会出 <code>FAILURE xxxxx Multiple dex files define</code> 这种错误。<br><br>需要把两个依赖lib都”-“了，重新”+”一遍。<br></font>
-
-<p>包含activity，fragment，list_item</p>
-<h3 id="activity里就是个-FrameLayout-id就是fragment-container"><a href="#activity里就是个-FrameLayout-id就是fragment-container" class="headerlink" title="activity里就是个 FrameLayout, id就是fragment_container"></a>activity里就是个 FrameLayout, id就是fragment_container</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;FrameLayout</div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:id=&quot;@+id/fragment_container&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot; /&gt;</div></pre></td></tr></table></figure>
-<h3 id="fragment里就是个recyclerview"><a href="#fragment里就是个recyclerview" class="headerlink" title="fragment里就是个recyclerview"></a>fragment里就是个recyclerview</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;android.support.v7.widget.RecyclerView </div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:id=&quot;@+id/recycler_view_beat_box&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot; /&gt;</div></pre></td></tr></table></figure>
-<h3 id="list-item里就是个Button"><a href="#list-item里就是个Button" class="headerlink" title="list_item里就是个Button"></a>list_item里就是个Button</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;Button </div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:id=&quot;@+id/sound_button&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;100dp&quot; /&gt;</div></pre></td></tr></table></figure>
-<h3 id="在activity的onCreate中，为fragment-container添加fragment"><a href="#在activity的onCreate中，为fragment-container添加fragment" class="headerlink" title="在activity的onCreate中，为fragment_container添加fragment"></a>在activity的onCreate中，为fragment_container添加fragment</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">FragmentManager fm = getSupportFragmentManager();</div><div class="line">Fragment f = fm.findFragmentById(R.id.fragment_container);</div><div class="line">if (f == null) &#123;</div><div class="line">    f = new BeatBoxFragment();</div><div class="line">    fm.beginTransaction()</div><div class="line">            .add(R.id.fragment_container, f)</div><div class="line">            .commit();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="在fragment的onCreateView中，配置好recyclerview用GridLayoutManager，并且设置recyclerview的adapter，然后返回从fragment-inflate出来的view"><a href="#在fragment的onCreateView中，配置好recyclerview用GridLayoutManager，并且设置recyclerview的adapter，然后返回从fragment-inflate出来的view" class="headerlink" title="在fragment的onCreateView中，配置好recyclerview用GridLayoutManager，并且设置recyclerview的adapter，然后返回从fragment inflate出来的view"></a>在fragment的onCreateView中，配置好recyclerview用GridLayoutManager，并且设置recyclerview的adapter，然后返回从fragment inflate出来的view</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) &#123;</div><div class="line">    View v = inflater.inflate(R.layout.fragment_beat_box, container, false);</div><div class="line">    RecyclerView rv = (RecyclerView)v.findViewById(R.id.recycler_view_beat_box);</div><div class="line">    rv.setLayoutManager(new GridLayoutManager(getActivity(), 3));</div><div class="line">    rv.setAdapter(new SoundAdaptor());</div><div class="line">    return v;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="ViewHolder，初始化时搞定各个子view和iVal的关联，bindModel时，根据model设置view相关属性"><a href="#ViewHolder，初始化时搞定各个子view和iVal的关联，bindModel时，根据model设置view相关属性" class="headerlink" title="ViewHolder，初始化时搞定各个子view和iVal的关联，bindModel时，根据model设置view相关属性"></a>ViewHolder，初始化时搞定各个子view和iVal的关联，bindModel时，根据model设置view相关属性</h3><h3 id="Adaptor，onCreateViewHolder时，inflate出list-item作为ViewHolder初始化参数；onBindViewHolder在model队列里找出相应item并对ViewHolder-bindModel；getItemCount返回model队列里item个数"><a href="#Adaptor，onCreateViewHolder时，inflate出list-item作为ViewHolder初始化参数；onBindViewHolder在model队列里找出相应item并对ViewHolder-bindModel；getItemCount返回model队列里item个数" class="headerlink" title="Adaptor，onCreateViewHolder时，inflate出list_item作为ViewHolder初始化参数；onBindViewHolder在model队列里找出相应item并对ViewHolder bindModel；getItemCount返回model队列里item个数"></a>Adaptor，onCreateViewHolder时，inflate出list_item作为ViewHolder初始化参数；onBindViewHolder在model队列里找出相应item并对ViewHolder bindModel；getItemCount返回model队列里item个数</h3><p>好像也就这么简单 <del>~ ~</del> 还是那句话，名字很重要，等本书学完一遍，结合Flux流程，要好好review一下coding standard并严格执行 <del>~ ~</del></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/08/国庆回来/" itemprop="url">
-                  国庆回来
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-08T11:23:08+08:00" content="2016-10-08">
-              2016-10-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>国庆回来，满满的罪恶感，本来计划在家里好好看书学习的。但是确实没有心情与心境。放纵一天，干脆破罐子破摔，整个假期就是吃、喝、玩、乐。书不仅一页未读，甚至把节前看的还回去了一多半。</p>
-<p>好在做笔记就这点好处，你可以快速的回顾一遍之前的重点。</p>
-<p>人老了，记性不好，只能靠规矩来加强自己的战斗点数了。</p>
-<p>所以节后回来，花一天的时间回顾一下之前的章节，然后需要抓紧开始下面的部分。</p>
-<p>Flux架构的理解与应用又提到一个紧张的日程之上了 ~~~ 好在最终决定android暂时先不大规模重构，也算有口喘息之机吧。</p>
-<hr>
-<p>然后研究Flux，各种源码，又花费了整整2天，现在感觉Java Android的Flux已经基本胸有成竹了，最终限制的目前还是android开发，以及更高层的java语言的种种细节了。</p>
-<p>今天开始继续 《Android Programming - The Big Nerd Ranch Guide, 2nd Edition》</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/27/17-Two-Pane-Master-Detail-Interfaces/" itemprop="url">
-                  17. Two-Pane Master-Detail Interfaces
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-27T16:11:33+08:00" content="2016-09-27">
-              2016-09-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>今天的最后一章，这章应该蛮有意思，但是应该只是展示了用fragment的好处。也就一并看了。</p>
-<p>别名，这样相同的R.layout.XXXXX对于不同的环境就能inflate出不同layout.xml了。</p>
-<p>refs.xml，用以前的 <code>activity_fragment</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;resources&gt;</div><div class="line">    &lt;item name=&quot;activity_masterdetail&quot; type=&quot;layout&quot;&gt;@layout/activity_fragment&lt;/item&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure>
-<p>refs.xml(sw600dp)，用pad的 <code>activity_twopane</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;resources&gt;</div><div class="line">    &lt;item name=&quot;activity_masterdetail&quot; type=&quot;layout&quot;&gt;@layout/activity_twopane&lt;/item&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure>
-<p>在Fragment里声明Callbacks接口，Activity实现Callbacks接口，然后由Fragment产生的事件通过Callbacks让Activity负责调度处理。</p>
-<p>在CrimeListFragment中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void onAttach(Activity activity) &#123;</div><div class="line">    super.onAttach(activity);</div><div class="line">    mCallbacks = (Callbacks) activity;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Override</div><div class="line">public void onDetach() &#123;</div><div class="line">    super.onDetach();</div><div class="line">    mCallbacks = null;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>CrimeListFragment点了哪个row -&gt; Callbacks -&gt; Activity -&gt; 显示相应的CrimeFragment<br>CrimeFragment修改crime信息 -&gt; Callbacks -&gt; Activity -&gt; 更新CrimeListFragment中对应的row</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/27/16-Taking-Pictures-with-Intents/" itemprop="url">
-                  16. Taking Pictures with Intents
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-27T15:43:36+08:00" content="2016-09-27">
-              2016-09-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>还是这样，这些具体的技巧，等到用的时候再详细了解也不迟，所以今天一天就多过几章。好读，不求甚解了。</p>
-<p>layout文件的include引入</p>
-<font color="Green"><br>    <code>&lt;include layout=&quot;@layout/view_camera_and_title&quot; /&gt;</code><br></font>
-
-
-<p>照相机的隐式Intent：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Intent(MediaStore.ACTION_IMAGE_CAPTURE)</div></pre></td></tr></table></figure>
-<p>权限：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=&quot;android.permission.READ_EXTERNAL_STORAGE&quot;</div><div class="line">                 android:maxSdkVersion=&quot;18&quot;</div><div class="line">    /&gt;</div></pre></td></tr></table></figure>
-<p>这里有个复杂的Bitmap处理，完全没有理解 ~~~ 擦。简言之，就是用 <code>BitmapFactory</code> 把图片压缩成bitmap适合的大小，当然根据屏幕猜测了下bitmap的大小。</p>
-<p>目的主要是保证bitmap不要过大，占据太多内存。所以估算的也可用吧。（软件做了差值？）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;uses-feature android:name=&quot;android.hardware.camera&quot;</div><div class="line">              android:required=&quot;false&quot;</div><div class="line">    /&gt;</div></pre></td></tr></table></figure>
-<p>其中 <code>android:required</code> 如果为 <code>true</code> 的话，在google play商店中，没有拍照功能的硬件就安装不了此应用。</p>
-<font color="Green"><br>ViewTreeObserver<br><br>OnGlobalLayoutListener可以监听布局的传递、控制事件的发生<br></font>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1467,7 +1482,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">34</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
