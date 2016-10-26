@@ -237,6 +237,128 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/26/29-Custom-Views-and-Touch-Events/" itemprop="url">
+                  29. Custom Views and Touch Events
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-26T10:57:46+08:00" content="2016-10-26">
+              2016-10-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>简单视图 一般继承自 View</p>
+<p>聚合视图 一般继承自 XXXLayout</p>
+<p>好的，再次温习一遍</p>
+<p>对activity，用FrameLayout</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:id=&quot;@+id/fragment_container&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot; /&gt;</div></pre></td></tr></table></figure>
+<p>对fragment，用所需的View即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;com.test.yanxiu.mydraganddraw.DragAndDropView</div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot; /&gt;</div></pre></td></tr></table></figure>
+<p>其余的貌似没有什么了, 继承View的几个函数如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public boolean onTouchEvent(MotionEvent event)</div><div class="line">event.getX();</div><div class="line">event.getY();</div><div class="line">event.getAction()</div><div class="line"></div><div class="line">protected void onDraw(Canvas canvas)</div><div class="line"></div><div class="line">Paint bgPaint = new Paint();</div><div class="line">bgPaint.setColor(0xfff8efe0);</div><div class="line"></div><div class="line">canvas.drawPaint(bgPaint);</div><div class="line">canvas.drawRect(left, top, right, bottom, frPaint);</div></pre></td></tr></table></figure>
+<p>就是这么简单 ~ ~ ~</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/25/28-Browsing-the-Web-and-WebView/" itemprop="url">
                   28. Browsing the Web and WebView
                 </a>
@@ -1321,122 +1443,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/10/19-Audio-Playback-with-SoundPool/" itemprop="url">
-                  19. Audio Playback with SoundPool
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-10T16:50:47+08:00" content="2016-10-10">
-              2016-10-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>setRetainInstance(true)</code><br>新的Activity -&gt; 新的FragmentManager -&gt; <font color="orange">老的</font>Fragment -&gt; 新的RecyclerView</p>
-<p><code>setRetainInstance(false)</code> 这个是默认<br>新的Activity -&gt; 新的FragmentManager -&gt; <font color="orange">新的</font>Fragment -&gt; 新的RecyclerView</p>
-<p>保留的fragment只能处理activity因设备旋转而销毁的情况。如果activity是因操作系统需要回收内存而被销毁，则所有保留的fragment也会随之销毁。</p>
-<p>这章最终升华为：何时用 <code>onSaveInstanceState</code>，何时用 <code>setRetainInstance(true)</code></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1482,7 +1488,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-count">35</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-10-25T09:57:46.000Z</updated>
+  <updated>2016-10-26T04:09:50.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>29. Custom Views and Touch Events</title>
+    <link href="http://yoursite.com/2016/10/26/29-Custom-Views-and-Touch-Events/"/>
+    <id>http://yoursite.com/2016/10/26/29-Custom-Views-and-Touch-Events/</id>
+    <published>2016-10-26T02:57:46.000Z</published>
+    <updated>2016-10-26T04:09:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>简单视图 一般继承自 View</p>
+<p>聚合视图 一般继承自 XXXLayout</p>
+<p>好的，再次温习一遍</p>
+<p>对activity，用FrameLayout</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:id=&quot;@+id/fragment_container&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot; /&gt;</div></pre></td></tr></table></figure>
+<p>对fragment，用所需的View即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;com.test.yanxiu.mydraganddraw.DragAndDropView</div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot; /&gt;</div></pre></td></tr></table></figure>
+<p>其余的貌似没有什么了, 继承View的几个函数如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public boolean onTouchEvent(MotionEvent event)</div><div class="line">event.getX();</div><div class="line">event.getY();</div><div class="line">event.getAction()</div><div class="line"></div><div class="line">protected void onDraw(Canvas canvas)</div><div class="line"></div><div class="line">Paint bgPaint = new Paint();</div><div class="line">bgPaint.setColor(0xfff8efe0);</div><div class="line"></div><div class="line">canvas.drawPaint(bgPaint);</div><div class="line">canvas.drawRect(left, top, right, bottom, frPaint);</div></pre></td></tr></table></figure>
+<p>就是这么简单 ~ ~ ~</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;简单视图 一般继承自 View&lt;/p&gt;
+&lt;p&gt;聚合视图 一般继承自 XXXLayout&lt;/p&gt;
+&lt;p&gt;好的，再次温习一遍&lt;/p&gt;
+&lt;p&gt;对activity，用FrameLayout&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr
+    
+    </summary>
+    
+      <category term="android" scheme="http://yoursite.com/categories/android/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>28. Browsing the Web and WebView</title>
@@ -615,70 +649,6 @@
       &lt;p&gt;DialogFragment&lt;/p&gt;
 &lt;p&gt;AlertDialog&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div cl
-    
-    </summary>
-    
-      <category term="android" scheme="http://yoursite.com/categories/android/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>11. Using ViewPager</title>
-    <link href="http://yoursite.com/2016/09/23/11-Using-ViewPager/"/>
-    <id>http://yoursite.com/2016/09/23/11-Using-ViewPager/</id>
-    <published>2016-09-23T02:16:32.000Z</published>
-    <updated>2016-10-08T04:14:58.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>人被掏空的感觉啊 ~~~</p>
-<p>今天的ViewPager又是重点，而且目测这周六、日的章节也都是重点章节。不过顶过这周应该就好很多了。话说工作日基本有稳定的输出，反而周六、日比较担心，还得伺候老的小的，偶尔还约着caib们打打sc。</p>
-<p>言归正传</p>
-<p>如同CrimeActivity，CrimePagerActivity为了接收传入param，也需要定义类似的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public static Intent newIntent(Context packageContext, UUID cid) &#123;</div><div class="line">       Intent intent = new Intent(packageContext, CrimePagerActivity.class);</div><div class="line">       intent.putExtra(EXTRA_CRIME_ID, cid);</div><div class="line">       return intent;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<font color="Orange"><br>由于斟酌了intent的key的所属，为private static final，所以两个Activity都用了相同的key值<br></font>
-
-<font color="Green"><br>关于ViewPager只需要记住如下方法即可，特别注意new FragmentStatePagerAdapter构造函数需要传入FragmentMananer实例 <code>fm</code><br></font>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">mViewPager.setAdapter(new FragmentStatePagerAdapter(fm) &#123;</div><div class="line">    @Override</div><div class="line">    public Fragment getItem(int position) &#123;</div><div class="line">        UUID cid = mCrimes.get(position).getmId();</div><div class="line">        return CrimeFragment.newInstance(cid);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int getCount() &#123;</div><div class="line">        return mCrimes.size();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p><strong> FragmentStatePagerAdapter </strong> : 对于不用的fragment，调用remove(Fragment)方法，用onSaveInstanceState(Bundle)来存储并恢复</p>
-<p><strong> FragmentPagerAdapter </strong> : 对于不用的fragment, 调用detach(Fragment)方法，只销毁了fragment视图，fragment实例还保留在FragmentManager中。</p>
-<font color="Orange"><br>可以以代码方式创建布局<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ViewPager vp = new ViewPager(this);</div><div class="line">setContentView(vp);</div></pre></td></tr></table></figure><br><br>但是google并不推荐，所以不要怕麻烦，写个xml布局文件<br></font>
-
-<font color="Red"><br>再次说明了命名相当重要<br><br># 1. Java文件命名<br><br>SingleFragmentActivity<br><br>- CrimeListActivity<br><br>    CrimeListFragment<br><br>- CrimeActivity<br><br>    CrimeFragment<br><br>- CrimePagerActivity<br><br>    CrimeFragment<br><br><br># 2. Layout文件命名<br><br><strong>activity_fragment</strong> 对应 <code>SingleFragmentActivity</code><br><br>由于 <code>CrimeListActivity</code> 继承自 <code>SingleFragmentActivity</code>，所以没有对应的layout.xml<br><br><strong>fragment_crime_list</strong> 对应 <code>CrimeListFragment</code><br><br><strong>activity_crime_pager</strong> 对应 <code>CrimePagerActivity</code><br><br>由于 <code>CrimeActivity</code> 继承自 <code>SingleFragmentActivity</code>，所以没有对应的layout.xml<br><br><strong>fragment_crime</strong> 对应 <code>CrimeFragment</code><br><br><strong>list_item_crime.xml</strong> 对应tableview中的一个cell<br><br># 3. @id命名<br><br><strong>activity_fragment</strong>里：<font color="Green">@+id/fragment_container</font>
-
-<p><strong>fragment_crime_list</strong>里：<font color="Green">@+id/crime_recycler_view</font></p>
-<p><strong>activity_crime_pager</strong>里：<font color="Green">@+id/activity_crime_pager_view_pager</font></p>
-<p><strong>fragment_crime</strong>里：<font color="Green">@+id/crime_title 和 @+id/crime_date 和 @+id/crime_solved</font></p>
-<p><strong>list_item_crime.xml</strong>里：<font color="Green">@+id/list_item_crime_solved_check_box 和 @+id/list_item_crime_title_text_view 和 @+id/list_item_crime_date_text_view</font></p>
-<h1 id="4-intent传入参数key值"><a href="#4-intent传入参数key值" class="headerlink" title="4. intent传入参数key值"></a>4. intent传入参数key值</h1><p>在 <code>CrimeActivity</code> 里：(EXTRA_IN_XXXXX)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">EXTRA_IN_CRIME_ID = &quot;extra.in.crime.id&quot;;</div></pre></td></tr></table></figure>
-<h1 id="5-activity传入参数用的newIntent-…-静态方法"><a href="#5-activity传入参数用的newIntent-…-静态方法" class="headerlink" title="5. activity传入参数用的newIntent(…)静态方法"></a>5. activity传入参数用的newIntent(…)静态方法</h1><p>在 <code>CrimeActivity</code> 里：(newInIntent(…))</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public static Intent newInIntent(Context packageContext, UUID crimeId) &#123;</div><div class="line">    Intent intent = new Intent(packageContext, CrimeActivity.class);</div><div class="line">    intent.putExtra(EXTRA_IN_CRIME_ID, crimeId);</div><div class="line">    return intent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="6-bundle传入参数key值"><a href="#6-bundle传入参数key值" class="headerlink" title="6. bundle传入参数key值"></a>6. bundle传入参数key值</h1><p>在 <code>CrimeFragment</code> 里：(BUNDLE_IN_XXXXX)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">BUNDLE_IN_CRIME_ID = &quot;bundle.in.crime.id&quot;;</div></pre></td></tr></table></figure>
-<h1 id="7-fragment传入参数用的newInstance-…-静态方法"><a href="#7-fragment传入参数用的newInstance-…-静态方法" class="headerlink" title="7. fragment传入参数用的newInstance(…)静态方法"></a>7. fragment传入参数用的newInstance(…)静态方法</h1><p>在 <code>CrimeFragment</code> 里：(newInstance(…))</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public static CrimeFragment newInstance(UUID crimeId) &#123;</div><div class="line">    Bundle args = new Bundle();</div><div class="line">    args.putSerializable(BUNDLE_IN_CRIME_ID, crimeId);</div><div class="line"></div><div class="line">    CrimeFragment fragment = new CrimeFragment();</div><div class="line">    fragment.setArguments(args);</div><div class="line">    return fragment;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>之后在 <code>CrimeFragment</code> 里获取</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UUID cid = (UUID)getArguments().getSerializable(BUNDLE_IN_CRIME_ID);</div></pre></td></tr></table></figure>
-<h1 id="8-activity-调用方-接收返回值时用的-int-requestCode"><a href="#8-activity-调用方-接收返回值时用的-int-requestCode" class="headerlink" title="8. activity 调用方 接收返回值时用的 int requestCode"></a>8. activity 调用方 接收返回值时用的 int requestCode</h1><p>在 <code>CrimeListFragment</code> 里：(REQUEST_CODE_XXXXX)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private static final int REQUEST_CODE_CRIME_TITLE = 0;</div></pre></td></tr></table></figure>
-<p>在接收方 <code>CrimeListFragment</code> 里：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public void onActivityResult(int requestCode, int resultCode, Intent data) &#123;</div><div class="line">       super.onActivityResult(requestCode, resultCode, data);</div><div class="line">       if (resultCode == Activity.RESULT_CANCELED) &#123;</div><div class="line">           return;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       if (requestCode == REQUEST_CODE_CRIME_TITLE) &#123;</div><div class="line">           String s = CrimeActivity.crimeTitleFromOutIntent(data);</div><div class="line">           Log.e(&quot;CrimeListFragment&quot;, s);</div><div class="line">       &#125;</div><div class="line">       mAdapter.notifyDataSetChanged();</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<h1 id="9-activity-被调用方-返回值intent里的参数的key"><a href="#9-activity-被调用方-返回值intent里的参数的key" class="headerlink" title="9. activity 被调用方 返回值intent里的参数的key"></a>9. activity 被调用方 返回值intent里的参数的key</h1><p>在 <code>CrimeActivity</code> 里：(EXTRA_OUT_XXXXX)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private static final String EXTRA_OUT_CRIME_TITLE = &quot;extra.out.crime.title&quot;;</div></pre></td></tr></table></figure>
-<h1 id="10-activity-被调用方-生成返回值的newIntent-…-静态方法"><a href="#10-activity-被调用方-生成返回值的newIntent-…-静态方法" class="headerlink" title="10. activity 被调用方 生成返回值的newIntent(…)静态方法"></a>10. activity 被调用方 生成返回值的newIntent(…)静态方法</h1><p>在 <code>CrimeActivity</code> 里：(newOutIntent(…))</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public static Intent newOutIntent(String s) &#123;</div><div class="line">    Intent intent = new Intent();</div><div class="line">    intent.putExtra(EXTRA_OUT_CRIME_TITLE, s);</div><div class="line">    return intent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="11-activity-被调用方-帮助解析返回Intent-…-静态方法"><a href="#11-activity-被调用方-帮助解析返回Intent-…-静态方法" class="headerlink" title="11. activity 被调用方 帮助解析返回Intent(…)静态方法"></a>11. activity 被调用方 帮助解析返回Intent(…)静态方法</h1><p>在 <code>CrimeActivity</code> 里：(xxxxxFromOutIntent(…))</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public static String crimeTitleFromOutIntent(Intent intent) &#123;</div><div class="line">       return intent.getStringExtra(EXTRA_OUT_XXXXX);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<p></p></font><p></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;人被掏空的感觉啊 ~~~&lt;/p&gt;
-&lt;p&gt;今天的ViewPager又是重点，而且目测这周六、日的章节也都是重点章节。不过顶过这周应该就好很多了。话说工作日基本有稳定的输出，反而周六、日比较担心，还得伺候老的小的，偶尔还约着caib们打打sc。&lt;/p&gt;
-&lt;p&gt;言归正传&lt;/p&gt;
-
     
     </summary>
     
